@@ -1,0 +1,15 @@
+# Build artifacts
+*.pdf
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+
+# Experiment caches and heavy intermediates (not committed)
+convergence/experiment/data/cache/
+convergence/experiment/results/activations/
+convergence/experiment/venv/
+__pycache__/
+*.pyc

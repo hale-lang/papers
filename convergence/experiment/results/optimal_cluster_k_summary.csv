@@ -1,0 +1,5 @@
+model,early_k_star_mode,middle_k_star_mode,late_k_star_mode,middle_higher_than_perimeter
+llama-3.2-3b,6,6,6,False
+mistral-7b-v0.3,6,6,6,False
+qwen2.5-7b,6,6,6,False
+llama-3.1-8b,6,6,6,False

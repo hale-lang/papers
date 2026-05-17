@@ -1,0 +1,85 @@
+# Experiment hyperparameters.
+#
+# All values that affect the result are committed to git BEFORE
+# data collection. Modifications after data collection require
+# an addendum entry per PRE_REGISTRATION.md.
+
+# Random seeds applied to numpy, torch, and python.random
+# at the start of every script.
+seeds:
+  global_seed: 42
+  probe_seed: 42
+
+# Probe data — language-identity probe (primary; for w_E, w_D)
+language_probe:
+  dataset:
+    hub_id: openlanguagedata/flores_plus
+    revision: 1c079b04e227e9646edd65ae6264339e5db97122
+    split: dev      # FLORES+ dev set: 997 sentences per language
+    text_column: text  # parquet column with the sentence text
+  # Map our 6-letter FLORES codes to the (iso_639_3, iso_15924)
+  # tuples that flores_plus uses for filtering. Order matches
+  # the `languages` list below.
+  language_filters:
+    eng_Latn: { iso_639_3: eng, iso_15924: Latn }
+    spa_Latn: { iso_639_3: spa, iso_15924: Latn }
+    zho_Hans: { iso_639_3: cmn, iso_15924: Hans }  # Mandarin Chinese
+    rus_Cyrl: { iso_639_3: rus, iso_15924: Cyrl }
+    arb_Arab: { iso_639_3: arb, iso_15924: Arab }  # Modern Standard Arabic
+    hin_Deva: { iso_639_3: hin, iso_15924: Deva }
+  languages:
+    - eng_Latn  # English
+    - spa_Latn  # Spanish
+    - zho_Hans  # Mandarin (Simplified)
+    - rus_Cyrl  # Russian
+    - arb_Arab  # Modern Standard Arabic
+    - hin_Deva  # Hindi
+  examples_per_language: 1012  # full FLORES dev split
+  test_split: 0.2              # 80/20 train/test
+  threshold: 0.70              # τ_lang per PRE_REGISTRATION.md
+  contiguity_tolerance: 1      # at most one below-threshold layer in bundle
+
+# Probe data — concept-identity probe (control; for middle peak)
+concept_probe:
+  dataset:
+    hub_id: facebook/xnli
+    revision: main
+    split: validation
+  languages:
+    - en
+    - es
+    - zh
+    - ru
+    - ar
+    - hi
+  examples_per_language: 2000  # subset; XNLI has ~2.5K val examples
+  test_split: 0.2
+  num_classes: 3               # entailment / neutral / contradiction
+
+# Activation-extraction settings
+extraction:
+  device: cuda:0          # explicit device 0 (the dGPU; not the iGPU)
+  batch_size: 1           # streaming; per-model VRAM-managed
+  max_seq_length: 512     # truncate long sentences
+  pooling: last_token     # extract hidden state at last non-pad token
+  precision: bfloat16     # match model dtype; cleanest activations
+
+# Probe training settings
+probe_training:
+  classifier: logistic_regression
+  solver: lbfgs
+  max_iter: 5000          # bumped from 1000 (per ADDENDUM_002)
+  C: 1.0
+  # `multi_class` parameter intentionally omitted: deprecated in
+  # sklearn 1.5+; default is now multinomial for >2 classes.
+  cv_folds: 5             # cross-validation for accuracy stability
+
+# Output paths (relative to experiment root)
+paths:
+  data_cache: data/cache
+  data_processed: data/processed
+  activations: results/activations
+  probes: results/probes
+  widths: results/widths.csv
+  plots: results/plots
+  evaluation_report: results/EVALUATION_REPORT.md

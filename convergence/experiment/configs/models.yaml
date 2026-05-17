@@ -1,0 +1,51 @@
+# Models to probe.
+#
+# `revision` is a HuggingFace commit hash for strict
+# reproducibility. Find current revision via:
+#   hub_id=meta-llama/Llama-3.1-8B
+#   curl -s "https://huggingface.co/api/models/${hub_id}" | jq -r '.sha'
+#
+# To add or swap a model, copy a block, edit hub_id and revision,
+# and the pipeline will pick it up automatically.
+
+models:
+  - name: llama-3.2-3b
+    hub_id: meta-llama/Llama-3.2-3B
+    revision: 13afe5124825b4f3751f836b40dafda64c1ed062
+    layers: 28
+    hidden_size: 3072
+    dtype: bfloat16
+    note: "Smallest model; tests small-model regime"
+
+  - name: mistral-7b-v0.3
+    hub_id: mistralai/Mistral-7B-v0.3
+    revision: caa1feb0e54d415e2df31207e5f4e273e33509b1
+    layers: 32
+    hidden_size: 4096
+    dtype: bfloat16
+    note: "Mistral family; 32K vocab tokenizer"
+
+  - name: qwen2.5-7b
+    hub_id: Qwen/Qwen2.5-7B
+    revision: d149729398750b98c0af14eb82c78cfe92750796
+    layers: 28
+    hidden_size: 3584
+    dtype: bfloat16
+    note: "Qwen family; 152K multilingual vocab"
+
+  - name: llama-3.1-8b
+    hub_id: meta-llama/Llama-3.1-8B
+    revision: d04e592bb4f6aa9cfee91e2e20afa771667e1d4b
+    layers: 32
+    hidden_size: 4096
+    dtype: bfloat16
+    note: "Llama 3.1 8B; reference for Wendler 2024 / Dumas 2024 comparison"
+
+# License acceptance reminders (one-time; on huggingface.co):
+#   - meta-llama/Llama-3.2-3B  (Meta license)
+#   - meta-llama/Llama-3.1-8B  (Meta license)
+#   - mistralai/Mistral-7B-v0.3  (Apache 2.0; no acceptance needed)
+#   - Qwen/Qwen2.5-7B  (Apache 2.0; no acceptance needed)
+#
+# After accepting, set HF_TOKEN environment variable or run
+# `huggingface-cli login` to authenticate downloads.
