@@ -100,6 +100,10 @@ def main():
 
     # [D4] corank-2 types on L_1
     assert simplify(herm(vA, vB, EPS1)) == 0          # orthogonal pair
+    b1, b2 = (1, 0, 0, 1, 0, 0), (0, 1, 0, 0, 1, 0)
+    spanB = {tuple((a*b1[k] + c*b2[k]) % 2 for k in range(6))
+             for a in range(2) for c in range(2)}
+    assert (1, 1, 1, 1, 1, 1) not in spanB      # type-B plane certificate
     # mod-pi reductions independent => primitive plane
     print("[D4] L_1: <v_A, f_1+f_4> is an exactly isotropic primitive plane of")
     print("     type A (contains the all-ones reduction); <f_1+f_4, f_2+f_5> is")
@@ -134,7 +138,7 @@ def main():
         total += 1
         if ones not in S:
             all_contain_ones = False
-    assert all_contain_ones and total > 0
+    assert all_contain_ones and total == 15, "exactly 15 maximal totally isotropic subspaces"
     print(f"[D5] corank 3: enumerated ALL {total} totally isotropic 3-dim")
     print("     subspaces of (F_2^6, dot); every one is self-dual and contains")
     print("     the all-ones vector — corank-3 planes are FORCED type A; the")

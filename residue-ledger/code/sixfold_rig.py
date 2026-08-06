@@ -245,13 +245,15 @@ def main():
         M2 = mu_cols(w_im)
         # image confined to H^{2,4}+H^{4,2}: D(J_A)^2 = -4 on every column
         for M in (M1, M2):
-            for jcol in (0, 17, 41):
+            for jcol in range(42):
                 col = {kk: M[kk, jcol] for kk in range(924) if M[kk, jcol] != 0}
                 d1 = apply_D(J_A, col, B6, IX6)
                 d2 = apply_D(J_A, d1, B6, IX6)
                 assert d2 == {kk: -4 * vv for kk, vv in col.items()}
         r1, r2 = M1.rank(), M2.rank()
         rj = Matrix.vstack(M1, M2).rank()
+        assert r1 == r2 == rj == 24, "Theorem 2 headline real ranks must be 24"
+        assert 42 - rj == 18, "kernel must equal the 18-dim K-cell tangent" 
         assert r1 % 2 == r2 % 2 == rj % 2 == 0
         print(f"[S6] rank_C mu:  w_re {r1//2},  w_im {r2//2},  joint {rj//2}   "
               f"(predicted 12);   e = {kexpC - rj//2} (predicted 9 = dim_C U(3,3) family)")
@@ -280,6 +282,7 @@ def main():
             for kk, vv in img.items():
                 Mth[kk, jcol] = vv
         rth = Mth.rank()
+        assert rth == 0, "theta^3 form-side rank must vanish (known-zero channel)"
         print(f"     theta^3 (form side): rank_C mu = {rth//2} (expect 0 — the "
               f"tangent space is DEFINED by first-order persistence of E, so "
               f"mu_E = 0 by construction and Leibniz kills theta^3)")
@@ -334,6 +337,7 @@ def main():
     # ---- the comparison --------------------------------------------------
     print("\n=== discriminant comparison ===")
     same = results[1] == results[3]
+    assert same, "discriminant blindness: result tuples must be identical"
     print(f"  det h = -1 (solved class): ranks {results[1]}")
     print(f"  det h = -3 (other class):  ranks {results[3]}")
     print(f"  identical: {same}")

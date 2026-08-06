@@ -17,8 +17,9 @@ Verified exactly:
   [C4] Lambda^6 Phi scales the Weil plane by 3^{-1/2} (each monomial of
        w+- has exactly one factor in the sixth K-block).
   [C5] mu-equivariance: D(Phi dJ Phi^{-1}) . (L6Phi w) = L6Phi . (D(dJ) w),
-       sampled over tangent basis vectors — so kernels, ranks, and all
-       higher derivatives of the obstruction construction correspond.
+       the identity holds for ALL directions by functoriality of the
+       derivation; the seven sampled directions below are a REGRESSION
+       TEST of the implementation, not the proof.
   [C6] (recorded, not computed) no rational Phi exists: a K-rational
        isometry would force [det h_1] = [det h_3], i.e. 3 in Nm(Q(i)^x),
        contradicting the descent argument (see sixfold_rig.py [S3b]).

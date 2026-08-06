@@ -9,6 +9,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"
 
 ENGINE="${PDF_ENGINE:-xelatex}"
+DRAFT_DATE="$(sed -n 's/^date: "\(.*\)"$/\1/p' paper.md | head -1)"
 
 pandoc paper.md \
   --output paper.pdf \
@@ -27,6 +28,6 @@ pandoc paper.md \
   --toc-depth=1 \
   --metadata title='The Tangent Space Cannot See the Discriminant' \
   --metadata author='Riley Rook' \
-  --metadata date='Draft v0.4 — August 2026'
+  --metadata date="$DRAFT_DATE"
 
 echo "[residue-ledger] paper.pdf written"

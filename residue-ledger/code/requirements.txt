@@ -1,0 +1,3 @@
+# residue-ledger certificate suite — pinned environment
+sympy==1.14.0
+numpy==2.4.4

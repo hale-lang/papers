@@ -2,7 +2,7 @@
 
 *The Tangent Space Cannot See the Discriminant: infinitesimal rigidity
 of Weil classes, with exact certificates in dimensions four and six* —
-draft v0.7, August 2026. **Not yet submitted anywhere; treat as
+draft v0.8, August 2026. **Not yet submitted anywhere; treat as
 a working draft.**
 
 A local rigidity theorem for rational Weil classes on polarized
@@ -11,13 +11,15 @@ computations (no floating point, no transcendence numerics) in
 dimensions four and six, plus a K3 period-loop instrument. Headline
 results:
 
-- **Theorem 1 (infinitesimal rigidity, uniform in n).** The kernel of
-  the infinitesimal Hodge obstruction of every nonzero rational Weil
-  class is exactly the n²-dimensional K-linear Weil period domain, with
-  rank n(n+1); consequently the local Hodge locus is smooth, reduced,
-  and equal to the Weil locus at every point, including maximally split
-  CM points. Depends only on the real signature (n,n), not the
-  discriminant.
+- **Theorem 1 (infinitesimal rigidity, n >= 2).** The kernel of the
+  infinitesimal Hodge obstruction of every nonzero rational Weil class
+  is exactly the n²-dimensional K-linear Weil period domain, with rank
+  n(n+1); the local Hodge-locus zero scheme is smooth, reduced, and
+  equal to the Weil locus at every point, including maximally split CM
+  points. Depends only on the real signature (n,n). SHARP: at n = 1 a
+  single rational class cuts out a strictly larger germ (only the full
+  Weil plane recovers the cell) — verified as a boundary regression in
+  `code/n1_sharpness.py`.
 - **Theorem 2 (certificates; discriminant blindness).** Exact
   certificates in dimensions four (10/4/6) and six (21/9/12) — the
   sixfold pair run on a split (solved, disc [−1]) and a nonsplit
@@ -38,17 +40,19 @@ results:
   boundary has totally degenerate cusps while the nonsplit one has
   coranks ≤ 2 only. Locally the forms differ at exactly the primes
   {2, 3}. Certificates in `code/arithmetic_quotient.py`.
-- **Theorem 5 (connected quotients; cusp spectra).** Both genera have
-  class number one (strong approximation + a diagonal determinant lemma
-  + Hilbert 90 + Cl(Q(i)) = 1), but a dyadic type invariant — the
-  norm-parity functional at the ramified prime, U(L)-invariant because
-  unitary maps preserve norms — splits the split quotient's shallow
-  cusps: spectra (2,2,1) vs (1,1). The discriminant is visible in the
-  boundary multiplicities at every corank, not only in the deepest
-  cusp's existence. Certificates in `code/cusp_class_numbers.py` and
-  `code/dyadic_types.py` (which also records the correction of an
-  earlier one-cusp-per-depth claim — the paper's own calibration
-  lesson applied to itself).
+- **Theorem 5 (class numbers; dyadic types; PREDICTED cusp spectra).**
+  Both genera have class number one (strong approximation + a diagonal
+  determinant lemma + Hilbert 90 + Cl(Q(i)) = 1). A dyadic type
+  invariant — the norm-parity functional at the ramified prime,
+  U(L)-invariant because unitary maps preserve norms — separates the
+  boundary data: proved lower bounds of 2 at coranks 1 and 2 for the
+  split lattice, type exclusion on the nonsplit one, and corank-3
+  forcing, predicting spectra (2,2,1) vs (1,1); the EXACT counts are
+  conditional on within-type integral transitivity and a parabolic
+  local-global computation, stated as such in the paper. Certificates
+  in `code/cusp_class_numbers.py` and `code/dyadic_types.py` (which
+  also records the correction of an earlier one-cusp-per-depth
+  claim — the paper's own calibration lesson applied to itself).
 - **Proposition C (K3 dichotomy loop).** A rational twistor loop in the
   K3 period domain whose very general fibers are nonprojective of
   Picard rank 19 while every one of its dense Noether–Lefschetz walls
@@ -97,8 +101,16 @@ discriminant-blindness computation, and the observable layer.
     `k3_residue_data.json`); `build_k3_page.py` regenerates the
     interactive supplement from it.
 
-  Every script is self-checking (asserts on all load-bearing
-  identities); run with `python3 <script>` from inside `code/`.
+  The scripts assert their headline claims (ranks, kernels, tuple
+  equality across discriminants, known-zero channels, enumeration
+  counts); statement-level and cited legs are labeled as such in the
+  docstrings and in the verifier's grading legend — the suite
+  distinguishes PROVED-BY-CODE / PROVED-IN-TEXT / CITED / CONDITIONAL.
+  Run `python3 verify_all.py` from inside `code/` for the full suite;
+  `requirements.txt` pins the environment; CI runs the suite on every
+  push touching this directory. Floats appear only in one numerical
+  asymptotic check and in the K3 page's plotting data — every
+  proof-critical identity is exact.
 - `supplements/` — self-contained HTML companions: `ledger-essay.html`
   (*Zero-Mode Shadows*, the interpretive essay, including its own
   post-instrument corrections) and `k3-residue-angle.html` (the
@@ -110,7 +122,11 @@ the companion essay is *Zero-Mode Shadows*.
 
 ## Status and honesty notes
 
-Draft v0.7. Attributions were checked against sources in August 2026.
+Draft v0.8 (referee corrections applied: n >= 2 hypothesis with n = 1
+sharpness; filtration index; atypicality identification withdrawn;
+Proposition 6 clause corrections; Theorem 5 spectra stated as
+conditional predictions; rational-Picard calibration in the K3 script).
+Attributions were checked against sources in August 2026.
 The split/nonsplit discriminant distinction is settled invariantly in
 the paper (explicit K-isotropic subspace for the split form; a descent
 argument for the nonsplit class). The novelty claims in §6 are stated

@@ -186,13 +186,31 @@ for name, gm in show:
 # --------------------------------------------------------------------------
 # [K5] Picard jump at the irrational wall t0 = 1 + sqrt(2)  (class B)
 # --------------------------------------------------------------------------
-t0 = 1 + sqrt(2)
-c_re = ((1 - t**2) * P1.T * G + 2*t * P2.T * G).subs(t, t0).applyfunc(nsimplify)
-c_im = (P3.T * G)
-NS_t0 = Matrix.vstack(c_re, c_im).applyfunc(nsimplify).nullspace()
-print(f"\n[K5] rank NS at the wall t0 = 1+sqrt(2):  {len(NS_t0)}   "
-      f"(19 generic -> 20 at the wall: the count jumps; the angle moved continuously)")
-assert len(NS_t0) == 20
+# RATIONAL Picard rank at an algebraic parameter value: expand the wall
+# conditions in the Q-basis {1, sqrt 2} and stack RATIONAL coefficient rows
+# (a Q(sqrt2)-nullspace would report 20 at EVERY algebraic point — the
+# rational lattice needs rational rows; referee-caught correction).
+def rational_picard_rank(tval):
+    c1 = expand(1 - tval**2)
+    c2 = expand(2 * tval)
+    rows = []
+    for part in ("one", "rad"):
+        row = []
+        for gcol in range(22):
+            val = expand(c1 * (P1.T * G)[gcol] + c2 * (P2.T * G)[gcol])
+            co = val.coeff(sqrt(2), 1) if part == "rad" else val.subs(sqrt(2), 0)
+            row.append(nsimplify(co))
+        rows.append(row)
+    rows.append([(P3.T * G)[gcol] for gcol in range(22)])
+    return len(Matrix(rows).nullspace())
+
+r_wall = rational_picard_rank(1 + sqrt(2))
+r_calib = rational_picard_rank(sqrt(2))
+print(f"\n[K5] RATIONAL Picard rank at the wall t0 = 1+sqrt(2): {r_wall}; at the")
+print(f"     non-wall algebraic point t = sqrt(2): {r_calib}  (calibration pair:")
+print(f"     the wall's real condition is rationally proportional — q1 = q2 —")
+print(f"     while the non-wall point forces q1 = q2 = 0)")
+assert r_wall == 20 and r_calib == 19
 
 # --------------------------------------------------------------------------
 # [K6] wall densification

@@ -1,0 +1,17 @@
+name: residue-ledger verify
+on:
+  push:
+    paths: ['residue-ledger/**']
+  pull_request:
+    paths: ['residue-ledger/**']
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r residue-ledger/code/requirements.txt
+      - run: cd residue-ledger/code && python verify_all.py
