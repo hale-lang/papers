@@ -30,6 +30,7 @@ SCRIPTS = [
     ("arithmetic_quotient.py",      "Theorem 4: Witt indices, local separation at {2,3}"),
     ("cusp_class_numbers.py",       "Theorem 5 part 1: class numbers, odd-place analysis"),
     ("dyadic_types.py",             "Theorem 5 part 2: dyadic types, corrected spectra"),
+    ("theorem5_legs.py",            "Theorem 5b: corank-1 unconditional (splitting/cancellation)"),
     ("k3_residue_angle.py",         "Proposition 6: K3 loop incl. rational-Picard calibration"),
 ]
 
@@ -60,9 +61,11 @@ THEOREM LEG GRADING
     p = 3 positioning; F_9 substrate ...... PROVED-BY-CODE
     dyadic type invariant + witnesses ..... PROVED-BY-CODE
     corank-3 forcing (15 subspaces) ....... PROVED-BY-CODE
-    within-type integral transitivity ..... CONDITIONAL
-    parabolic local-global ................ CONDITIONAL
-    => exact cusp spectra ................. CONDITIONAL (lower bounds proved)
+    corank-1 splitting/cancellation ....... PROVED-IN-TEXT (+ certificates)
+    corank-1 exact counts (2 vs 1) ........ PROVED (Theorem 5b)
+    corank 2, 3 within-type transitivity .. CONDITIONAL (normal-form lemmas)
+    corank 2, 3 parabolic local-global .... CONDITIONAL
+    => spectra (2,2,1) vs (1,1) ........... corank 1 PROVED; rest predicted
   Proposition 6 (K3 loop)
     all clauses as amended ................ PROVED-BY-CODE
     noble-angle extremality ............... CONDITIONAL (conjecture)

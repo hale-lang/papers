@@ -2,7 +2,7 @@
 
 *The Tangent Space Cannot See the Discriminant: infinitesimal rigidity
 of Weil classes, with exact certificates in dimensions four and six* —
-draft v0.8, August 2026. **Not yet submitted anywhere; treat as
+draft v0.9, August 2026. **Not yet submitted anywhere; treat as
 a working draft.**
 
 A local rigidity theorem for rational Weil classes on polarized
@@ -49,10 +49,16 @@ results:
   split lattice, type exclusion on the nonsplit one, and corank-3
   forcing, predicting spectra (2,2,1) vs (1,1); the EXACT counts are
   conditional on within-type integral transitivity and a parabolic
-  local-global computation, stated as such in the paper. Certificates
-  in `code/cusp_class_numbers.py` and `code/dyadic_types.py` (which
-  also records the correction of an earlier one-cusp-per-depth
-  claim — the paper's own calibration lesson applied to itself).
+  local-global computation at coranks 2 and 3 — the CORANK-ONE counts
+  (2 vs 1) are now UNCONDITIONAL: Theorem 5b's splitting-and-
+  cancellation argument (every primitive isotropic vector splits off
+  [[0,1],[1,1]] with a rank-4 complement whose parity IS the dyadic
+  type; same-type complements share a class-number-one genus and glue)
+  proves within-type transitivity and dissolves the local-global
+  question there. Certificates in `code/cusp_class_numbers.py`,
+  `code/dyadic_types.py`, and `code/theorem5_legs.py` (which also
+  record the correction of an earlier one-cusp-per-depth claim — the
+  paper's own calibration lesson applied to itself).
 - **Proposition C (K3 dichotomy loop).** A rational twistor loop in the
   K3 period domain whose very general fibers are nonprojective of
   Picard rank 19 while every one of its dense Noether–Lefschetz walls
@@ -97,6 +103,10 @@ discriminant-blindness computation, and the observable layer.
     type invariant, exact type-A witnesses in L_1, the mod-4 exclusion
     on L_3, and the full corank-3 enumeration (15 subspaces, all
     containing the all-ones vector).
+  - `theorem5_legs.py` — Theorem 5b: the corank-one splitting-and-
+    cancellation certificates (unit-norm criterion, parity forcing and
+    freedom, the sqrt(-7) witness, the even-binary Hensel table, the
+    exact even complement of the type-A pair).
   - `k3_residue_angle.py` — Proposition C (emits
     `k3_residue_data.json`); `build_k3_page.py` regenerates the
     interactive supplement from it.
@@ -122,7 +132,7 @@ the companion essay is *Zero-Mode Shadows*.
 
 ## Status and honesty notes
 
-Draft v0.8 (referee corrections applied: n >= 2 hypothesis with n = 1
+Draft v0.9 (referee corrections applied; corank-one cusp counts made unconditional by Theorem 5b: n >= 2 hypothesis with n = 1
 sharpness; filtration index; atypicality identification withdrawn;
 Proposition 6 clause corrections; Theorem 5 spectra stated as
 conditional predictions; rational-Picard calibration in the K3 script).

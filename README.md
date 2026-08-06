@@ -8,7 +8,7 @@ one standalone mathematics paper.
 ## residue-ledger/
 
 *The Tangent Space Cannot See the Discriminant* (the Residue Ledger
-project). Standalone mathematics paper (draft v0.8, not yet submitted),
+project). Standalone mathematics paper (draft v0.9, not yet submitted),
 independent of the capacity-allocation pair. A local rigidity theorem
 for rational Weil classes on polarized abelian 2n-folds of Weil type
 (kernel of the infinitesimal Hodge obstruction = the n²-dimensional
@@ -22,8 +22,8 @@ the arithmetic quotients ARE separated — by their rational boundary
 (Witt indices 3 vs 2; totally degenerate cusps exist only on the
 split side; local difference exactly at the primes 2 and 3; both
 genera of class number one, with a dyadic type invariant separating
-the boundary data and predicting cusp spectra (2,2,1) vs (1,1) —
-exact counts conditional on standard transitivity legs): the tangent
+the boundary data and predicting cusp spectra (2,2,1) vs (1,1), with the corank-one
+counts 2 vs 1 proved unconditionally): the tangent
 cannot see the discriminant, the marked real-analytic germ cannot
 see it, the rational boundary can. Includes a K3 period-loop
 instrument and an interpretive companion essay. See

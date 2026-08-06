@@ -2,7 +2,7 @@
 title: "The Tangent Space Cannot See the Discriminant"
 subtitle: "Local rigidity and arithmetic boundary separation for Weil classes"
 author: Riley Rook
-date: "Draft v0.8 — August 2026"
+date: "Draft v0.9 — August 2026"
 ---
 
 **Abstract.** We study exact infinitesimal Hodge-obstruction maps for
@@ -47,9 +47,11 @@ does not — and the local difference is concentrated at exactly the primes
 norm-parity functional at the ramified prime) separates the boundary
 data: it splits the split lattice's shallow isotropic strata into two
 classes each while excluding one class entirely from the nonsplit
-lattice, predicting cusp spectra $(2,2,1)$ versus $(1,1)$ — exact counts
-conditional on standard within-type transitivity and parabolic
-local–global legs, stated as such. The tangent cannot see the
+lattice, predicting cusp spectra $(2,2,1)$ versus $(1,1)$; the corank-one
+counts ($2$ versus $1$) are then proved unconditionally by a
+splitting-and-cancellation argument that also dissolves the
+local–global question at that corank, while coranks 2 and 3 remain
+conditional on stated normal-form lemmas. The tangent cannot see the
 discriminant; the marked real-analytic germ cannot see it; the rational
 boundary can. A K3
 period-loop instrument motivates the reading that organizes the paper —
@@ -351,13 +353,12 @@ $$\Gamma_1: \ (2, 2, 1) \ \text{at coranks} \ (1,2,3), \qquad
 counts being the numbers of mod-$\pi$ type classes. What is proved
 outright: the lower bounds ($\ge 2$ at coranks 1 and 2 for the split
 lattice), the type exclusion on the nonsplit lattice, and the corank-3
-forcing. The exact equality of counts with orbit numbers is
-**conditional** on two standard-but-unproven-here legs: within-type
-integral transitivity (Witt/cancellation at fixed invariants, including
-the ramified dyadic case, and the absence of finer invariants at higher
-$\pi$-precision), and the parabolic local–global computation
-$P_r(K)\backslash U(h)(\mathbb{A}_f)/K_L$, which genus triviality alone
-does not settle. **The discriminant is visible in the boundary
+forcing. At corank one the exact counts are now **proved** — see Theorem 5b,
+whose splitting argument settles both within-type transitivity and the
+local–global passage there. At coranks 2 and 3 exactness remains
+**conditional** on the analogous normal-form lemmas (within-type
+transitivity at fixed invariants and the parabolic local–global
+computation $P_r(K)\backslash U(h)(\mathbb{A}_f)/K_L$). **The discriminant is visible in the boundary
 multiplicities at every corank — not merely in the existence of the
 deepest cusp: the split boundary is strictly richer everywhere.**
 
@@ -416,6 +417,74 @@ invariant and corrected the counts — the $\theta^3$ lesson of §4
 operating at theorem level: a cite-graded leg is an unread calibration
 channel, and this one was hiding the only boundary invariant that
 distinguishes the quotients at *shallow* coranks.
+
+**Theorem 5b (corank one, unconditional).** $\Gamma_1$ has **exactly
+two** orbits of primitive isotropic vectors (the dyadic types A and B),
+and $\Gamma_3$ has **exactly one** (type B). In particular the corank-one
+cusp counts $2$ versus $1$ — the discriminant's visibility in shallow
+boundary multiplicities — hold unconditionally.
+
+*Proof (splitting and cancellation).* Let $w \in L_c$ be primitive
+isotropic. Unimodularity gives $u$ with $h(w,u) = 1$; then
+$S = Rw + Ru$ has Gram $\begin{pmatrix} 0 & 1 \\ 1 & d\end{pmatrix}$
+with $d = h(u,u) \in \mathbb{Z}$, is unimodular, and splits
+$L = S \perp C$ with $C$ rank-4 unimodular of determinant class
+$[\det L_c]/[-1]$ — that is, $[1]$ for $L_1$ and $[3]$ for $L_3$.
+Replacing $u$ by $u + \lambda w + z$ ($z \perp w$) changes $d$ by
+$\mathrm{Tr}(\lambda) + \mathrm{Tr}\,h(u,z) + h(z,z) \in 2\mathbb{Z}
++ h(z,z)$. For type A, $q$ vanishes on $w^{\perp}$, so the parity of $d$
+is frozen at $q(u) = h(w,u) \bmod \pi = 1$ (odd), and every complement
+$C \subset w^{\perp}$ is *even*; normalize $d = 1$ by even shifts. For
+type B, $w^{\perp}$ contains odd-norm vectors, so $d = 1$ is reachable
+and $u$ can moreover be chosen with $C$ *odd* (the functionals
+$h(z_0,-)|_{w^\perp}$ mod $\pi$ span more than one hyperplane, so some
+admissible $u$ leaves $q$ nonzero on $C$). Thus every $w$ yields
+$L = \begin{pmatrix} 0 & 1 \\ 1 & 1 \end{pmatrix} \perp C$ with the
+parity of $C$ equal to the type of $w$. Now classify the complements:
+at odd $p$, unimodular lattices are determined by rank and determinant
+[@jacobowitz1962]; at the ramified dyadic place, *odd* unimodular
+lattices diagonalize (norm ideal $(1)$: split a unit-norm vector and
+induct) with entries in $\{\langle 1\rangle, \langle -1\rangle\}$, and
+$\mathrm{diag}(1,1) \cong \mathrm{diag}(-1,-1)$ because
+$\mathrm{diag}(1,1)$ represents $-1$: $\mathrm{Nm}(1+i) +
+\mathrm{Nm}(\sqrt{-7} + 2i) = 2 - 3 = -1$, with $\sqrt{-7} \in
+\mathbb{Z}_2$ since $-7 \equiv 1 \bmod 8$ — so rank and determinant
+classify; *even* unimodular lattices are sums of hyperbolic planes: an
+even binary $\begin{pmatrix} 2a & 1 \\ 1 & 2b \end{pmatrix}$ is always
+isotropic ($bt^2 + t + (bs^2 + a) = 0$ has a root mod 2 for every parity
+of $(a,b)$ after choosing $s$, and the $t$-derivative $2bt + 1$ is a
+unit, so Hensel lifts), and rank $\ge 3$ splits $H$ since local
+hermitian forms of rank $\ge 3$ are isotropic. Hence same-type
+complements share a genus. Each such genus has class number one by the
+argument of Theorem 5: $SU(2,2)$ is simply connected and
+$\mathbb{R}$-isotropic [@platonovrapinchuk1994], the determinant trick
+applies to a diagonalized odd complement directly and to $H \oplus H$
+via $e \mapsto ue$, $f \mapsto \bar u^{-1} f$ (whose determinants
+$u/\bar u$ exhaust the norm-one group by Hilbert 90), and
+$\mathrm{Cl}(\mathbb{Q}(i)) = 1$. So same-type complements are
+*isometric*, and the isometry glues with $w \mapsto e$, $u \mapsto u_0$
+on the binary parts to give $g \in U(L_c)$ carrying $w$ to the standard
+representative of its type. Combined with the type witnesses and the
+$L_3$ exclusion (Theorem 5), the counts follow. As a byproduct the
+exclusion re-derives structurally: a type-A complement is even, hence
+$H \oplus H$ of determinant class $[1]$, while $\det C = [3]$ for
+$L_3$ — and $3$ is not a norm. $\blacksquare$ Certificates for every
+arithmetic ingredient — the unit-norm criterion, the parity freedom and
+forcing, the $\sqrt{-7}$ witness, the Hensel case table with an exact
+lift, and the exact even complement of the type-A witness pair
+$(v_A, f_1)$, with Gram diagonal $(0,0,6,4)$ and unit determinant — are
+in `code/theorem5_legs.py`.
+
+*Remark (the legs, after Theorem 5b).* At corank one, the parabolic
+local–global leg *dissolves*: the proof above is directly global, its
+adelic content being exactly the class number one of the complement
+genera. What remains conditional are coranks 2 and 3, where the same
+architecture applies — split $F \oplus U$ with Gram
+$\begin{pmatrix} 0 & I \\ I & D \end{pmatrix}$, clear the
+off-diagonal of $D$ by shifts, classify diagonal parities and the rank-2
+(resp. rank-0) complements — but the normal-form analysis of $D$ at the
+ramified prime (which parity patterns are realizable, and their
+congruence classes) has not been completed here.
 
 **Lemma (skew-adjoint spectral separation).** Let $M$ be skew-adjoint for
 a bilinear pairing: $\langle Mx, y\rangle + \langle x, My\rangle = 0$. Then
@@ -715,9 +784,10 @@ companion essay develops the frame; nothing in §§1–6 depends on it.
   leave the $p = 2$ leg cite-grade: cusp spectra $(2,2,1)$ vs $(1,1)$,
   class numbers one. Remaining flags: within-class transitivity at
   fixed invariants, and finer invariants at higher $\pi$-precision —
-  the honest residue of the ramified dyadic classification; Theorem 5's
-  completion legs (within-type integral transitivity; parabolic
-  local–global) are the remaining declared work.
+  the honest residue of the ramified dyadic classification; after
+  Theorem 5b the remaining declared work is the corank-2 and corank-3
+  normal-form analysis of $D$ at the ramified prime (the corank-one
+  legs are closed).
 - **The degeneration route.** Sharpen the hypothesis-grade remark after
   Theorem 4: formalize what a corank-$\le 2$ degeneration argument for
   Weil classes would need, and whether Schoen-type limits exist there —
@@ -751,7 +821,7 @@ per-leg grading (PROVED-BY-CODE / PROVED-IN-TEXT / CITED / CONDITIONAL): `two_me
 `two_meters_polarized.py`, `two_meters_polarized_full.py`,
 `resonance_excess.py`, `sixfold_rig.py`, `conjugacy_theorem.py`,
 `arithmetic_quotient.py`, `cusp_class_numbers.py`, `dyadic_types.py`,
-`n1_sharpness.py`, `k3_residue_angle.py`.
+`n1_sharpness.py`, `theorem5_legs.py`, `k3_residue_angle.py`.
 Every
 load-bearing identity is asserted identically in parameters or verified at
 exact points, with semicontinuity/homogeneity closing the gap; the split
