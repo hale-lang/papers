@@ -1,6 +1,7 @@
 r"""
-cusp_class_numbers.py — certificates for Theorem 5: one cusp per depth,
-connected quotients.
+cusp_class_numbers.py — certificates for Theorem 5, part 1: connected
+quotients and the odd-place cusp analysis. (See dyadic_types.py for the
+dyadic correction: the final cusp spectra are (2,2,1) vs (1,1).)
 
 For L_c = Z[i]^6 with h_c = diag(1,1,1,-1,-1,-c), c in {1,3}:
 
@@ -19,10 +20,10 @@ For L_c = Z[i]^6 with h_c = diag(1,1,1,-1,-1,-c), c in {1,3}:
   unimodular position at p = 3 ([N3], the new finite certificate), and
   Witt's theorem for the residue hermitian space (verified at the point-
   count level in [N5]) plus Hensel lifting gives transitivity. The dyadic
-  place is cite-grade (Jacobowitz). Result:
-     Gamma_1: one cusp at each corank 1, 2, 3;
-     Gamma_3: one cusp at each corank 1, 2.
-  The entire arithmetic distinction is the EXISTENCE of the deepest cusp.
+  place carries a genuine TYPE invariant (originally graded cite-level
+  here, then worked out in dyadic_types.py): final spectra
+     Gamma_1: (2, 2, 1) at coranks (1, 2, 3);
+     Gamma_3: (1, 1) at coranks (1, 2).
 
 Checks:
   [N1] diagonal determinant lemma (global + local shape).
@@ -113,14 +114,11 @@ def main():
     print("     subspaces; Hensel lifts it to Z_3[i].")
 
     # ---- conclusion ----------------------------------------------------------
-    print("\nTHEOREM 5 (one cusp per depth; connected quotients):")
-    print("  h(genus L_1) = h(genus L_3) = 1;")
-    print("  cusp counts:  Gamma_1: corank 1 -> 1, corank 2 -> 1, corank 3 -> 1")
-    print("                Gamma_3: corank 1 -> 1, corank 2 -> 1")
-    print("  (odd places certificated above; the dyadic place is cite-grade,")
-    print("  Jacobowitz). Components and multiplicities carry NO discriminant")
-    print("  information: the entire arithmetic distinction between the two")
-    print("  quotients is the existence of the corank-3 cusp.")
+    print("\nTHEOREM 5, part 1 (connected quotients; odd-place cusp analysis):")
+    print("  h(genus L_1) = h(genus L_3) = 1; one local orbit at every odd place.")
+    print("  CORRECTION: the dyadic place carries a genuine type invariant —")
+    print("  see dyadic_types.py — giving cusp spectra (2,2,1) vs (1,1), NOT")
+    print("  one cusp per depth as this script originally concluded.")
 
 if __name__ == "__main__":
     main()

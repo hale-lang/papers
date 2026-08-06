@@ -2,7 +2,7 @@
 title: "The Tangent Space Cannot See the Discriminant"
 subtitle: "Infinitesimal rigidity of Weil classes, with exact certificates in dimensions four and six"
 author: Riley Rook
-date: "Draft v0.6 — August 2026"
+date: "Draft v0.7 — August 2026"
 ---
 
 **Abstract.** We study exact infinitesimal Hodge-obstruction maps for
@@ -39,11 +39,13 @@ where the discriminant *does* first appear: the two arithmetic quotients
 differ in their rational boundary — the Witt indices are 3 and 2, so the
 split quotient admits totally degenerate cusps while the nonsplit one
 does not — and the local difference is concentrated at exactly the primes
-2 and 3. Both quotients are connected (class number one) with exactly one
-cusp at each available corank, so components and multiplicities carry
-nothing: the whole distinction is the existence of the deepest cusp. The
-tangent cannot see the discriminant; the germ cannot see it; the cusps
-can — and what they see is exactly one bit. A K3
+2 and 3. Both quotients are connected (class number one), but the cusp
+spectra differ at every corank: a dyadic type invariant (the norm-parity
+functional at the ramified prime) splits the split quotient's shallow
+cusps into two classes each while the nonsplit quotient admits only one,
+giving spectra $(2,2,1)$ versus $(1,1)$. The tangent cannot see the
+discriminant; the germ cannot see it; the cusps can — at every depth
+they have. A K3
 period-loop instrument motivates the reading that organizes the paper —
 integer invariants as zero-mode shadows of continuous residual data — and
 the sixfold result marks that reading's own boundary: some discrete
@@ -284,16 +286,29 @@ degeneration route may be a structural component of the nonsplit sixfold
 case's resistance; in any case, any degeneration-based attack on it must
 work at corank $\le 2$.
 
-**Theorem 5 (one cusp per depth; connected quotients).** For both
-$c \in \{1, 3\}$: the genus of the hermitian lattice
+**Theorem 5 (connected quotients; the cusp spectra).** For both
+$c \in \{1, 3\}$ the genus of the hermitian lattice
 $L_c = (\mathbb{Z}[i]^6, h_c)$ has class number one, so
-$\Gamma_c \backslash \Omega$ is connected; and $\Gamma_c$ acts with
-exactly **one orbit** on primitive isotropic sublattices of every
-available rank — the cusp counts are $(1, 1, 1)$ at coranks $(1,2,3)$ for
-the split quotient and $(1, 1)$ at coranks $(1,2)$ for the nonsplit one.
-Components and cusp multiplicities therefore carry no discriminant
-information at all: **the entire arithmetic distinction between the two
-quotients is the existence of the corank-3 cusp.**
+$\Gamma_c \backslash \Omega$ is connected. The cusp counts, however, are
+**not** uniform: at the ramified prime $\pi = 1+i$ the norm-parity
+functional $q(x) = \sum_i (x_i \bmod \pi)$ on $L/\pi L$ is
+$U(L_c)$-invariant ($q \circ g = q$, since $g$ preserves norms), so for a
+primitive isotropic vector $v$ the condition
+$$\text{type A}: \ \varphi_v = q \quad (\text{equivalently } v \equiv
+(1,1,1,1,1,1) \bmod \pi), \qquad \text{type B}: \ \varphi_v \ne q,$$
+with $\varphi_v = h(v, -) \bmod \pi$, is a rigorous orbit invariant, and:
+$L_1$ realizes **both** types at coranks 1 and 2, while at corank 3 the
+type is forced to A (every totally isotropic 3-space of the residue form
+is self-dual and contains the all-ones vector); $L_3$ realizes **only**
+type B (an all-unit-coordinate vector in $L_3$ has $h(v,v) \equiv 2
+\bmod 4$, never zero). The cusp spectra are therefore
+$$\Gamma_1: \ (2, 2, 1) \ \text{at coranks} \ (1,2,3), \qquad
+\Gamma_3: \ (1, 1) \ \text{at coranks} \ (1,2),$$
+counts being the numbers of mod-$\pi$ type classes, each a single orbit
+modulo the within-class transitivity leg (Witt/cancellation at fixed
+invariants; flagged). **The discriminant is visible in the boundary
+multiplicities at every corank — not merely in the existence of the
+deepest cusp: the split boundary is strictly richer everywhere.**
 
 *Proof, with graded legs.* Class numbers: $SU(3,3)$ is simply connected
 and $\mathbb{R}$-isotropic, so strong approximation holds and the class
@@ -320,11 +335,30 @@ to the unimodular block, whose residue space is the nondegenerate
 hermitian $4$-space over $\mathbb{F}_9$ — certified at the point-count
 level: the enumerated isotropic quadric has exactly
 $(3^5+1)(3^4-1)/(3^2-1) = 2440$ projective points, matching the
-Hermitian-variety formula. Grading: the strong-approximation and
-Hilbert-90 legs and the odd-place local analysis are
-proof-plus-certificate (`code/cusp_class_numbers.py`); the dyadic place
-and the sublattice-level local–global bookkeeping are standard hermitian
-lattice theory [@jacobowitz1962], cite-grade. $\blacksquare$
+Hermitian-variety formula. Dyadic types: the invariance of $q$ is the
+three-line argument above; the certificates
+(`code/dyadic_types.py`) are exact — $\mathrm{Nm}$ of every unit of
+$\mathbb{Z}_2[i]$ is $1 \bmod 4$ (finite check); the type-A witnesses in
+$L_1$ are $v_A = (1,1,2{+}i,1,1,2{+}i)$ with
+$\mathrm{Nm}$-profile $1{+}1{+}5{-}1{-}1{-}5 = 0$ exactly, and the plane
+$\langle v_A, f_1{+}f_4\rangle$ (exactly orthogonal, primitive); the
+$L_3$ exclusion is the mod-4 identity $1{+}1{+}1{-}1{-}1{-}3 \equiv 2$;
+the corank-3 forcing is a full enumeration — all 15 totally isotropic
+3-subspaces of $(\mathbb{F}_2^6, \mathrm{dot})$ contain the all-ones
+vector. Grading: strong approximation, Hilbert 90, the odd-place
+analysis, and the dyadic type classification are proof-plus-certificate
+(`code/cusp_class_numbers.py`, `code/dyadic_types.py`); the remaining
+flags are the within-class transitivity at fixed invariants and the
+absence of finer invariants at higher $\pi$-precision — standard
+hermitian lattice theory territory [@jacobowitz1962]. $\blacksquare$
+
+*Correction note (methodological, kept deliberately).* An earlier
+version of this theorem asserted one cusp per available corank, with the
+dyadic place graded cite-level. Working that leg produced the type
+invariant and corrected the counts — the $\theta^3$ lesson of §4
+operating at theorem level: a cite-graded leg is an unread calibration
+channel, and this one was hiding the only boundary invariant that
+distinguishes the quotients at *shallow* coranks.
 
 **Lemma (skew-adjoint spectral separation).** Let $M$ be skew-adjoint for
 a bilinear pairing: $\langle Mx, y\rangle + \langle x, My\rangle = 0$. Then
@@ -587,11 +621,12 @@ companion essay develops the frame; nothing in §§1–6 depends on it.
 
 # Directions
 
-- **Counting the boundary: done.** Theorem 5 computes the counts — class
-  numbers one, one cusp per available corank; nothing but the existence
-  bit survives. The remaining countable refinement is dyadic: replace
-  the cite-grade Jacobowitz leg at $p = 2$ with an explicit certificate
-  (a finite computation in the ramified dyadic hermitian classification).
+- **Counting the boundary: done — and corrected.** Theorem 5 now
+  includes the dyadic type invariant, found precisely by refusing to
+  leave the $p = 2$ leg cite-grade: cusp spectra $(2,2,1)$ vs $(1,1)$,
+  class numbers one. Remaining flags: within-class transitivity at
+  fixed invariants, and finer invariants at higher $\pi$-precision —
+  the honest residue of the ramified dyadic classification.
 - **The degeneration route.** Sharpen the hypothesis-grade remark after
   Theorem 4: formalize what a corank-$\le 2$ degeneration argument for
   Weil classes would need, and whether Schoen-type limits exist there —
@@ -622,7 +657,8 @@ floats verify an asymptotic numerically) and accompany this draft in
 `code/`: `two_meters.py`, `two_meters_generic.py`, `two_meters_vgeneral.py`,
 `two_meters_polarized.py`, `two_meters_polarized_full.py`,
 `resonance_excess.py`, `sixfold_rig.py`, `conjugacy_theorem.py`,
-`arithmetic_quotient.py`, `cusp_class_numbers.py`, `k3_residue_angle.py`.
+`arithmetic_quotient.py`, `cusp_class_numbers.py`, `dyadic_types.py`,
+`k3_residue_angle.py`.
 Every
 load-bearing identity is asserted identically in parameters or verified at
 exact points, with semicontinuity/homogeneity closing the gap; the split

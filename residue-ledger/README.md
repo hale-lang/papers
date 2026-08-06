@@ -2,7 +2,7 @@
 
 *The Tangent Space Cannot See the Discriminant: infinitesimal rigidity
 of Weil classes, with exact certificates in dimensions four and six* —
-draft v0.6, August 2026. **Not yet submitted anywhere; treat as
+draft v0.7, August 2026. **Not yet submitted anywhere; treat as
 a working draft.**
 
 A local rigidity theorem for rational Weil classes on polarized
@@ -38,14 +38,17 @@ results:
   boundary has totally degenerate cusps while the nonsplit one has
   coranks ≤ 2 only. Locally the forms differ at exactly the primes
   {2, 3}. Certificates in `code/arithmetic_quotient.py`.
-- **Theorem 5 (one cusp per depth; connected quotients).** Both genera
-  have class number one (strong approximation + a diagonal determinant
-  lemma + Hilbert 90 + Cl(Q(i)) = 1), and both groups act with exactly
-  one orbit on primitive isotropic sublattices of every available rank:
-  cusp counts (1,1,1) vs (1,1). Components and multiplicities carry no
-  discriminant information — the entire distinction is the existence of
-  the corank-3 cusp: one bit. Certificates in
-  `code/cusp_class_numbers.py`.
+- **Theorem 5 (connected quotients; cusp spectra).** Both genera have
+  class number one (strong approximation + a diagonal determinant lemma
+  + Hilbert 90 + Cl(Q(i)) = 1), but a dyadic type invariant — the
+  norm-parity functional at the ramified prime, U(L)-invariant because
+  unitary maps preserve norms — splits the split quotient's shallow
+  cusps: spectra (2,2,1) vs (1,1). The discriminant is visible in the
+  boundary multiplicities at every corank, not only in the deepest
+  cusp's existence. Certificates in `code/cusp_class_numbers.py` and
+  `code/dyadic_types.py` (which also records the correction of an
+  earlier one-cusp-per-depth claim — the paper's own calibration
+  lesson applied to itself).
 - **Proposition C (K3 dichotomy loop).** A rational twistor loop in the
   K3 period domain whose very general fibers are nonprojective of
   Picard rank 19 while every one of its dense Noether–Lefschetz walls
@@ -86,6 +89,10 @@ discriminant-blindness computation, and the observable layer.
   - `cusp_class_numbers.py` — Theorem 5: the diagonal determinant lemma,
     the idele computation, the p = 3 positioning certificate, and the
     F_9 Hermitian-variety point count (2440, exact match).
+  - `dyadic_types.py` — Theorem 5's dyadic correction: the norm-parity
+    type invariant, exact type-A witnesses in L_1, the mod-4 exclusion
+    on L_3, and the full corank-3 enumeration (15 subspaces, all
+    containing the all-ones vector).
   - `k3_residue_angle.py` — Proposition C (emits
     `k3_residue_data.json`); `build_k3_page.py` regenerates the
     interactive supplement from it.
@@ -103,7 +110,7 @@ the companion essay is *Zero-Mode Shadows*.
 
 ## Status and honesty notes
 
-Draft v0.6. Attributions were checked against sources in August 2026.
+Draft v0.7. Attributions were checked against sources in August 2026.
 The split/nonsplit discriminant distinction is settled invariantly in
 the paper (explicit K-isotropic subspace for the split form; a descent
 argument for the nonsplit class). The novelty claims in §6 are stated
