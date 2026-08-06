@@ -37,18 +37,18 @@ Certified here:
        q(v) = 0 for isotropic v, so 1 in F^perp = F). Verified by FULL
        ENUMERATION of all such subspaces. Corank-3 count stays 1.
 
-CORRECTED cusp spectra (counts = number of mod-pi type classes; each
-class a single orbit modulo the within-class transitivity leg, which is
-the standard Witt/cancellation argument at fixed invariants):
+PREDICTED cusp spectra (counts = number of mod-pi type classes; each
+class one orbit IF within-type transitivity holds at that corank —
+PROVED at corank 1 by theorem5_legs.py, conditional at coranks 2, 3):
 
     Gamma_1 (split):    corank 1 -> 2,  corank 2 -> 2,  corank 3 -> 1
     Gamma_3 (nonsplit): corank 1 -> 1,  corank 2 -> 1
 
-The discriminant is therefore visible in the boundary MULTIPLICITIES,
-not only in the existence of the deepest cusp: the split boundary is
-strictly richer at every corank. This CORRECTS the earlier "one bit"
-claim — found by pushing the leg we had graded cite-level, exactly the
-theta^3 lesson operating at theorem level.
+What is UNCONDITIONAL: corank-one multiplicity (2 vs 1, Theorem 5b),
+corank-two TYPE SUPPORT (both types occur for Gamma_1, type A excluded
+for Gamma_3), and the existence of the corank-3 boundary. This CORRECTS
+the earlier "one bit" claim — found by pushing the leg we had graded
+cite-level, exactly the theta^3 lesson operating at theorem level.
 """
 
 from itertools import product as iproduct, combinations
@@ -79,11 +79,11 @@ def main():
     # [D2] type-A and type-B vectors in L_1
     vA = [1, 1, 2 + sI, 1, 1, 2 + sI]
     assert simplify(herm(vA, vA, EPS1)) == 0
-    # all coordinates units mod pi: norm odd
+    # all coordinates units mod pi: norm odd (exact conjugate norms —
+    # no float detour, per the exactness discipline)
     for x in vA:
-        a = complex(x).real
-        b = complex(x).imag
-        assert (int(a * a + b * b)) % 2 == 1
+        nm = expand(x * x.conjugate())     # ints and sympy exprs both conjugate
+        assert int(nm) % 2 == 1, x
     vB = [1, 0, 0, 1, 0, 0]                # f_1 + f_4
     assert herm(vB, vB, EPS1) == 0
     print("[D2] L_1: v_A = (1,1,2+i,1,1,2+i) is exactly isotropic with all unit")
@@ -144,15 +144,15 @@ def main():
     print("     the all-ones vector — corank-3 planes are FORCED type A; the")
     print("     count remains 1.")
 
-    print("\nCORRECTED THEOREM 5 (cusp spectra):")
+    print("\nTHEOREM 5, dyadic-type leg (PREDICTED spectra; type bounds proved):")
     print("  Gamma_1 (split):    corank 1 -> 2,  corank 2 -> 2,  corank 3 -> 1")
     print("  Gamma_3 (nonsplit): corank 1 -> 1,  corank 2 -> 1")
-    print("  Class numbers unchanged (both 1; the determinant argument has no")
-    print("  dyadic dependence beyond the diagonal lemma). The discriminant is")
-    print("  visible in the boundary MULTIPLICITIES, not merely in the deepest")
-    print("  cusp's existence: the split boundary is strictly richer at every")
-    print("  corank. Found by refusing to leave the dyadic leg cite-grade —")
-    print("  the theta^3 lesson, at theorem level.")
+    print("  UNCONDITIONAL here: the type lower bounds, the L_3 exclusions, and")
+    print("  the corank-3 forcing. Corank-1 EXACT counts (2 vs 1) are proved in")
+    print("  theorem5_legs.py (Theorem 5b); coranks 2, 3 exactness remains")
+    print("  conditional on the D-normalization lemmas. Found by refusing to")
+    print("  leave the dyadic leg cite-grade — the theta^3 lesson, at theorem")
+    print("  level.")
 
 if __name__ == "__main__":
     main()

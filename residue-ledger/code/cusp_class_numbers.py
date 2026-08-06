@@ -1,12 +1,16 @@
 r"""
-cusp_class_numbers.py — certificates for Theorem 5, part 1: connected
-quotients and the odd-place cusp analysis. (See dyadic_types.py for the
-dyadic correction: the final cusp spectra are (2,2,1) vs (1,1).)
+cusp_class_numbers.py — certificates for Theorem 5, part 1: genus class
+numbers and the odd-place cusp analysis. (See dyadic_types.py for the
+dyadic type invariant and theorem5_legs.py for the corank-1 exact
+counts; coranks 2, 3 exactness remains conditional.)
 
 For L_c = Z[i]^6 with h_c = diag(1,1,1,-1,-1,-c), c in {1,3}:
 
-  CLASS NUMBERS. h(genus L_1) = h(genus L_3) = 1 — both arithmetic
-  quotients are CONNECTED. Argument: SU(3,3) is simply connected and
+  CLASS NUMBERS. h(genus L_1) = h(genus L_3) = 1 — each genus is a
+  single isometry class (equivalently the adelic double-coset space
+  U(h)(Q)\U(h)(A_f)/K_L is one point; this is a statement about the
+  genus, NOT about topological connectedness of Gamma\Omega, which is
+  automatic). Argument: SU(3,3) is simply connected and
   R-isotropic, so strong approximation holds (Kneser/Platonov); the class
   set then maps to the determinant double-coset
   X = U^1(K) \ U^1(A_f) / prod_p det U(L_p). Because the forms are
@@ -21,9 +25,10 @@ For L_c = Z[i]^6 with h_c = diag(1,1,1,-1,-1,-c), c in {1,3}:
   Witt's theorem for the residue hermitian space (verified at the point-
   count level in [N5]) plus Hensel lifting gives transitivity. The dyadic
   place carries a genuine TYPE invariant (originally graded cite-level
-  here, then worked out in dyadic_types.py): final spectra
+  here, then worked out in dyadic_types.py). PREDICTED spectra
      Gamma_1: (2, 2, 1) at coranks (1, 2, 3);
-     Gamma_3: (1, 1) at coranks (1, 2).
+     Gamma_3: (1, 1) at coranks (1, 2);
+  corank 1 exact (theorem5_legs.py), coranks 2, 3 conditional.
 
 Checks:
   [N1] diagonal determinant lemma (global + local shape).
@@ -59,7 +64,8 @@ def main():
     print("     and global norm-one element is y/conj(y); pulling back along")
     print("     a |-> a/conj(a), X is a quotient of A_{K,f}^x/(K^x O-hat^x) =")
     print("     Cl(Q(i)) = 1.  =>  X = 1: h(genus L_1) = h(genus L_3) = 1.")
-    print("     BOTH ARITHMETIC QUOTIENTS ARE CONNECTED.")
+    print("     (A genus statement — one isometry class per genus — not a")
+    print("     topological-connectedness statement about Gamma\\Omega.)")
 
     # ---- [N3] p = 3 positioning certificate ---------------------------------
     # Claim: a primitive isotropic v in L_3 (x) Z_3[i] cannot have its
@@ -114,11 +120,13 @@ def main():
     print("     subspaces; Hensel lifts it to Z_3[i].")
 
     # ---- conclusion ----------------------------------------------------------
-    print("\nTHEOREM 5, part 1 (connected quotients; odd-place cusp analysis):")
+    print("\nTHEOREM 5, part 1 (genus class numbers; odd-place cusp analysis):")
     print("  h(genus L_1) = h(genus L_3) = 1; one local orbit at every odd place.")
     print("  CORRECTION: the dyadic place carries a genuine type invariant —")
-    print("  see dyadic_types.py — giving cusp spectra (2,2,1) vs (1,1), NOT")
-    print("  one cusp per depth as this script originally concluded.")
+    print("  see dyadic_types.py — predicting cusp spectra (2,2,1) vs (1,1),")
+    print("  NOT one cusp per depth as this script originally concluded.")
+    print("  Corank-1 counts are proved exactly in theorem5_legs.py; coranks")
+    print("  2, 3 remain conditional on the D-normalization lemmas.")
 
 if __name__ == "__main__":
     main()

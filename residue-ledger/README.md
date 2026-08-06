@@ -1,8 +1,8 @@
 # residue-ledger
 
-*The Tangent Space Cannot See the Discriminant: infinitesimal rigidity
-of Weil classes, with exact certificates in dimensions four and six* —
-draft v0.9, August 2026. **Not yet submitted anywhere; treat as
+*The Tangent Space Cannot See the Discriminant: local rigidity and
+arithmetic boundary separation for Weil classes* — draft v0.10,
+August 2026. **Not yet submitted anywhere; treat as
 a working draft.**
 
 A local rigidity theorem for rational Weil classes on polarized
@@ -28,11 +28,13 @@ results:
 - **Theorem 3 (real conjugacy).** The explicit real isometry
   diag(1,1,1,1,1,3^(−1/2)) conjugates the entire local period geometry
   of the two discriminant classes — domain, Weil cell, Weil plane, and
-  obstruction construction, fixing the base point — so the arithmetic
-  discriminant is invisible to the *entire local period germ*, at every
+  obstruction construction, fixing the base point — so, after
+  forgetting the rational structure, the marked real-analytic local
+  period data cannot distinguish the discriminant classes at any
   order; no rational conjugacy exists, by descent. Higher-order
-  computations are thereby forced calibration channels. Verified
-  exactly over Q(√3) in `code/conjugacy_theorem.py`.
+  computations that see the discriminant must therefore consume the
+  Q-structure. Verified exactly over Q(√3) in
+  `code/conjugacy_theorem.py`.
 - **Theorem 4 (the cusps can see the discriminant).** The two
   arithmetic quotients are separated by their rational boundary: Witt
   indices 3 (h₁ exactly hyperbolic) vs 2 (anisotropic kernel
@@ -50,17 +52,21 @@ results:
   forcing, predicting spectra (2,2,1) vs (1,1); the EXACT counts are
   conditional on within-type integral transitivity and a parabolic
   local-global computation at coranks 2 and 3 — the CORANK-ONE counts
-  (2 vs 1) are now UNCONDITIONAL: Theorem 5b's splitting-and-
-  cancellation argument (every primitive isotropic vector splits off
-  [[0,1],[1,1]] with a rank-4 complement whose parity IS the dyadic
-  type; same-type complements share a class-number-one genus and glue)
-  proves within-type transitivity and dissolves the local-global
-  question there. Certificates in `code/cusp_class_numbers.py`,
+  (2 vs 1) are now UNCONDITIONAL: Theorem 5b's four-lemma splitting-
+  and-cancellation argument (pairing ideal via the p = 3 positioning
+  lemma; every primitive isotropic vector splits off [[0,1],[1,1]]
+  with a rank-4 complement whose parity IS the dyadic type; local
+  uniqueness including the fixed Jordan shape at 3; class number one
+  with the CORRECTED determinant groups — the even complement's local
+  determinant group at the ramified prime has index two, Kirschmer's
+  exceptional case, and the global unit i cancels the defect) proves
+  within-type transitivity and dissolves the local-global question
+  there. Certificates in `code/cusp_class_numbers.py`,
   `code/dyadic_types.py`, and `code/theorem5_legs.py` (which also
   record the correction of an earlier one-cusp-per-depth claim — the
   paper's own calibration lesson applied to itself).
-- **Proposition C (K3 dichotomy loop).** A rational twistor loop in the
-  K3 period domain whose very general fibers are nonprojective of
+- **Proposition C (K3 dichotomy loop).** A twistor-type rational
+  period conic in the K3 period domain whose very general fibers are nonprojective of
   Picard rank 19 while every one of its dense Noether–Lefschetz walls
   is projective of rank 20 — the instrument behind the paper's
   interpretive reading ("integer invariants are zero-mode shadows of
@@ -132,10 +138,16 @@ the companion essay is *Zero-Mode Shadows*.
 
 ## Status and honesty notes
 
-Draft v0.9 (referee corrections applied; corank-one cusp counts made unconditional by Theorem 5b: n >= 2 hypothesis with n = 1
+Draft v0.10 (second-referee arithmetic repairs to Theorem 5b: the
+pairing-ideal lemma replaces the false unimodularity appeal for the
+nonsplit lattice; the H+H determinant-group error is corrected via
+Kirschmer's exceptional even-hyperbolic case, with the global unit i
+supplying the cancelling class — conclusion unchanged, mechanism
+repaired. Earlier v0.8-v0.9 corrections: n >= 2 hypothesis with n = 1
 sharpness; filtration index; atypicality identification withdrawn;
 Proposition 6 clause corrections; Theorem 5 spectra stated as
-conditional predictions; rational-Picard calibration in the K3 script).
+conditional predictions beyond corank one; rational-Picard calibration
+in the K3 script).
 Attributions were checked against sources in August 2026.
 The split/nonsplit discriminant distinction is settled invariantly in
 the paper (explicit K-isotropic subspace for the split form; a descent

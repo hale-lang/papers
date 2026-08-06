@@ -29,8 +29,8 @@ SCRIPTS = [
     ("conjugacy_theorem.py",        "Theorem 3: real conjugacy over Q(sqrt 3)"),
     ("arithmetic_quotient.py",      "Theorem 4: Witt indices, local separation at {2,3}"),
     ("cusp_class_numbers.py",       "Theorem 5 part 1: class numbers, odd-place analysis"),
-    ("dyadic_types.py",             "Theorem 5 part 2: dyadic types, corrected spectra"),
-    ("theorem5_legs.py",            "Theorem 5b: corank-1 unconditional (splitting/cancellation)"),
+    ("dyadic_types.py",             "Theorem 5 part 2: dyadic types, predicted spectra"),
+    ("theorem5_legs.py",            "Theorem 5b: corank-1 unconditional (four-lemma repair)"),
     ("k3_residue_angle.py",         "Proposition 6: K3 loop incl. rational-Picard calibration"),
 ]
 
@@ -61,13 +61,21 @@ THEOREM LEG GRADING
     p = 3 positioning; F_9 substrate ...... PROVED-BY-CODE
     dyadic type invariant + witnesses ..... PROVED-BY-CODE
     corank-3 forcing (15 subspaces) ....... PROVED-BY-CODE
-    corank-1 splitting/cancellation ....... PROVED-IN-TEXT (+ certificates)
+    corank-1 pairing ideal (Lemma 5b.1) ... PROVED-IN-TEXT ([B8] substrate)
+    corank-1 splitting/parity (5b.2) ...... PROVED-IN-TEXT (+ certificates)
+    corank-1 local uniqueness (5b.3) ...... PROVED-IN-TEXT (p=3 Jordan shape;
+                                            p=2 parity+det [B3]-[B5])
+    corank-1 class number one (5b.4) ...... PROVED-IN-TEXT + CITED (Kirschmer
+                                            determinant groups; [B9] substrate)
     corank-1 exact counts (2 vs 1) ........ PROVED (Theorem 5b)
-    corank 2, 3 within-type transitivity .. CONDITIONAL (normal-form lemmas)
+    corank 2, 3 within-type transitivity .. CONDITIONAL (D-normalization lemmas)
     corank 2, 3 parabolic local-global .... CONDITIONAL
     => spectra (2,2,1) vs (1,1) ........... corank 1 PROVED; rest predicted
   Proposition 6 (K3 loop)
-    all clauses as amended ................ PROVED-BY-CODE
+    finite clauses (walls, slopes, ........ PROVED-BY-CODE
+      counts, heights, calibration)
+    projectivity / marked-K3 realization .. PROVED-IN-TEXT + CITED (surjectivity
+                                            of the period map; Torelli)
     noble-angle extremality ............... CONDITIONAL (conjecture)
 """
 

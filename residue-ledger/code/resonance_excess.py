@@ -7,8 +7,17 @@ at s0):
   mu_gamma : T_{s0} S -> H^{p-1,p+1},   v |-> pi^{p-1,p+1}( nabla_v gamma )
 
   kappa(gamma)     := rank_C mu_gamma          (actual first-order codim of HL(gamma))
-  kappa_exp        := min(dim_C S, h^{p-1,p+1})  (rank of a generically-behaving class)
-  e(gamma)         := kappa_exp - kappa(gamma)   (RESONANCE EXCESS, >= 0)
+  kappa_exp        := min(dim_C S, h^{p-1,p+1})  (naive full-rank bound)
+  e(gamma)         := kappa_exp - kappa(gamma)   (OBSTRUCTION-RANK DEFECT, >= 0)
+
+NAMING NOTE (v0.8 correction, kept in force here): the paper originally
+called e the "resonance excess" and read it as an expected-codimension
+atypicality of the Hodge locus. That reading was WITHDRAWN: the Weil
+locus attains its expected codimension (it is typical in the BKU sense);
+e measures the defect of mu_gamma against the naive rank bound, all of
+it certified by the K-action (the cell directions). The residual excess
+e_res is the quantity that carries content. The historical file name and
+the variable name e are retained; the interpretation above is canonical.
 
   A CERTIFICATE for the excess is a rational structure whose persistence locus
   has tangent inside ker mu_gamma (divisor factorization via Leibniz;

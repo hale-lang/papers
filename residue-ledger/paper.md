@@ -2,7 +2,7 @@
 title: "The Tangent Space Cannot See the Discriminant"
 subtitle: "Local rigidity and arithmetic boundary separation for Weil classes"
 author: Riley Rook
-date: "Draft v0.9 — August 2026"
+date: "Draft v0.10 — August 2026"
 ---
 
 **Abstract.** We study exact infinitesimal Hodge-obstruction maps for
@@ -358,9 +358,12 @@ whose splitting argument settles both within-type transitivity and the
 local–global passage there. At coranks 2 and 3 exactness remains
 **conditional** on the analogous normal-form lemmas (within-type
 transitivity at fixed invariants and the parabolic local–global
-computation $P_r(K)\backslash U(h)(\mathbb{A}_f)/K_L$). **The discriminant is visible in the boundary
-multiplicities at every corank — not merely in the existence of the
-deepest cusp: the split boundary is strictly richer everywhere.**
+computation $P_r(K)\backslash U(h)(\mathbb{A}_f)/K_L$). **What is
+unconditional: the discriminant is visible in corank-one multiplicity
+(2 versus 1 — Theorem 5b), in corank-two dyadic type support (both
+types occur for $\Gamma_1$, type A cannot occur for $\Gamma_3$), and in
+the existence of the corank-three boundary. The full spectra above are
+the prediction.**
 
 *Proof, with graded legs.* Class numbers: $SU(3,3)$ is simply connected and $\mathbb{R}$-isotropic,
 so strong approximation holds [@platonovrapinchuk1994] and the class set
@@ -424,12 +427,26 @@ and $\Gamma_3$ has **exactly one** (type B). In particular the corank-one
 cusp counts $2$ versus $1$ — the discriminant's visibility in shallow
 boundary multiplicities — hold unconditionally.
 
-*Proof (splitting and cancellation).* Let $w \in L_c$ be primitive
-isotropic. Unimodularity gives $u$ with $h(w,u) = 1$; then
+*Proof (splitting and cancellation; four lemmas).*
+
+*Lemma 5b.1 (pairing ideal).* For every primitive isotropic
+$w \in L_c$, $h(w, L_c) = \mathbb{Z}[i]$. For $c = 1$ this is
+unimodularity. For $c = 3$ the lattice is **not** unimodular
+(determinant ideal $(3)$), and the claim needs the prime over $3$:
+away from $3$, $L_3$ is self-dual and primitivity gives a unit local
+pairing ideal; at $3$, the positioning certificate of Theorem 5 shows
+the five unimodular coordinates of $w$ cannot all be divisible by the
+prime over $3$, so the local pairing ideal is the unit ideal there too.
+Since $\mathbb{Z}[i]$ is a PID, the global ideal is $(1)$: some
+$u \in L_c$ has $h(w,u) = 1$.
+
+*Lemma 5b.2 (splitting and parity).* With such a $u$,
 $S = Rw + Ru$ has Gram $\begin{pmatrix} 0 & 1 \\ 1 & d\end{pmatrix}$
 with $d = h(u,u) \in \mathbb{Z}$, is unimodular, and splits
-$L = S \perp C$ with $C$ rank-4 unimodular of determinant class
-$[\det L_c]/[-1]$ — that is, $[1]$ for $L_1$ and $[3]$ for $L_3$.
+$L_c = S \perp C$ with $C$ of rank 4 and determinant class
+$[\det L_c]/[-1]$ — that is, $[1]$ for $L_1$ (where $C$ is
+unimodular) and $[3]$ for $L_3$, where $C$ is **not** unimodular: it
+carries a rank-one $3$-modular Jordan slot at $3$.
 Replacing $u$ by $u + \lambda w + z$ ($z \perp w$) changes $d$ by
 $\mathrm{Tr}(\lambda) + \mathrm{Tr}\,h(u,z) + h(z,z) \in 2\mathbb{Z}
 + h(z,z)$. For type A, $q$ vanishes on $w^{\perp}$, so the parity of $d$
@@ -439,41 +456,91 @@ type B, $w^{\perp}$ contains odd-norm vectors, so $d = 1$ is reachable
 and $u$ can moreover be chosen with $C$ *odd* (the functionals
 $h(z_0,-)|_{w^\perp}$ mod $\pi$ span more than one hyperplane, so some
 admissible $u$ leaves $q$ nonzero on $C$). Thus every $w$ yields
-$L = \begin{pmatrix} 0 & 1 \\ 1 & 1 \end{pmatrix} \perp C$ with the
-parity of $C$ equal to the type of $w$. Now classify the complements:
-at odd $p$, unimodular lattices are determined by rank and determinant
-[@jacobowitz1962]; at the ramified dyadic place, *odd* unimodular
-lattices diagonalize (norm ideal $(1)$: split a unit-norm vector and
-induct) with entries in $\{\langle 1\rangle, \langle -1\rangle\}$, and
+$L_c = \begin{pmatrix} 0 & 1 \\ 1 & 1 \end{pmatrix} \perp C$ with the
+parity of $C$ equal to the type of $w$.
+
+*Lemma 5b.3 (local uniqueness of complements).* Same-type complements
+are everywhere locally isometric. At the odd primes where $C$ is
+unimodular ($p \neq 3$; also $p = 3$ when $c = 1$), rank and
+determinant classify [@jacobowitz1962]. At $p = 3$ for $c = 3$: $S$ is
+unimodular at $3$, so by uniqueness of Jordan splittings at odd primes
+the complement has the *fixed* Jordan shape (unimodular of rank $3$,
+determinant class determined by cancellation) $\perp$ ($3$-modular of
+rank $1$, class carried over unchanged) — for the standard line,
+$\mathrm{diag}(1,1,-1) \perp \langle -3\rangle$ — the same local class
+for every $w$. (Rank, total determinant, and parity alone would *not*
+determine the genus of a non-unimodular lattice; the fixed Jordan shape
+is what closes this.) At the ramified prime $2$, parity and determinant
+classify: *odd* unimodular lattices diagonalize (norm ideal $(1)$:
+split a unit-norm vector and induct) with entries in
+$\{\langle 1\rangle, \langle -1\rangle\}$, and
 $\mathrm{diag}(1,1) \cong \mathrm{diag}(-1,-1)$ because
 $\mathrm{diag}(1,1)$ represents $-1$: $\mathrm{Nm}(1+i) +
 \mathrm{Nm}(\sqrt{-7} + 2i) = 2 - 3 = -1$, with $\sqrt{-7} \in
-\mathbb{Z}_2$ since $-7 \equiv 1 \bmod 8$ — so rank and determinant
-classify; *even* unimodular lattices are sums of hyperbolic planes: an
-even binary $\begin{pmatrix} 2a & 1 \\ 1 & 2b \end{pmatrix}$ is always
-isotropic ($bt^2 + t + (bs^2 + a) = 0$ has a root mod 2 for every parity
-of $(a,b)$ after choosing $s$, and the $t$-derivative $2bt + 1$ is a
-unit, so Hensel lifts), and rank $\ge 3$ splits $H$ since local
-hermitian forms of rank $\ge 3$ are isotropic. Hence same-type
-complements share a genus. Each such genus has class number one by the
-argument of Theorem 5: $SU(2,2)$ is simply connected and
-$\mathbb{R}$-isotropic [@platonovrapinchuk1994], the determinant trick
-applies to a diagonalized odd complement directly and to $H \oplus H$
-via $e \mapsto ue$, $f \mapsto \bar u^{-1} f$ (whose determinants
-$u/\bar u$ exhaust the norm-one group by Hilbert 90), and
-$\mathrm{Cl}(\mathbb{Q}(i)) = 1$. So same-type complements are
-*isometric*, and the isometry glues with $w \mapsto e$, $u \mapsto u_0$
-on the binary parts to give $g \in U(L_c)$ carrying $w$ to the standard
-representative of its type. Combined with the type witnesses and the
-$L_3$ exclusion (Theorem 5), the counts follow. As a byproduct the
-exclusion re-derives structurally: a type-A complement is even, hence
+\mathbb{Z}_2$ since $-7 \equiv 1 \bmod 8$; *even* unimodular lattices
+are sums of hyperbolic planes: an even binary
+$\begin{pmatrix} 2a & 1 \\ 1 & 2b \end{pmatrix}$ is always isotropic
+($bt^2 + t + (bs^2 + a) = 0$ has a root mod 2 for every parity of
+$(a,b)$ after choosing $s$, and the $t$-derivative $2bt + 1$ is a unit,
+so Hensel lifts), and rank $\ge 3$ splits $H$ since local hermitian
+forms of rank $\ge 3$ are isotropic. At $\infty$: signature $(2,2)$.
+Hence same-type complements share a genus.
+
+*Lemma 5b.4 (one class per complement genus).* $SU$ of each complement
+is $SU(2,2)$: simply connected and $\mathbb{R}$-isotropic, so strong
+approximation applies [@platonovrapinchuk1994] and the class set maps
+to the determinant double coset $X_C = U^1(\mathbb{Q})\backslash
+U^1(\mathbb{A}_f)/\prod_p \det U(C_p)$. For the odd (diagonalized)
+complements the diagonal maps give the full norm-one unit group at
+every place. For the even complement $H \perp H$ the same trick
+**fails at the ramified prime**: the maps $e \mapsto ue$,
+$f \mapsto \bar u^{-1} f$ with $u$ a *unit* have determinants
+$u/\bar u \equiv 1 \bmod \mathfrak{D}$, where
+$\mathfrak{D} = (1+i)^2$ is the different — Hilbert 90 writes every
+norm-one $\delta$ as $u/\bar u$, but the parameter need not be a unit,
+and for $\delta = i$ it is the uniformizer: $i = (1+i)/(1-i)$. This is
+the exceptional even-hyperbolic case of the local determinant-group
+theorem for hermitian lattices [@kirschmer2019]:
+$\det U((H \perp H)_2)$ is the index-two subgroup
+$E_1 = \{\delta \in E_0 : \delta \equiv 1 \bmod \mathfrak{D}\}$ of the
+norm-one units $E_0$, with nontrivial coset represented by $i$
+($v_\pi(i-1) = 1 < 2$). The global count survives by one more
+local–global cancellation: $i$ is a *global* norm-one unit, lies in
+the full local determinant groups at every place away from $2$ (it is
+a norm-one unit everywhere), and represents the nontrivial coset at
+$2$ — so left multiplication by the diagonal $i \in U^1(\mathbb{Q})$
+absorbs the exceptional class, and with Hilbert 90 and
+$\mathrm{Cl}(\mathbb{Q}(i)) = 1$ the double coset $X_C$ is trivial in
+both the odd and the even case. Each complement genus is a single
+isometry class [cf. @shimura1964].
+
+*Conclusion.* Same-type complements are *isometric*, and the isometry
+glues with $w \mapsto e$, $u \mapsto u_0$ on the binary parts to give
+$g \in U(L_c)$ carrying $w$ to the standard representative of its
+type. Combined with the type witnesses and the $L_3$ exclusion
+(Theorem 5), the counts follow. As a byproduct the exclusion
+re-derives structurally: a type-A complement is even, hence
 $H \oplus H$ of determinant class $[1]$, while $\det C = [3]$ for
 $L_3$ — and $3$ is not a norm. $\blacksquare$ Certificates for every
-arithmetic ingredient — the unit-norm criterion, the parity freedom and
-forcing, the $\sqrt{-7}$ witness, the Hensel case table with an exact
-lift, and the exact even complement of the type-A witness pair
-$(v_A, f_1)$, with Gram diagonal $(0,0,6,4)$ and unit determinant — are
-in `code/theorem5_legs.py`.
+arithmetic ingredient — the unit-norm criterion, the parity freedom
+and forcing, the $\sqrt{-7}$ witness, the Hensel case table with an
+exact lift, the exact even complement of the type-A witness pair
+$(v_A, f_1)$ with Gram diagonal $(0,0,6,4)$ and unit determinant, and
+the determinant-group correction (unit quotients land in $E_1$;
+$v_\pi(i-1) = 1$; the global-unit cancellation) — are in
+`code/theorem5_legs.py`.
+
+*Correction note (second, kept deliberately).* The first version of
+this proof called the complement unimodular for both lattices and
+claimed the $H \oplus H$ determinant maps exhaust the norm-one group.
+Both were wrong: $L_3$ is not self-dual at $3$ (Lemma 5b.1 and the
+Jordan shape in Lemma 5b.3 are the repair), and the Hilbert-90
+parameter of $\delta = i$ is a uniformizer, so the local determinant
+group of the even complement has index two (Lemma 5b.4 is the repair —
+the missing coset is killed globally by the unit $i$, not locally by
+the naive trick). The conclusion is unchanged; the mechanism now
+contains one more local–global cancellation than the first draft
+claimed, which is a better theorem, not a worse one.
 
 *Remark (the legs, after Theorem 5b).* At corank one, the parabolic
 local–global leg *dissolves*: the proof above is directly global, its
