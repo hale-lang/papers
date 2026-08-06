@@ -2,7 +2,7 @@
 
 *The Tangent Space Cannot See the Discriminant: infinitesimal rigidity
 of Weil classes, with exact certificates in dimensions four and six* —
-draft v0.4, August 2026. **Not yet submitted anywhere; treat as
+draft v0.5, August 2026. **Not yet submitted anywhere; treat as
 a working draft.**
 
 A local rigidity theorem for rational Weil classes on polarized
@@ -31,6 +31,13 @@ results:
   order; no rational conjugacy exists, by descent. Higher-order
   computations are thereby forced calibration channels. Verified
   exactly over Q(√3) in `code/conjugacy_theorem.py`.
+- **Theorem 4 (the cusps can see the discriminant).** The two
+  arithmetic quotients are separated by their rational boundary: Witt
+  indices 3 (h₁ exactly hyperbolic) vs 2 (anisotropic kernel
+  diag(1,−3)), so Q-ranks 3 vs 2, and the split quotient's Baily–Borel
+  boundary has totally degenerate cusps while the nonsplit one has
+  coranks ≤ 2 only. Locally the forms differ at exactly the primes
+  {2, 3}. Certificates in `code/arithmetic_quotient.py`.
 - **Proposition C (K3 dichotomy loop).** A rational twistor loop in the
   K3 period domain whose very general fibers are nonprojective of
   Picard rank 19 while every one of its dense Noether–Lefschetz walls
@@ -66,6 +73,8 @@ discriminant-blindness computation, and the observable layer.
   - `conjugacy_theorem.py` — Theorem 3: the exact Q(√3) verification of
     the real conjugacy (isometry, tangent transport, Weil-plane scaling,
     mu-equivariance).
+  - `arithmetic_quotient.py` — Theorem 4: hyperbolic/anisotropic Gram
+    decompositions, Witt indices, local separation at {2, 3}.
   - `k3_residue_angle.py` — Proposition C (emits
     `k3_residue_data.json`); `build_k3_page.py` regenerates the
     interactive supplement from it.
@@ -83,7 +92,7 @@ the companion essay is *Zero-Mode Shadows*.
 
 ## Status and honesty notes
 
-Draft v0.4. Attributions were checked against sources in August 2026.
+Draft v0.5. Attributions were checked against sources in August 2026.
 The split/nonsplit discriminant distinction is settled invariantly in
 the paper (explicit K-isotropic subspace for the split form; a descent
 argument for the nonsplit class). The novelty claims in §6 are stated

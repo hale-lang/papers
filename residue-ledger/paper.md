@@ -2,7 +2,7 @@
 title: "The Tangent Space Cannot See the Discriminant"
 subtitle: "Infinitesimal rigidity of Weil classes, with exact certificates in dimensions four and six"
 author: Riley Rook
-date: "Draft v0.4 — August 2026"
+date: "Draft v0.5 — August 2026"
 ---
 
 **Abstract.** We study exact infinitesimal Hodge-obstruction maps for
@@ -34,7 +34,13 @@ obstruction construction, fixing the split base point and intertwining
 $\mu$ — so the arithmetic discriminant is invisible to the entire local
 period germ, at every order; no such conjugacy exists over $\mathbb{Q}$,
 by descent. Second- and higher-order computations are thereby calibration
-channels, forced to agree across the discriminant classes. A K3
+channels, forced to agree across the discriminant classes. We then locate
+where the discriminant *does* first appear: the two arithmetic quotients
+differ in their rational boundary — the Witt indices are 3 and 2, so the
+split quotient admits totally degenerate cusps while the nonsplit one
+does not — and the local difference is concentrated at exactly the primes
+2 and 3. The tangent cannot see the discriminant; the germ cannot see it;
+the cusps can. A K3
 period-loop instrument motivates the reading that organizes the paper —
 integer invariants as zero-mode shadows of continuous residual data — and
 the sixfold result marks that reading's own boundary: some discrete
@@ -218,6 +224,62 @@ obstruction computations are forced to agree across the discriminant
 classes; any computed disagreement is an implementation or convention
 defect — the $\theta^3$ incident's role (§4), now guaranteed in advance at
 every order.
+
+**Theorem 4 (the cusps can see the discriminant).** For $c \in \{1,3\}$
+let $\Gamma_c = U(h_c)(\mathbb{Z}[i])$ act on the Weil domain $\Omega$.
+Then:
+(a) *(Witt indices.)* $\mathrm{ind}\, h_1 = 3$: in the $K$-basis
+$\{f_i \pm f_{i+3}\}$ the form $h_1$ is exactly
+$H \oplus H \oplus H$ (hyperbolic), with maximal isotropic flag
+$\langle f_1{+}f_4\rangle \subset \langle f_1{+}f_4, f_2{+}f_5\rangle
+\subset \langle f_1{+}f_4, f_2{+}f_5, f_3{+}f_6\rangle$; while
+$\mathrm{ind}\, h_3 = 2$: $h_3 \cong H \oplus H \oplus
+\mathrm{diag}(1,-3)$, and the rank-2 kernel is anisotropic over $K$
+(isotropy would force $3 = \mathrm{Nm}(x/y)$, contradicting the descent of
+Theorem 2). Hence the $\mathbb{Q}$-ranks of the two groups are 3 and 2:
+$U(h_1)$ and $U(h_3)$ are **non-isomorphic over $\mathbb{Q}$**, though
+isomorphic over $\mathbb{R}$ (Theorem 3).
+(b) *(Localization.)* $h_1 \otimes \mathbb{Q}_p \cong h_3 \otimes
+\mathbb{Q}_p$ for every $p \notin \{2,3\}$ and at the archimedean place;
+the two differ exactly at $p = 2$ ($3 \notin \mathrm{Nm}(\mathbb{Q}_2(i)^{\times})$:
+$x^2 + y^2 \equiv 3 \bmod 4$ is impossible, with the standard primitivity
+reduction) and at $p = 3$ ($3$ is inert; norms from the unramified
+quadratic extension have even $3$-adic valuation, and
+$v_3(\det h_3/\det h_1) = 1$). The set of disagreeing places has even
+cardinality, as the product formula requires. Consequently the Hecke
+structure of the two quotients agrees away from $\{2,3\}$; at $p = 3$ the
+local groups are the quasi-split and non-quasi-split unramified unitary
+groups, with Satake parameter spaces of different rank.
+(c) *(Boundary.)* Rational boundary components of the Baily–Borel
+compactification of $\Gamma_c \backslash \Omega$ correspond to
+$\Gamma_c$-orbits of $K$-isotropic subspaces [@baily1966]; hence the split
+quotient has boundary strata of coranks 1, 2, and 3 — including
+$0$-dimensional cusps, i.e. **totally degenerate limits** — while the
+nonsplit quotient has coranks 1 and 2 only: *the nonsplit family admits no
+totally degenerate limits.* The discriminant, invisible to the interior
+germ (Theorem 3), first appears in the rational degeneration structure,
+localized at the primes $\{2, 3\}$.
+
+*Proof.* (a) The Gram computations are exact (`code/arithmetic_quotient.py`);
+anisotropy of $\mathrm{diag}(1,-3)$ is the descent of Theorem 2; the
+$\mathbb{Q}$-rank of a unitary group equals the Witt index of its form
+(standard reduction theory). (b) The two elementary local norm
+computations as stated; local hermitian forms over a quadratic extension
+of a $p$-adic field are classified by rank and discriminant
+[@jacobowitz1962], so equal local discriminant classes give local isometry
+away from $\{2,3\}$. (c) Baily–Borel [@baily1966], with the standard
+parametrization of rational parabolic subgroups by isotropic flags.
+$\blacksquare$
+
+*Remark (degeneration and cycle realization; hypothesis-grade).* In
+dimension four, the crossing of the discriminant boundary was achieved by
+degeneration — Schoen's argument, as used by Markman [@markman2025] to
+reach all fourfold discriminants. Theorem 4(c) says the nonsplit sixfold
+quotient has strictly shallower rational degenerations than the split one.
+We flag, as a hypothesis and not a claim, that this narrowing of the
+degeneration route may be a structural component of the nonsplit sixfold
+case's resistance; in any case, any degeneration-based attack on it must
+work at corank $\le 2$.
 
 **Lemma (skew-adjoint spectral separation).** Let $M$ be skew-adjoint for
 a bilinear pairing: $\langle Mx, y\rangle + \langle x, My\rangle = 0$. Then
@@ -480,14 +542,18 @@ companion essay develops the frame; nothing in §§1–6 depends on it.
 
 # Directions
 
-- **Higher jets: done.** The conjugacy program proposed in an earlier
-  draft of this section is now Theorem 3: the discriminant lives entirely
-  in the rational form, integral lattice, arithmetic quotient, and
-  cycle-realization problem, and second-order runs are calibration
-  channels. The remaining jet-level question is global: how the two
-  arithmetic quotients $\Gamma_c \backslash \Omega$ differ as
-  $\mathbb{Q}$-structures (components, special points, Hecke orbits) —
-  the first place the discriminant *can* appear.
+- **Counting the boundary.** Theorem 4 gives the *menu* of boundary
+  coranks; the finer invariants are counts: the number of
+  $\Gamma_c$-orbits of isotropic subspaces at each corank (cusp counts),
+  the class number of each hermitian genus (component counts of the
+  adelic double coset), and their mass-formula values. All are
+  computable-in-principle refinements of Theorem 4 and the natural next
+  certificates.
+- **The degeneration route.** Sharpen the hypothesis-grade remark after
+  Theorem 4: formalize what a corank-$\le 2$ degeneration argument for
+  Weil classes would need, and whether Schoen-type limits exist there —
+  the first structurally-informed attack corridor for the nonsplit
+  sixfolds that this paper's negative results leave open.
 - **The sixfold arithmetic.** Given Theorems 1–2, the blunt question:
   what is the *coarsest* invariant that separates the split and nonsplit
   components? Candidates consume exactly the inputs the blindness
@@ -513,7 +579,7 @@ floats verify an asymptotic numerically) and accompany this draft in
 `code/`: `two_meters.py`, `two_meters_generic.py`, `two_meters_vgeneral.py`,
 `two_meters_polarized.py`, `two_meters_polarized_full.py`,
 `resonance_excess.py`, `sixfold_rig.py`, `conjugacy_theorem.py`,
-`k3_residue_angle.py`. Every
+`arithmetic_quotient.py`, `k3_residue_angle.py`. Every
 load-bearing identity is asserted identically in parameters or verified at
 exact points, with semicontinuity/homogeneity closing the gap; the split
 form's $K$-isotropic 3-space is asserted exactly. Companions in

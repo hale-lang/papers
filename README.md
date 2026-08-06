@@ -17,9 +17,12 @@ and equal to the Weil locus), certified by sparse exact SymPy
 computations in dimensions four and six. In dimension six the
 certificates run on both a split (solved) and a nonsplit (open)
 discriminant class and return identical infinitesimal data, and an
-explicit real conjugacy theorem upgrades this to every order: the
-arithmetic invariant separating solved from open cases is invisible
-to the entire local period germ. Includes a K3 period-loop
+explicit real conjugacy theorem upgrades this to every order, while
+the arithmetic quotients ARE separated — by their rational boundary
+(Witt indices 3 vs 2; totally degenerate cusps exist only on the
+split side; local difference exactly at the primes 2 and 3): the
+tangent cannot see the discriminant, the germ cannot see it, the
+cusps can. Includes a K3 period-loop
 instrument and an interpretive companion essay. See
 `residue-ledger/README.md`.
 
