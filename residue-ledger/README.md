@@ -2,7 +2,7 @@
 
 *The Tangent Space Cannot See the Discriminant: infinitesimal rigidity
 of Weil classes, with exact certificates in dimensions four and six* —
-draft v0.3, August 2026. **Not yet submitted anywhere; treat as
+draft v0.4, August 2026. **Not yet submitted anywhere; treat as
 a working draft.**
 
 A local rigidity theorem for rational Weil classes on polarized
@@ -22,9 +22,15 @@ results:
   certificates in dimensions four (10/4/6) and six (21/9/12) — the
   sixfold pair run on a split (solved, disc [−1]) and a nonsplit
   (open, disc [−3]) hermitian form, returning identical infinitesimal
-  datasets. The arithmetic invariant separating solved from open
-  sixfold Weil families is invisible to any method whose input is the
-  local first-order variation of Hodge structure.
+  datasets.
+- **Theorem 3 (real conjugacy).** The explicit real isometry
+  diag(1,1,1,1,1,3^(−1/2)) conjugates the entire local period geometry
+  of the two discriminant classes — domain, Weil cell, Weil plane, and
+  obstruction construction, fixing the base point — so the arithmetic
+  discriminant is invisible to the *entire local period germ*, at every
+  order; no rational conjugacy exists, by descent. Higher-order
+  computations are thereby forced calibration channels. Verified
+  exactly over Q(√3) in `code/conjugacy_theorem.py`.
 - **Proposition C (K3 dichotomy loop).** A rational twistor loop in the
   K3 period domain whose very general fibers are nonprojective of
   Picard rank 19 while every one of its dense Noether–Lefschetz walls
@@ -54,8 +60,12 @@ discriminant-blindness computation, and the observable layer.
     the audit needs a fixed polarization).
   - `resonance_excess.py` — the first-order excess invariant e(γ),
     calibration table, and the exact attainment leg of Theorem A.
-  - `sixfold_rig.py` — Theorem B: both discriminant classes, sparse
-    924-dimensional machinery, the form-side convention lemma.
+  - `sixfold_rig.py` — Theorem 2: both discriminant classes, sparse
+    924-dimensional machinery, the form-side convention lemma,
+    split/nonsplit certification.
+  - `conjugacy_theorem.py` — Theorem 3: the exact Q(√3) verification of
+    the real conjugacy (isometry, tangent transport, Weil-plane scaling,
+    mu-equivariance).
   - `k3_residue_angle.py` — Proposition C (emits
     `k3_residue_data.json`); `build_k3_page.py` regenerates the
     interactive supplement from it.
@@ -73,7 +83,7 @@ the companion essay is *Zero-Mode Shadows*.
 
 ## Status and honesty notes
 
-Draft v0.3. Attributions were checked against sources in August 2026.
+Draft v0.4. Attributions were checked against sources in August 2026.
 The split/nonsplit discriminant distinction is settled invariantly in
 the paper (explicit K-isotropic subspace for the split form; a descent
 argument for the nonsplit class). The novelty claims in §6 are stated

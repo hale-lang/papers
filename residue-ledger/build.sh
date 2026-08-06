@@ -27,6 +27,6 @@ pandoc paper.md \
   --toc-depth=1 \
   --metadata title='The Tangent Space Cannot See the Discriminant' \
   --metadata author='Riley Rook' \
-  --metadata date='Draft v0.3 — August 2026'
+  --metadata date='Draft v0.4 — August 2026'
 
 echo "[residue-ledger] paper.pdf written"

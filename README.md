@@ -8,7 +8,7 @@ one standalone mathematics paper.
 ## residue-ledger/
 
 *The Tangent Space Cannot See the Discriminant* (the Residue Ledger
-project). Standalone mathematics paper (draft v0.3, not yet submitted),
+project). Standalone mathematics paper (draft v0.4, not yet submitted),
 independent of the capacity-allocation pair. A local rigidity theorem
 for rational Weil classes on polarized abelian 2n-folds of Weil type
 (kernel of the infinitesimal Hodge obstruction = the n²-dimensional
@@ -16,9 +16,10 @@ Weil period domain; rank n(n+1); local Hodge locus smooth, reduced,
 and equal to the Weil locus), certified by sparse exact SymPy
 computations in dimensions four and six. In dimension six the
 certificates run on both a split (solved) and a nonsplit (open)
-discriminant class and return identical infinitesimal data: the
+discriminant class and return identical infinitesimal data, and an
+explicit real conjugacy theorem upgrades this to every order: the
 arithmetic invariant separating solved from open cases is invisible
-to local first-order period geometry. Includes a K3 period-loop
+to the entire local period germ. Includes a K3 period-loop
 instrument and an interpretive companion essay. See
 `residue-ledger/README.md`.
 

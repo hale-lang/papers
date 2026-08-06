@@ -2,7 +2,7 @@
 title: "The Tangent Space Cannot See the Discriminant"
 subtitle: "Infinitesimal rigidity of Weil classes, with exact certificates in dimensions four and six"
 author: Riley Rook
-date: "Draft v0.3 — August 2026"
+date: "Draft v0.4 — August 2026"
 ---
 
 **Abstract.** We study exact infinitesimal Hodge-obstruction maps for
@@ -11,8 +11,8 @@ prove a first-order no-go result at the open boundary of the Hodge
 conjecture for abelian varieties. For a Weil-type abelian $2n$-fold over an
 imaginary quadratic field $K$, the tangent space of the polarized period
 domain decomposes as
-$\operatorname{Sym}^2 P^{\vee} \oplus (P^{\vee}\otimes Q^{\vee}) \oplus
-\operatorname{Sym}^2 Q^{\vee}$, where $P, Q$ are the two eigenspaces of the
+$\mathrm{Sym}^2 P^{\vee} \oplus (P^{\vee}\otimes Q^{\vee}) \oplus
+\mathrm{Sym}^2 Q^{\vee}$, where $P, Q$ are the two eigenspaces of the
 $K$-action on $H^{1,0}$. We identify the kernel of the obstruction map of
 every nonzero rational Weil class with the $n^2$-dimensional $K$-linear Weil
 cell $P^{\vee}\otimes Q^{\vee}$ and obtain rank $n(n+1)$. It follows that
@@ -26,9 +26,15 @@ Markman's algebraicity theorem, and the nonsplit class $[-3]$, not covered
 by results known to us. The two produce identical infinitesimal datasets —
 as the theorem forces: the local obstruction data depends only on the real
 signature $(n,n)$, while the discriminant lives in
-$\mathbb{Q}^{\times}/N_{K/\mathbb{Q}}(K^{\times})$. The arithmetic invariant
-separating solved from open cases is thus invisible to any method whose
-input is the local first-order variation of Hodge structure. A K3
+$\mathbb{Q}^{\times}/N_{K/\mathbb{Q}}(K^{\times})$. We then prove the
+strengthening this forces one to suspect: the explicit real isometry
+$\mathrm{diag}(1,1,1,1,1,3^{-1/2})$ conjugates the *entire* local period
+geometry of the two classes — Siegel domain, Weil cell, Weil plane, and
+obstruction construction, fixing the split base point and intertwining
+$\mu$ — so the arithmetic discriminant is invisible to the entire local
+period germ, at every order; no such conjugacy exists over $\mathbb{Q}$,
+by descent. Second- and higher-order computations are thereby calibration
+channels, forced to agree across the discriminant classes. A K3
 period-loop instrument motivates the reading that organizes the paper —
 integer invariants as zero-mode shadows of continuous residual data — and
 the sixfold result marks that reading's own boundary: some discrete
@@ -50,28 +56,28 @@ case outside Markman's split discriminant class [@markman2025; cf.
 @mostaed2026]. Computations below are for $K = \mathbb{Q}(i)$; the theorem
 is uniform in $K$ and $n$.
 
-**Theorem 1 (infinitesimal rigidity of rational Weil classes).** *Let
+**Theorem 1 (infinitesimal rigidity of rational Weil classes).** Let
 $(A, \iota, h)$ be a polarized abelian $2n$-fold of Weil type for an
 imaginary quadratic field $K$, and let $0 \ne \gamma \in W_K(A)_{\mathbb{Q}}$.
 Write $H^{1,0} = P \oplus Q$ for the two $K$-eigenspaces
 ($\dim_{\mathbb{C}} P = \dim_{\mathbb{C}} Q = n$), so that the polarized
-period-domain tangent decomposes as*
-$$T \;\cong\; \operatorname{Sym}^2 P^{\vee} \,\oplus\,
-(P^{\vee}\otimes Q^{\vee}) \,\oplus\, \operatorname{Sym}^2 Q^{\vee},
+period-domain tangent decomposes as
+$$T \;\cong\; \mathrm{Sym}^2 P^{\vee} \,\oplus\,
+(P^{\vee}\otimes Q^{\vee}) \,\oplus\, \mathrm{Sym}^2 Q^{\vee},
 \qquad n(2n+1) = \tfrac{n(n+1)}{2} + n^2 + \tfrac{n(n+1)}{2}\ \text{(each
 factor doubled over } \mathbb{R}).$$
-*Then the obstruction map $\mu_\gamma$ vanishes identically on the middle
+Then the obstruction map $\mu_\gamma$ vanishes identically on the middle
 factor — the tangent of the $n^2$-dimensional $K$-linear Weil period domain
 $\Omega_{K,h}$ — and is injective on
-$\operatorname{Sym}^2 P^{\vee} \oplus \operatorname{Sym}^2 Q^{\vee}$:*
+$\mathrm{Sym}^2 P^{\vee} \oplus \mathrm{Sym}^2 Q^{\vee}$:
 $$\ker \mu_\gamma = T\,\Omega_{K,h}, \qquad
-\operatorname{rank}_{\mathbb{C}} \mu_\gamma = n(n+1).$$
-*Consequently the local Hodge locus $Z_\gamma$ of the single class $\gamma$
+\mathrm{rank}_{\mathbb{C}} \mu_\gamma = n(n+1).$$
+Consequently the local Hodge locus $Z_\gamma$ of the single class $\gamma$
 is smooth and reduced, and its germ equals the Weil period domain:
 $(Z_\gamma, x) = (\Omega_{K,h}, x)$ at every point $x$, including maximally
 split CM points. These conclusions depend only on the real signature
 $(n,n)$ of $h$, not on its discriminant class in
-$\mathbb{Q}^{\times}/N_{K/\mathbb{Q}}(K^{\times})$.*
+$\mathbb{Q}^{\times}/N_{K/\mathbb{Q}}(K^{\times})$.
 
 *Proof.* Three legs plus a dimension sandwich. (i) The Weil plane is fixed,
 and stays Hodge, along the whole $K$-linear cell — only the complex
@@ -81,20 +87,20 @@ Z_\gamma$. (ii) Injectivity on the symmetric-square blocks, for every $n$,
 by wedge replacement. Write $V_\sigma = P \oplus \bar Q$ (the $K$-eigenspace
 with its Hodge splitting), so $w_+$ spans $\Lambda^{2n} V_\sigma =
 \Lambda^n P \wedge \Lambda^n \bar Q$. A tangent vector in the
-$\operatorname{Sym}^2 P^{\vee}$ block acts on $V$ by a nonzero map
+$\mathrm{Sym}^2 P^{\vee}$ block acts on $V$ by a nonzero map
 $\varphi: P \to \bar P \subset V_{\bar\sigma}$ (with its conjugate on
 $\bar P$); the derivation applied to $w_+$ replaces each $P$-slot by its
 $\varphi$-image, and since the images lie in $V_{\bar\sigma}$, linearly
 independent of every factor of $w_+$, the slot-replacement wedges indexed by
 (removed basis vector, inserted basis vector) are linearly independent —
 so the result vanishes only if $\varphi = 0$. The
-$\operatorname{Sym}^2 Q^{\vee}$ block acts likewise on the
+$\mathrm{Sym}^2 Q^{\vee}$ block acts likewise on the
 $\bar Q$-factors. A nonzero rational class $\gamma = a w_+ + \bar a w_-$
 receives contributions from both eigencomponents, and these cannot cancel:
 under the arithmetic meter $D(J_K)$ the $w_+$-side images sit at eigenvalue
 $(2n-2)i$ and the $w_-$-side images at $-(2n-2)i$, distinct graded pieces
 for every $n \ge 2$. Hence $\mu_\gamma$ is injective on
-$\operatorname{Sym}^2 P^{\vee} \oplus \operatorname{Sym}^2 Q^{\vee}$,
+$\mathrm{Sym}^2 P^{\vee} \oplus \mathrm{Sym}^2 Q^{\vee}$,
 giving rank $n(n+1)$. The exact split-point computations in dimensions four
 and six (§§3–4) are machine certificates of this leg. (iii) The unitary
 symplectic group acts transitively on the Weil domain
@@ -116,14 +122,14 @@ sees both. The joint rank of the two rational generators is again $n(n+1)$,
 not $2n(n+1)$: every nonzero rational member of the Weil plane cuts out the
 same local germ.
 
-**Theorem 2 (exact certificates; discriminant blindness).** *For
+**Theorem 2 (exact certificates; discriminant blindness).** For
 $K = \mathbb{Q}(i)$: (a) in dimension four ($n = 2$: predicted 10/4/6), the
 split-point computation returns
-$\operatorname{rank}_{\mathbb{C}}\mu_\gamma = 6$ for each rational Weil
+$\mathrm{rank}_{\mathbb{C}}\mu_\gamma = 6$ for each rational Weil
 generator and for the plane jointly, with kernel exactly the
 8-real-dimensional cell tangent; (b) in dimension six ($n = 3$: predicted
 21/9/12), the same holds with rank 12 and 18-real-dimensional kernel, for
-**both** hermitian forms $h_c = \operatorname{diag}(1,1,1,-1,-1,-c)$,
+**both** hermitian forms $h_c = \mathrm{diag}(1,1,1,-1,-1,-c)$,
 $c \in \{1, 3\}$. Here $h_1$ is split — it admits the explicit
 3-dimensional $K$-isotropic subspace
 $\langle f_1{+}f_4,\, f_2{+}f_5,\, f_3{+}f_6 \rangle$ (verified exactly) —
@@ -136,12 +142,12 @@ outside the algebraicity results known to us (August 2026; cf.
 [@mostaed2026], where uncontrolled discriminant remains a named
 obstruction). Every first-order quantity computed is identical for the two
 classes — as Theorem 1 forces, since the local data depends only on the
-real signature.*
+real signature.
 
 This is a first-order **no-go result**, not a coincidence of two ranks:
 any attempted distinction between the split and nonsplit components that
 factors only through the local infinitesimal Hodge dataset —
-$\dim T$, $\dim T\Omega$, $\operatorname{rank}\mu_\gamma$,
+$\dim T$, $\dim T\Omega$, $\mathrm{rank}\mu_\gamma$,
 $\ker\mu_\gamma$, the excess $e(\gamma)$, the inert polarization channel —
 must fail. In particular the solved/open difference cannot be explained by
 a loss of transversality, an enlarged infinitesimal Hodge locus, a
@@ -158,19 +164,74 @@ atypicality calculations are. Consistently, every successful algebraicity
 attack to date (Prym towers [@schoen1988], theta functions
 [@vangeemen1996], secant sheaves [@markman2025]) is constructive.
 
-**Lemma (skew-adjoint spectral separation).** *Let $M$ be skew-adjoint for
+**Theorem 3 (real conjugacy: the germ cannot see the discriminant).** Let
+$\Phi$ be the realification of $\varphi = \mathrm{diag}(1,1,1,1,1,3^{-1/2})$
+acting on $V \otimes \mathbb{R} = (K \otimes \mathbb{R})^6$; $\Phi$ commutes
+with $J_K$ and with the split-point complex structure $J_A$. Then:
+(a) $\varphi$ is a $(K\otimes\mathbb{R})$-linear isometry
+$(V_{\mathbb{R}}, h_1) \to (V_{\mathbb{R}}, h_3)$;
+(b) $\Phi^{T} E_3 \Phi = E_1$, so $g \mapsto \Phi g \Phi^{-1}$ is an
+isomorphism $Sp(E_1,\mathbb{R}) \cong Sp(E_3,\mathbb{R})$ carrying the
+$E_1$-Siegel domain biholomorphically onto the $E_3$-domain, fixing $J_A$,
+preserving $K$-linearity, and carrying the $h_1$-Weil cell onto the
+$h_3$-Weil cell;
+(c) $\Lambda^6\Phi$ commutes with the arithmetic meter $D(J_K)$, restricts
+to $3^{-1/2}\cdot\mathrm{id}$ on the Weil plane $W$, and the obstruction
+construction is equivariant:
+$\mu^{(3)}_{\Lambda^6\Phi\,\gamma}(\Phi\,\delta J\,\Phi^{-1}) =
+\Lambda^6\Phi\cdot\mu^{(1)}_\gamma(\delta J)$;
+(d) consequently every finite jet of the local period geometry at the
+common fixed base point — domain, Weil cell, Weil plane, obstruction
+sections, and all their derivatives — agrees between the two discriminant
+classes: *the arithmetic discriminant is invisible to the entire local
+period germ*;
+(e) no such map exists over $\mathbb{Q}$: a $K$-rational isometry would
+force $[\det h_1] = [\det h_3]$, i.e. $3 \in \mathrm{Nm}(K^{\times})$,
+contradicting the descent argument of Theorem 2.
+
+*Proof.* (a) Only the last coordinate is rescaled:
+$h_3(\varphi u, \varphi v) = -3\cdot(3^{-1/2})^2 u_6 \bar v_6 +
+(\text{unchanged terms}) = h_1(u, v)$. (b) Blockwise,
+$\Phi^{T} E_3 \Phi$ multiplies the last block by
+$(3^{-1/2})\cdot 3\cdot(3^{-1/2}) = 1$ and fixes the rest, giving $E_1$;
+the three defining conditions of the Siegel domain ($J^2 = -1$,
+$E$-compatibility, positivity) transport formally under conjugation; $\Phi$
+fixes $J_A$ because both are block-scalar; $\Phi$ commutes with $J_K$, so
+$K$-linearity — hence the Weil cell — is preserved, and the $h$-perp
+construction is carried to the $h$-perp construction because $\varphi$ is
+an isometry. (c) Every monomial of $w_{\pm}$ contains exactly one factor
+from the sixth $K$-block, so the diagonal map $\Lambda^6\Phi$ scales $W$ by
+$3^{-1/2}$; equivariance is functoriality of the derivation,
+$D(\Phi A \Phi^{-1}) = (\Lambda^6\Phi)\, D(A)\, (\Lambda^6\Phi)^{-1}$.
+(d) All germ data at the common fixed base point is transported by the
+single linear map $\Phi$, so any invariant of any finite jet of (domain,
+cell, $W$, $\mu$) coincides. (e) Descent, as in Theorem 2. $\blacksquare$
+The matrix identities of (a)–(c) are verified exactly over
+$\mathbb{Q}(\sqrt 3)$ in `code/conjugacy_theorem.py` (commutation with
+$J_K, J_A$; the isometry identities for both the alternating and symmetric
+parts of $h$; transport of the full 42-dimensional polarized tangent and
+the 18-dimensional cell; the $3^{-1/2}$ scaling on $W$; and
+$\mu$-equivariance on sampled directions).
+
+*Corollary (calibration, not separation).* Second- and all higher-order
+obstruction computations are forced to agree across the discriminant
+classes; any computed disagreement is an implementation or convention
+defect — the $\theta^3$ incident's role (§4), now guaranteed in advance at
+every order.
+
+**Lemma (skew-adjoint spectral separation).** Let $M$ be skew-adjoint for
 a bilinear pairing: $\langle Mx, y\rangle + \langle x, My\rangle = 0$. Then
 eigenvectors pair nontrivially only if their eigenvalues sum to zero. In
 particular, since the arithmetic meter $D(J_K)$ kills $\theta^n$ and acts
 on the Weil eigenlines by $\pm 2ni$, one gets
-$\langle W, \theta^n \rangle = 0$ with no rank computation.* Scope: at a
+$\langle W, \theta^n \rangle = 0$ with no rank computation. Scope: at a
 split audit point this separates $W$ from $\langle\theta^n\rangle$; on the
 very general Weil fiber, where the degree-$2n$ divisor algebra is generated
 by the polarization [@weil1977; @vangeemen1994], that is the full escape
 statement. At special points, escape from the full divisor algebra is the
 separate computation performed for fourfolds in §3.
 
-**Proposition 3 (the K3 dichotomy loop).** *In the K3 lattice
+**Proposition 3 (the K3 dichotomy loop).** In the K3 lattice
 $\Lambda = U^3 \oplus E_8(-1)^2$ set $P_i = u_i + v_i$ and
 $\omega(t) = (1-t^2)P_1 + 2tP_2 + i(1+t^2)P_3$ — the real equator,
 rationally parametrized by $t = \tan(\theta/2)$, of the twistor line cut by
@@ -188,18 +249,18 @@ the complexified line); (e) the number of wall directions of height
 $\le H$ is exactly $4\sum_{n\le H} \varphi(n)$; (f) the residue is
 invariant under $\mathrm{NS}$ of the very general fiber and factors through
 $\Lambda/N \cong \mathbb{Z}^3$, so a wall clears an entire coset —
-isotropic, root, and positive-square lifts simultaneously.*
+isotropic, root, and positive-square lifts simultaneously.
 
 All parts elementary and verified in exact arithmetic; offered as an
 instrument, not as new K3 theory (§§5, 7).
 
 The organizing invariant throughout is the first-order *resonance excess*
-$e(\gamma) = \kappa_{\exp} - \operatorname{rank}_{\mathbb{C}} \mu_\gamma$
+$e(\gamma) = \kappa_{\exp} - \mathrm{rank}_{\mathbb{C}} \mu_\gamma$
 with $\kappa_{\exp} = \min(\dim S,\, h^{p-1,p+1})$: positive excess is
 precisely *atypicality* in the sense of Klingler and Baldi–Klingler–Ullmo
 [@baldi2021]. Calibration on the fourfold family (split point; exact):
 
-| class | $\operatorname{rank}_{\mathbb{C}}\mu$ | $e$ | kernel certificate |
+| class | $\mathrm{rank}_{\mathbb{C}}\mu$ | $e$ | kernel certificate |
 |---|---|---|---|
 | each Weil entry, and the plane jointly | 6 | $4 = \dim\mathcal{W}$ | the $K$-action: kernel $=$ cell tangent exactly |
 | $\theta^2$ (polarization square) | 0 | 10 | inheritance: $E$ polarizes the family |
@@ -232,7 +293,7 @@ instrument: the primitive datum is the normed obstruction section
 $s_\gamma = Q(\gamma, -)\big|_{F^p} \in (F^p)^{\vee}$, indexed by the
 integral lattice; $r(\gamma) = \lVert s_\gamma\rVert$ is continuous;
 integer invariants such as the Picard number are ranks of its exact zero
-sets, $\rho = \operatorname{rank}_{\mathbb{Z}}\{\gamma : s_\gamma = 0\}$.
+sets, $\rho = \mathrm{rank}_{\mathbb{Z}}\{\gamma : s_\gamma = 0\}$.
 
 # Fourfolds: the ledger of a solved case
 
@@ -246,8 +307,8 @@ signature is resonance made literal: with CM type $(2,2)$ the geometric
 meter reads $D(J)W = 0$; detune to $(3,1)$ and the same rational plane
 reads phase $\pm 2i$.
 
-The polarized family is the graph cell $V_+ = \operatorname{graph}(Z)$,
-$V_- = h\text{-perp} = \operatorname{graph}(Z^*)$, with one fixed rational
+The polarized family is the graph cell $V_+ = \mathrm{graph}(Z)$,
+$V_- = h\text{-perp} = \mathrm{graph}(Z^*)$, with one fixed rational
 polarization $E$ valid across the entire cell. Two computed lessons fix the
 method: a family swept by *rational* conjugation never moves the rational
 Hodge structure (conjugation is a $\mathbb{Q}$-isogeny; very general
@@ -332,7 +393,7 @@ The instrument's sharpest lesson: the integer readout ($\rho$) and the
 continuous readout ($r$) carry genuinely different information. The
 real-kernel version has 20-dimensional kernel at *every* point — nothing
 jumps; the Noether–Lefschetz phenomenon exists only as
-$\operatorname{rank}_{\mathbb{Z}}(\Lambda \cap \ker)$. And the loop's two
+$\mathrm{rank}_{\mathbb{Z}}(\Lambda \cap \ker)$. And the loop's two
 dense strata are geometrically opposite: nonprojective rank-19 fibers at
 very general points, maximal projective rank-20 fibers at every wall.
 Backing statements at theorem strength only: at a wall, Lefschetz (1,1)
@@ -419,22 +480,14 @@ companion essay develops the frame; nothing in §§1–6 depends on it.
 
 # Directions
 
-- **Real conjugacy and higher jets — the next theorem, before any
-  second-order run.** Since $h_1$ and $h_3$ become isomorphic over
-  $\mathbb{R}$, one should construct a real $K$-linear isometry between
-  the two hermitian spaces and check that it induces an
-  $Sp(12,\mathbb{R})$-conjugacy carrying the polarized Weil cells, the
-  Weil plane, the period-domain embedding, and the obstruction
-  construction from $c = 1$ to $c = 3$. If it does, *every finite jet* of
-  the local period geometry agrees — the discriminant lives entirely in
-  the rational form, integral lattice, arithmetic quotient, and
-  cycle-realization problem, and the headline strengthens to: *the
-  arithmetic discriminant is invisible to the entire local period germ.*
-  The order of operations matters: without the conjugacy theorem, a
-  second-order computation is a possible separator; with it, second order
-  becomes another calibration channel *forced* to agree, where any
-  disagreement exposes a convention defect — exactly as the spurious
-  $\theta^3$ rank did.
+- **Higher jets: done.** The conjugacy program proposed in an earlier
+  draft of this section is now Theorem 3: the discriminant lives entirely
+  in the rational form, integral lattice, arithmetic quotient, and
+  cycle-realization problem, and second-order runs are calibration
+  channels. The remaining jet-level question is global: how the two
+  arithmetic quotients $\Gamma_c \backslash \Omega$ differ as
+  $\mathbb{Q}$-structures (components, special points, Hecke orbits) —
+  the first place the discriminant *can* appear.
 - **The sixfold arithmetic.** Given Theorems 1–2, the blunt question:
   what is the *coarsest* invariant that separates the split and nonsplit
   components? Candidates consume exactly the inputs the blindness
@@ -459,7 +512,8 @@ companion essay develops the frame; nothing in §§1–6 depends on it.
 floats verify an asymptotic numerically) and accompany this draft in
 `code/`: `two_meters.py`, `two_meters_generic.py`, `two_meters_vgeneral.py`,
 `two_meters_polarized.py`, `two_meters_polarized_full.py`,
-`resonance_excess.py`, `sixfold_rig.py`, `k3_residue_angle.py`. Every
+`resonance_excess.py`, `sixfold_rig.py`, `conjugacy_theorem.py`,
+`k3_residue_angle.py`. Every
 load-bearing identity is asserted identically in parameters or verified at
 exact points, with semicontinuity/homogeneity closing the gap; the split
 form's $K$-isotropic 3-space is asserted exactly. Companions in
