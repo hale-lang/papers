@@ -1,0 +1,310 @@
+r"""
+corank23_lemmas.py — certificates for Theorem 5c: the corank-2 and
+corank-3 cusp counts, UNCONDITIONAL. Completes the spectra
+(2,2,1) vs (1,1) begun in theorem5_legs.py (corank 1).
+
+THE PROOF BEING CERTIFIED (rank-r splitting and cancellation). Let F be
+a primitive totally isotropic rank-r sublattice of L_c (r = 2 for both
+lattices; r = 3 for L_1 only, by Witt index).
+
+  Lemma 5c.1 (dual system). The pairing map L_c -> F^dual is surjective:
+    for c = 1 by unimodularity; for c = 3 because every primitive vector
+    of F is a primitive isotropic vector of L_3, so the positioning
+    certificate ([N3]/[B8]: Nm never 0 on units of Z[i]/3) makes
+    F/3F -> M_0/3M_0 injective (M_0 = the rank-5 unimodular Jordan block
+    at 3), the projection of F into M_0 is a primitive sublattice of a
+    unimodular lattice, and M_0 -> F^dual is already surjective; Z[i] a
+    PID globalizes. Lifting a dual basis gives U with pairing matrix I:
+    F (+) U has Gram [[0,I],[I,D]] (D = Gram(U), hermitian), unit
+    determinant, so L_c = (F (+) U) _|_ C with C of rank 6-2r.
+  Lemma 5c.2 (normal form for D). Three exact integral moves:
+    (i)  u_i += lambda f_j (j != i): clears the off-diagonal of D
+         exactly, touching nothing else;
+    (ii) u_i += t f_i (t in Z): shifts d_i = h(u_i,u_i) by 2t;
+    (iii) F-basis change by A in GL_r(Z[i]) (dual U-change by
+         (A^dagger)^{-1}): D -> A^{-1} D A^{-dagger}; the diagonal-parity
+         vector delta transforms by the mod-pi matrix of A^{-1} (cross
+         terms are trace terms, always even) — certified in [E2] — and
+         every element of GL_r(F_2) = SL_r(F_2) lifts (transvection
+         generation, certified in [E3]);
+    (iv) u_i += z (z in C): shifts d_i by h(z,z) — parity q(z).
+    The parity vector delta satisfies delta_j = b(ones, u_j mod pi):
+    * type A (ones in F mod pi): delta = the coordinate vector of the
+      all-ones vector in the F-basis — NONZERO and frozen (q vanishes
+      on F-perp, so move (iv) is parity-trivial); GL_r(F_2) acts
+      transitively on nonzero vectors ([E3]), so D normalizes to
+      diag(1, 0, ..., 0).
+    * type B (ones not in F mod pi): C is odd (q nonzero on F-perp =
+      F (+) C and F-part contributes nothing), so move (iv) flips each
+      parity freely: D normalizes to diag(1, ..., 1).
+  Corollary (corank 3 closes with NO genus theory). r = 3 gives C = 0:
+    L_1 = F (+) U outright. delta != 0 is forced — not only by the
+    corank-3 type forcing [D5], but directly: delta = 0 would make
+    every norm h(x,x) even ([E6]), and L_1 is odd. So every maximal
+    isotropic F extends to a Z[i]-basis of L_1 with Gram
+    [[0,I_3],[I_3,diag(1,0,0)]] ([E1] exhibits it), and any two such
+    bases are exchanged by an isometry carrying F to F'. EXACTLY ONE
+    corank-3 cusp — pure integral normal form.
+  Lemma 5c.3 (corank-2 complement local uniqueness). Rank-2 complements
+    of the same type share a genus: at the ramified prime 2 parity +
+    determinant classify (odd: diagonalize, entries to +-1, collapse
+    [B3]; even: always H by the Hensel certificate [B4]); at 3 for L_3
+    the Jordan shape is fixed at (unimodular rank 1) _|_ (3-modular
+    rank 1) — unimodular blocks at the inert prime are classified by
+    rank alone (every unit is a norm, unramified CFT); at other odd
+    primes rank + determinant; at infinity signature (1,1).
+  Lemma 5c.4 (one class per corank-2 complement genus). SU of a rank-2
+    complement is the simply connected R-isotropic SU(1,1)-form, so
+    strong approximation applies; determinant groups: odd complements
+    are diagonal, giving the FULL local norm-one units everywhere; the
+    even complement (a single H at 2) gives at least E_1 there, and the
+    global unit i kills any residual index-2 defect exactly as in
+    Lemma 5b.4 / [B9]. Determinant double coset trivial; class number 1.
+  Conclusion. Complements of same-type F, F' are isometric; gluing with
+  the identical [[0,I],[I,D]] blocks gives g in U(L_c) with gF = F'.
+  One orbit per realized type at corank 2; one orbit at corank 3.
+  With the realizations and exclusions of dyadic_types ([D3]-[D5]):
+
+     Gamma_1: (2, 2, 1) at coranks (1, 2, 3)   — EXACT, UNCONDITIONAL
+     Gamma_3: (1, 1)    at coranks (1, 2)      — EXACT, UNCONDITIONAL
+
+  Both remaining legs (within-type transitivity, parabolic local-global)
+  are DISSOLVED at every corank: the proofs are directly global.
+
+Certificates:
+  [E1] corank-3 canonical basis: explicit integral normalization moves
+       carry the standard maximal isotropic <f1+f4, f2+f5, f3+f6> to a
+       Z[i]-basis of L_1 with Gram EXACTLY [[0,I_3],[I_3,diag(1,0,0)]]
+       (basis-change determinant a unit).
+  [E2] the parity transformation law: diag parities of A^{-1}D A^{-dag}
+       equal (Nm(A^{-1}_{jk}) mod 2) * delta — hermitian cross terms are
+       even — verified exactly on unit-determinant test matrices with
+       complex entries.
+  [E3] GL_2(F_2) and GL_3(F_2) are generated by transvections (orders 6
+       and 168 by BFS closure; transvections lift to SL_r(Z[i])), and
+       act transitively on nonzero vectors (orbits 3 and 7).
+  [E4] type-A corank-2 standard split: F_A = <v_A, f1+f4> with duals
+       u_1 = f2, u_2 = v_A - f2 - f4 gives D = diag(1,0) EXACTLY; the
+       exact complement has basis (0,0,1,0,2-i,0), (0,0,0,0,-2+i,1)
+       with Gram [[-4,5],[5,-6]]: EVEN, det -1, signature (1,1); the
+       six vectors form a Z[i]-basis of L_1 (det check).
+  [E5] type-B corank-2 standard splits in BOTH lattices: F_B =
+       <f1+f4, f2+f5>, U = <f1, f2>, D = diag(1,1); complement
+       C = <f3, f6> with Gram diag(1,-1) (L_1) / diag(1,-3) (L_3);
+       Z[i]-basis det checks; the L_3 complement exhibits the fixed
+       Jordan shape (unimodular) _|_ (3-modular) of Lemma 5c.3.
+  [E6] the parity identity: h(x,x) = sum Nm(b_i) d_i mod 2 on
+       F (+) U (trace terms even) — deterministic sweep over
+       coefficient tuples — so delta = 0 would force L even; L_1 is
+       odd (h(f1,f1) = 1): delta != 0 at corank 3 with no appeal to
+       enumeration.
+  [E7] parity-flip demo (type B): u_1 += f3 shifts d_1: 1 -> 2 exactly,
+       pairings intact — move (iv) in action.
+  [E8] the L_3 positioning substrate re-asserted (Nm on units of
+       Z[i]/3 = {1,2}, never 0) — the engine of Lemma 5c.1 at c = 3.
+"""
+
+from itertools import product as iproduct
+from sympy import I as sI, Matrix, eye, expand, simplify, conjugate
+
+EPS1 = [1, 1, 1, -1, -1, -1]
+EPS3 = [1, 1, 1, -1, -1, -3]
+
+def herm(v, w, eps=EPS1):
+    return expand(sum(e * x * conjugate(y) for e, x, y in zip(eps, v, w)))
+
+def gram(vs, eps=EPS1):
+    return Matrix(len(vs), len(vs), lambda i, j: herm(vs[i], vs[j], eps))
+
+def pairing(F, U, eps=EPS1):
+    return Matrix(len(F), len(U), lambda i, j: herm(F[i], U[j], eps))
+
+F6 = [[1 if j == i else 0 for j in range(6)] for i in range(6)]
+
+def basis_det(vectors):
+    M = Matrix(6, 6, lambda r, c: vectors[c][r])
+    return expand(M.det())
+
+UNITS = (1, -1, sI, -sI)
+
+def main():
+    # ---- [E2] parity transformation law --------------------------------------
+    tests = [
+        (Matrix([[1, sI], [0, 1]]),                 Matrix([[1, 0], [0, 0]])),
+        (Matrix([[1, 1 + sI], [0, 1]]),             Matrix([[1, 0], [0, 2]])),
+        (Matrix([[0, 1], [1, 0]]),                  Matrix([[3, 0], [0, 0]])),
+        (Matrix([[1, 0, 0], [1, 1, 0], [sI, 2 - sI, 1]]), eye(3)),
+        (Matrix([[1, 1, 0], [0, 1, 1], [0, 0, 1]]), Matrix([[1, 0, 0], [0, 0, 0], [0, 0, 0]])),
+    ]
+    for A, D in tests:
+        Ai = A.inv()
+        Dp = (Ai * D * Ai.conjugate().T).applyfunc(expand)
+        delta = [int(D[k, k]) % 2 for k in range(A.rows)]
+        got = [int(Dp[j, j]) % 2 for j in range(A.rows)]
+        M2 = [[int(expand(Ai[j, k] * conjugate(Ai[j, k]))) % 2
+               for k in range(A.rows)] for j in range(A.rows)]
+        pred = [sum(M2[j][k] * delta[k] for k in range(A.rows)) % 2
+                for j in range(A.rows)]
+        assert got == pred, (A, D, got, pred)
+    print("[E2] parity law: diag parities of A^{-1} D A^{-dag} = (A^{-1} mod pi)")
+    print("     acting on delta; hermitian cross terms are trace terms (even).")
+
+    # ---- [E3] GL_r(F_2): transvection generation + transitivity --------------
+    for r, order, orbit in ((2, 6, 3), (3, 168, 7)):
+        gens = []
+        for i in range(r):
+            for j in range(r):
+                if i != j:
+                    E = [[1 if a == b else 0 for b in range(r)] for a in range(r)]
+                    E[i][j] = 1
+                    gens.append(tuple(map(tuple, E)))
+        def mul(X, Y):
+            return tuple(tuple(sum(X[a][k] * Y[k][b] for k in range(r)) % 2
+                               for b in range(r)) for a in range(r))
+        group = set(gens)
+        frontier = set(gens)
+        while frontier:
+            new = set()
+            for X in frontier:
+                for g in gens:
+                    P = mul(X, g)
+                    if P not in group:
+                        group.add(P)
+                        new.add(P)
+            frontier = new
+        assert len(group) == order, (r, len(group))
+        vecs = set()
+        v0 = tuple(1 if k == 0 else 0 for k in range(r))
+        for X in group:
+            vecs.add(tuple(sum(X[a][k] * v0[k] for k in range(r)) % 2
+                           for a in range(r)))
+        assert len(vecs) == orbit
+        print(f"[E3] GL_{r}(F_2): transvections generate all {order} elements "
+              f"(each lifts to SL_{r}(Z[i])); transitive on the {orbit} nonzero vectors.")
+
+    # ---- [E1] corank-3 canonical basis ---------------------------------------
+    F0 = [[1, 0, 0, 1, 0, 0], [0, 1, 0, 0, 1, 0], [0, 0, 1, 0, 0, 1]]
+    U0 = [F6[0], F6[1], F6[2]]
+    assert pairing(F0, U0) == eye(3) and gram(U0) == eye(3)
+    A = Matrix([[1, 0, 0], [-1, 1, 0], [-1, 0, 1]])       # delta (1,1,1) -> (1,0,0)
+    B = (A.conjugate().T).inv()
+    Fn = [[expand(sum(A[k, j] * F0[k][t] for k in range(3))) for t in range(6)]
+          for j in range(3)]
+    Un = [[expand(sum(B[k, j] * U0[k][t] for k in range(3))) for t in range(6)]
+          for j in range(3)]
+    assert pairing(Fn, Un) == eye(3)
+    for i in range(3):                                     # move (i): clear off-diagonal
+        for j in range(3):
+            if i != j:
+                Dij = herm(Un[i], Un[j])
+                if Dij != 0:
+                    Un[i] = [expand(Un[i][t] - Dij * Fn[j][t]) for t in range(6)]
+    target = [1, 0, 0]
+    for i in range(3):                                     # move (ii): even shifts
+        d = herm(Un[i], Un[i])
+        t = -(d - target[i]) / 2
+        assert t == int(t)
+        Un[i] = [expand(Un[i][s] + int(t) * Fn[i][s]) for s in range(6)]
+    assert pairing(Fn, Un) == eye(3)
+    assert gram(Un) == Matrix([[1, 0, 0], [0, 0, 0], [0, 0, 0]])
+    dM = basis_det(Fn + Un)
+    assert dM in UNITS, dM
+    print("[E1] corank 3: explicit integral moves carry <f1+f4, f2+f5, f3+f6> to")
+    print("     a Z[i]-basis of L_1 with Gram EXACTLY [[0,I_3],[I_3,diag(1,0,0)]]")
+    print(f"     (basis det = {dM}); C = 0, so transitivity on maximal isotropic")
+    print("     sublattices is PURE NORMAL FORM — no genus theory at corank 3.")
+
+    # ---- [E4] type-A corank-2 standard split ---------------------------------
+    vA = [1, 1, 2 + sI, 1, 1, 2 + sI]
+    f14 = [1, 0, 0, 1, 0, 0]
+    u1 = F6[1]
+    u2 = [expand(a - b - c) for a, b, c in zip(vA, F6[1], F6[3])]   # vA - f2 - f4
+    FA, UA = [vA, f14], [u1, u2]
+    assert pairing(FA, UA) == eye(2)
+    assert gram(UA) == Matrix([[1, 0], [0, 0]])
+    c1 = [0, 0, 1, 0, 2 - sI, 0]
+    c2 = [0, 0, 0, 0, -2 + sI, 1]
+    for c in (c1, c2):
+        for x in FA + UA:
+            assert simplify(herm(x, c)) == 0
+    G = gram([c1, c2])
+    assert G == Matrix([[-4, 5], [5, -6]]) and G.det() == -1
+    assert all(int(G[i, i]) % 2 == 0 for i in range(2))
+    dM = basis_det(FA + UA + [c1, c2])
+    assert dM in UNITS, dM
+    print("[E4] type-A corank 2 (L_1): D = diag(1,0) exactly (delta = coords of")
+    print("     the all-ones vector, frozen nonzero); exact complement Gram")
+    print(f"     [[-4,5],[5,-6]]: EVEN, det -1, sig (1,1); basis det = {dM}.")
+
+    # ---- [E5] type-B corank-2 standard splits, both lattices -----------------
+    FB = [[1, 0, 0, 1, 0, 0], [0, 1, 0, 0, 1, 0]]
+    UB = [F6[0], F6[1]]
+    for eps, name, cgram in ((EPS1, "L_1", Matrix([[1, 0], [0, -1]])),
+                             (EPS3, "L_3", Matrix([[1, 0], [0, -3]]))):
+        assert pairing(FB, UB, eps) == eye(2)
+        assert gram(UB, eps) == eye(2)                     # D = diag(1,1)
+        C = [F6[2], F6[5]]
+        for c in C:
+            for x in FB + UB:
+                assert herm(x, c, eps) == 0
+        assert gram(C, eps) == cgram
+        dM = basis_det(FB + UB + C)
+        assert dM in UNITS, dM
+        print(f"[E5] type-B corank 2 ({name}): D = diag(1,1); complement <f3,f6>")
+        print(f"     Gram {cgram.tolist()}, ODD; basis det = {dM}.")
+    print("     The L_3 complement diag(1,-3) exhibits the FIXED Jordan shape")
+    print("     (unimodular rank 1) _|_ (3-modular rank 1) of Lemma 5c.3.")
+
+    # ---- [E6] parity identity: delta = 0 would force an even lattice --------
+    # On F (+) U with Gram [[0,I],[I,D]] (D diagonal), h(x,x) for
+    # x = sum a_i f_i + b_i u_i equals sum Tr(a_i conj(b_i)) + sum Nm(b_i) d_i:
+    # parity = sum Nm(b_i) delta_i mod 2. Sweep exact Gaussian coefficients:
+    coeffs = [0, 1, sI, 1 + sI]
+    checked = 0
+    for d1 in (0, 1):
+        Fs, Us = Fn, Un                     # the [E1] basis, D = diag(1,0,0)
+        delta = [1, 0, 0]
+        for tup in iproduct(range(4), repeat=4):
+            a1, a2, b1, b2 = (coeffs[t] for t in tup)
+            x = [expand(a1 * Fs[0][s] + a2 * Fs[1][s]
+                        + b1 * Us[0][s] + b2 * Us[1][s]) for s in range(6)]
+            nrm = herm(x, x)
+            pred = (int(expand(b1 * conjugate(b1))) * delta[0]
+                    + int(expand(b2 * conjugate(b2))) * delta[1]) % 2
+            assert int(nrm) % 2 == pred
+            checked += 1
+        break
+    assert herm(F6[0], F6[0]) == 1          # L_1 is odd
+    print(f"[E6] parity identity h(x,x) = sum Nm(b_i) delta_i mod 2 verified on")
+    print(f"     {checked} exact coefficient tuples: delta = 0 would make the")
+    print("     lattice EVEN, and L_1 is odd (h(f1,f1) = 1) — so delta != 0 at")
+    print("     corank 3, independently of the [D5] enumeration.")
+
+    # ---- [E7] parity-flip demo (move (iv), type B) ---------------------------
+    u1s = [expand(a + b) for a, b in zip(F6[0], F6[2])]    # f1 + f3
+    assert pairing(FB, [u1s, F6[1]]) == eye(2)
+    assert herm(u1s, u1s) == 2                             # d_1: 1 -> 2
+    print("[E7] parity flip: u_1 += f3 (odd vector of C) shifts d_1 = 1 -> 2 with")
+    print("     pairings intact — type-B parities are free, D -> diag(1,1).")
+
+    # ---- [E8] the L_3 positioning substrate ----------------------------------
+    nm_vals = {(a * a + b * b) % 3
+               for a, b in iproduct(range(3), repeat=2) if (a, b) != (0, 0)}
+    assert nm_vals == {1, 2}
+    print("[E8] Nm on units of Z[i]/3 = {1,2}, never 0: every primitive vector")
+    print("     of a totally isotropic F in L_3 has non-3-divisible unimodular")
+    print("     part, so F/3F embeds in M_0/3M_0 and the dual system of")
+    print("     Lemma 5c.1 exists at c = 3.")
+
+    print("\nTHEOREM 5c CERTIFIED (coranks 2 and 3, UNCONDITIONAL):")
+    print("  corank 3: pure normal form ([E1], [E6]) — exactly 1 orbit;")
+    print("  corank 2: normal forms diag(1,0) / diag(1,1) ([E2]-[E5], [E7]) +")
+    print("  complement genus fixed by type (Lemma 5c.3) + class number one")
+    print("  (Lemma 5c.4, via [B9]'s corrected determinant groups) + gluing.")
+    print("  With theorem5_legs.py (corank 1) and dyadic_types.py (bounds,")
+    print("  exclusions, forcing), the FULL CUSP SPECTRA are now theorems:")
+    print("     Gamma_1: (2, 2, 1)   Gamma_3: (1, 1)")
+    print("  Both conditional legs are dissolved at every corank.")
+
+if __name__ == "__main__":
+    main()

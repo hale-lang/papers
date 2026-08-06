@@ -1,7 +1,7 @@
 # residue-ledger
 
 *The Tangent Space Cannot See the Discriminant: local rigidity and
-arithmetic boundary separation for Weil classes* — draft v0.10,
+arithmetic boundary separation for Weil classes* — draft v0.11,
 August 2026. **Not yet submitted anywhere; treat as
 a working draft.**
 
@@ -42,29 +42,35 @@ results:
   boundary has totally degenerate cusps while the nonsplit one has
   coranks ≤ 2 only. Locally the forms differ at exactly the primes
   {2, 3}. Certificates in `code/arithmetic_quotient.py`.
-- **Theorem 5 (class numbers; dyadic types; PREDICTED cusp spectra).**
-  Both genera have class number one (strong approximation + a diagonal
-  determinant lemma + Hilbert 90 + Cl(Q(i)) = 1). A dyadic type
-  invariant — the norm-parity functional at the ramified prime,
-  U(L)-invariant because unitary maps preserve norms — separates the
-  boundary data: proved lower bounds of 2 at coranks 1 and 2 for the
-  split lattice, type exclusion on the nonsplit one, and corank-3
-  forcing, predicting spectra (2,2,1) vs (1,1); the EXACT counts are
-  conditional on within-type integral transitivity and a parabolic
-  local-global computation at coranks 2 and 3 — the CORANK-ONE counts
-  (2 vs 1) are now UNCONDITIONAL: Theorem 5b's four-lemma splitting-
-  and-cancellation argument (pairing ideal via the p = 3 positioning
-  lemma; every primitive isotropic vector splits off [[0,1],[1,1]]
-  with a rank-4 complement whose parity IS the dyadic type; local
-  uniqueness including the fixed Jordan shape at 3; class number one
-  with the CORRECTED determinant groups — the even complement's local
-  determinant group at the ramified prime has index two, Kirschmer's
-  exceptional case, and the global unit i cancels the defect) proves
-  within-type transitivity and dissolves the local-global question
-  there. Certificates in `code/cusp_class_numbers.py`,
-  `code/dyadic_types.py`, and `code/theorem5_legs.py` (which also
-  record the correction of an earlier one-cusp-per-depth claim — the
-  paper's own calibration lesson applied to itself).
+- **Theorems 5, 5b, 5c (class numbers; dyadic types; EXACT cusp
+  spectra).** Both genera have class number one (strong approximation
+  + a diagonal determinant lemma + Hilbert 90 + Cl(Q(i)) = 1). A
+  dyadic type invariant — the norm-parity functional at the ramified
+  prime, U(L)-invariant because unitary maps preserve norms —
+  separates the boundary data, and a splitting-and-cancellation
+  argument run at every rank proves the cusp spectra EXACTLY AND
+  UNCONDITIONALLY at every corank: (2,2,1) vs (1,1). Corank 1
+  (Theorem 5b): pairing ideal via the p = 3 positioning lemma; every
+  primitive isotropic vector splits off [[0,1],[1,1]] with a rank-4
+  complement whose parity IS the dyadic type; local uniqueness
+  including the fixed Jordan shape at 3; class number one with the
+  corrected determinant groups (the even complement's local
+  determinant group at the ramified prime has index two — Kirschmer's
+  exceptional case — and the global unit i cancels the defect).
+  Coranks 2 and 3 (Theorem 5c): the same architecture at rank r —
+  dual system, D-normal form via an exact parity transformation law
+  (type A: diag(1,0,...,0), frozen at the coordinates of the all-ones
+  vector; type B: diag(1,...,1), parities freed by odd complement
+  vectors), complement genus fixed by type, class number one. At the
+  deepest corank the complement VANISHES and the count is pure
+  integral normal form — the deepest cusp turns out to be the easiest,
+  and both formerly-conditional legs (within-type transitivity,
+  parabolic local-global) dissolve rather than get computed.
+  Certificates in `code/cusp_class_numbers.py`, `code/dyadic_types.py`,
+  `code/theorem5_legs.py`, and `code/corank23_lemmas.py` (which also
+  record the correction trail: one-cusp-per-depth asserted, retracted,
+  then the richer spectra proved — the paper's own calibration lesson
+  applied to itself, twice).
 - **Proposition C (K3 dichotomy loop).** A twistor-type rational
   period conic in the K3 period domain whose very general fibers are nonprojective of
   Picard rank 19 while every one of its dense Noether–Lefschetz walls
@@ -112,7 +118,13 @@ discriminant-blindness computation, and the observable layer.
   - `theorem5_legs.py` — Theorem 5b: the corank-one splitting-and-
     cancellation certificates (unit-norm criterion, parity forcing and
     freedom, the sqrt(-7) witness, the even-binary Hensel table, the
-    exact even complement of the type-A pair).
+    exact even complement of the type-A pair, the pairing-ideal and
+    determinant-group substrates).
+  - `corank23_lemmas.py` — Theorem 5c: the corank-2/3 certificates
+    (explicit corank-3 canonical basis with Gram [[0,I],[I,diag(1,0,0)]],
+    the parity transformation law, transvection generation of GL_r(F_2),
+    exact standard splits of both corank-2 types with their even/odd
+    complements).
   - `k3_residue_angle.py` — Proposition C (emits
     `k3_residue_data.json`); `build_k3_page.py` regenerates the
     interactive supplement from it.
@@ -138,7 +150,15 @@ the companion essay is *Zero-Mode Shadows*.
 
 ## Status and honesty notes
 
-Draft v0.10 (second-referee arithmetic repairs to Theorem 5b: the
+Draft v0.11 (Theorem 5c added: coranks 2 and 3 proved by the rank-r
+splitting architecture — at corank 3 the complement vanishes and the
+count is pure integral normal form — making the full cusp spectra
+(2,2,1) vs (1,1) exact and unconditional at every corank; third-referee
+explication items folded in: finite-field type-B normalization proof,
+explicit unramified-norm uniqueness at 3, and the Q-form/real-form
+distinction for the strong-approximation groups, including the
+Q-anisotropic nonsplit corank-2 complement. Prior v0.10: second-referee
+arithmetic repairs to Theorem 5b — the
 pairing-ideal lemma replaces the false unimodularity appeal for the
 nonsplit lattice; the H+H determinant-group error is corrected via
 Kirschmer's exceptional even-hyperbolic case, with the global unit i

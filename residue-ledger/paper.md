@@ -2,7 +2,7 @@
 title: "The Tangent Space Cannot See the Discriminant"
 subtitle: "Local rigidity and arithmetic boundary separation for Weil classes"
 author: Riley Rook
-date: "Draft v0.10 — August 2026"
+date: "Draft v0.11 — August 2026"
 ---
 
 **Abstract.** We study exact infinitesimal Hodge-obstruction maps for
@@ -47,13 +47,14 @@ does not — and the local difference is concentrated at exactly the primes
 norm-parity functional at the ramified prime) separates the boundary
 data: it splits the split lattice's shallow isotropic strata into two
 classes each while excluding one class entirely from the nonsplit
-lattice, predicting cusp spectra $(2,2,1)$ versus $(1,1)$; the corank-one
-counts ($2$ versus $1$) are then proved unconditionally by a
-splitting-and-cancellation argument that also dissolves the
-local–global question at that corank, while coranks 2 and 3 remain
-conditional on stated normal-form lemmas. The tangent cannot see the
+lattice; a splitting-and-cancellation argument, run at every rank,
+then proves the full cusp spectra **exactly and unconditionally**:
+$(2,2,1)$ for the split quotient versus $(1,1)$ for the nonsplit one —
+at the deepest corank the complement vanishes and the count is pure
+integral normal form. The discriminant is visible in the boundary
+multiplicities at every corank. The tangent cannot see the
 discriminant; the marked real-analytic germ cannot see it; the rational
-boundary can. A K3
+boundary can — everywhere it exists. A K3
 period-loop instrument motivates the reading that organizes the paper —
 integer invariants as zero-mode shadows of continuous residual data — and
 the sixfold result marks that reading's own boundary: some discrete
@@ -330,7 +331,7 @@ inside the fixed nonsplit PEL family (preserving the $K$-action and
 polarization data) must work at corank $\le 2$ — a proof is free to
 leave that family.
 
-**Theorem 5 (genus class number one; dyadic type separation; predicted cusp spectra).** For both
+**Theorem 5 (genus class number one; dyadic type separation; cusp spectra).** For both
 $c \in \{1, 3\}$ the genus of the hermitian lattice
 $L_c = (\mathbb{Z}[i]^6, h_c)$ has class number one — a statement about the adelic double-coset object
 (one genus component), not about connectedness of the fixed quotient
@@ -347,23 +348,21 @@ $L_1$ realizes **both** types at coranks 1 and 2, while at corank 3 the
 type is forced to A (every totally isotropic 3-space of the residue form
 is self-dual and contains the all-ones vector); $L_3$ realizes **only**
 type B (an all-unit-coordinate vector in $L_3$ has $h(v,v) \equiv 2
-\bmod 4$, never zero). The **predicted** cusp spectra are therefore
+\bmod 4$, never zero). The cusp spectra are therefore
 $$\Gamma_1: \ (2, 2, 1) \ \text{at coranks} \ (1,2,3), \qquad
 \Gamma_3: \ (1, 1) \ \text{at coranks} \ (1,2),$$
-counts being the numbers of mod-$\pi$ type classes. What is proved
-outright: the lower bounds ($\ge 2$ at coranks 1 and 2 for the split
-lattice), the type exclusion on the nonsplit lattice, and the corank-3
-forcing. At corank one the exact counts are now **proved** — see Theorem 5b,
-whose splitting argument settles both within-type transitivity and the
-local–global passage there. At coranks 2 and 3 exactness remains
-**conditional** on the analogous normal-form lemmas (within-type
-transitivity at fixed invariants and the parabolic local–global
-computation $P_r(K)\backslash U(h)(\mathbb{A}_f)/K_L$). **What is
-unconditional: the discriminant is visible in corank-one multiplicity
-(2 versus 1 — Theorem 5b), in corank-two dyadic type support (both
-types occur for $\Gamma_1$, type A cannot occur for $\Gamma_3$), and in
-the existence of the corank-three boundary. The full spectra above are
-the prediction.**
+counts being the numbers of mod-$\pi$ type classes — and these are now
+**exact and unconditional at every corank**: the type bounds, the
+nonsplit exclusion, and the corank-3 forcing are proved below; the
+within-type transitivity that upgrades the bounds to equalities is
+Theorem 5b at corank one and Theorem 5c at coranks two and three.
+**The discriminant is visible in the boundary multiplicities at every
+corank — not merely in the existence of the deepest cusp: the split
+boundary is strictly richer everywhere.** (This sentence appeared in an
+early draft as an assertion, was retracted to its then-proved core when
+a referee pointed out the counts beyond corank one were conditional,
+and is now reinstated as a theorem. The trail is kept: assertion,
+retraction, proof.)
 
 *Proof, with graded legs.* Class numbers: $SU(3,3)$ is simply connected and $\mathbb{R}$-isotropic,
 so strong approximation holds [@platonovrapinchuk1994] and the class set
@@ -375,11 +374,11 @@ image is the full norm-one unit group; by Hilbert 90 (every norm-one
 element is $y/\bar y$, locally and globally) $X$ is a quotient of
 $\mathbb{A}_{K,f}^{\times}/(K^{\times}\widehat{\mathcal{O}}^{\times})
 = \mathrm{Cl}(\mathbb{Q}(i)) = 1$. Cusp counts: with $X$ trivial, genus-level transitivity holds; the
-passage from local orbit data to global cusp orbits additionally
-requires the parabolic double-coset computation, not carried out here
-(over $\mathbb{Z}[i]$, class number one, it is expected to contribute no
-further classes; the spectra above are stated as predictions conditional
-on it). At every $p$ where $L_c$ is unimodular, primitive
+passage from local orbit data to global cusp orbits would, in the
+abstract, require a parabolic double-coset computation — but Theorems
+5b and 5c make it unnecessary: their splitting arguments are directly
+global, so the question dissolves at every corank rather than being
+computed. At every $p$ where $L_c$ is unimodular, primitive
 vectors have full pairing ideal (no scale invariants), and Witt's theorem
 on the residue hermitian space plus Hensel lifting gives one local orbit
 at odd $p$. At $p = 3$ for $L_3$, a positioning certificate closes the
@@ -452,10 +451,14 @@ $\mathrm{Tr}(\lambda) + \mathrm{Tr}\,h(u,z) + h(z,z) \in 2\mathbb{Z}
 + h(z,z)$. For type A, $q$ vanishes on $w^{\perp}$, so the parity of $d$
 is frozen at $q(u) = h(w,u) \bmod \pi = 1$ (odd), and every complement
 $C \subset w^{\perp}$ is *even*; normalize $d = 1$ by even shifts. For
-type B, $w^{\perp}$ contains odd-norm vectors, so $d = 1$ is reachable
-and $u$ can moreover be chosen with $C$ *odd* (the functionals
-$h(z_0,-)|_{w^\perp}$ mod $\pi$ span more than one hyperplane, so some
-admissible $u$ leaves $q$ nonzero on $C$). Thus every $w$ yields
+type B, work in the residue space $\bar L = L/\pi L$: $q$ cannot vanish
+on $w^{\perp}$ — if it did, $\mathbf{1}$ would lie in
+$(\bar w^{\perp})^{\perp} = \langle \bar w \rangle$, and the only
+nonzero vector of that $\mathbb{F}_2$-line is $\bar w$ itself, making
+$w$ type A — so $d = 1$ is reachable by adjusting $u$ by some
+$z \in w^{\perp}$ with $q(z) = 1$; and *every* complement is odd, since
+$w^{\perp} = Rw \oplus C$ with $q(w) = 0$ and $q$ linear, so $q$
+nonzero on $w^{\perp}$ forces $q$ nonzero on $C$. Thus every $w$ yields
 $L_c = \begin{pmatrix} 0 & 1 \\ 1 & 1 \end{pmatrix} \perp C$ with the
 parity of $C$ equal to the type of $w$.
 
@@ -468,9 +471,13 @@ the complement has the *fixed* Jordan shape (unimodular of rank $3$,
 determinant class determined by cancellation) $\perp$ ($3$-modular of
 rank $1$, class carried over unchanged) — for the standard line,
 $\mathrm{diag}(1,1,-1) \perp \langle -3\rangle$ — the same local class
-for every $w$. (Rank, total determinant, and parity alone would *not*
-determine the genus of a non-unimodular lattice; the fixed Jordan shape
-is what closes this.) At the ramified prime $2$, parity and determinant
+for every $w$. Uniqueness of the blocks' isometry classes is immediate
+because $\mathbb{Q}_3(i)/\mathbb{Q}_3$ is *unramified*: the norm is
+surjective on local units, so the rank-one $3$-modular block has a
+single unit-coefficient class and the unimodular block is determined by
+rank and determinant. (Rank, total determinant, and parity alone would
+*not* determine the genus of a non-unimodular lattice; the fixed Jordan
+shape is what closes this.) At the ramified prime $2$, parity and determinant
 classify: *odd* unimodular lattices diagonalize (norm ideal $(1)$:
 split a unit-norm vector and induct) with entries in
 $\{\langle 1\rangle, \langle -1\rangle\}$, and
@@ -486,9 +493,12 @@ so Hensel lifts), and rank $\ge 3$ splits $H$ since local hermitian
 forms of rank $\ge 3$ are isotropic. At $\infty$: signature $(2,2)$.
 Hence same-type complements share a genus.
 
-*Lemma 5b.4 (one class per complement genus).* $SU$ of each complement
-is $SU(2,2)$: simply connected and $\mathbb{R}$-isotropic, so strong
-approximation applies [@platonovrapinchuk1994] and the class set maps
+*Lemma 5b.4 (one class per complement genus).* $SU(C)$ is a simply
+connected $\mathbb{Q}$-group of type $A_3$ whose real points are the
+noncompact $SU(2,2)$ — noncompactness at the archimedean place is what
+strong approximation needs; the $\mathbb{Q}$-Witt index varies with the
+discriminant class and plays no role. So strong approximation applies
+[@platonovrapinchuk1994] and the class set maps
 to the determinant double coset $X_C = U^1(\mathbb{Q})\backslash
 U^1(\mathbb{A}_f)/\prod_p \det U(C_p)$. For the odd (diagonalized)
 complements the diagonal maps give the full norm-one unit group at
@@ -545,13 +555,126 @@ claimed, which is a better theorem, not a worse one.
 *Remark (the legs, after Theorem 5b).* At corank one, the parabolic
 local–global leg *dissolves*: the proof above is directly global, its
 adelic content being exactly the class number one of the complement
-genera. What remains conditional are coranks 2 and 3, where the same
-architecture applies — split $F \oplus U$ with Gram
-$\begin{pmatrix} 0 & I \\ I & D \end{pmatrix}$, clear the
-off-diagonal of $D$ by shifts, classify diagonal parities and the rank-2
-(resp. rank-0) complements — but the normal-form analysis of $D$ at the
-ramified prime (which parity patterns are realizable, and their
-congruence classes) has not been completed here.
+genera. Theorem 5c now runs the same architecture at coranks two and
+three.
+
+**Theorem 5c (coranks two and three, unconditional).** $\Gamma_1$ has
+**exactly two** orbits of primitive totally isotropic planes (types A
+and B) and **exactly one** orbit of primitive totally isotropic rank-3
+sublattices; $\Gamma_3$ has **exactly one** orbit of primitive totally
+isotropic planes (type B). With Theorem 5b, the full cusp spectra
+$$\Gamma_1: (2,2,1), \qquad \Gamma_3: (1,1)$$
+are exact and unconditional.
+
+*Proof (rank-$r$ splitting and cancellation).* Let $F \subset L_c$ be
+primitive totally isotropic of rank $r$.
+
+*Lemma 5c.1 (dual system).* The pairing map $L_c \to F^{\vee} =
+\mathrm{Hom}_{\mathbb{Z}[i]}(F, \mathbb{Z}[i])$ is surjective. For
+$c = 1$: unimodularity plus the fact that a primitive sublattice of a
+free module over the PID $\mathbb{Z}[i]$ is a direct summand. For
+$c = 3$: every primitive vector of $F$ is a primitive isotropic vector
+of $L_3$, so the positioning lemma applies to it; hence
+$F/3F \to M_0/3M_0$ is injective ($M_0$ the rank-5 unimodular Jordan
+block at 3 — a kernel element would be a primitive vector of $F$ with
+$3$-divisible unimodular part), the projection of $F$ into $M_0$ is a
+primitive sublattice of a unimodular lattice, and already
+$M_0 \to F^{\vee}$ is surjective; away from 3 self-duality gives local
+surjectivity, and a finite cokernel that vanishes locally everywhere is
+zero. Lifting a dual basis gives $U$ with pairing matrix $I$; then
+$F \oplus U$ has Gram $\begin{pmatrix} 0 & I \\ I & D\end{pmatrix}$
+($D = D^{*}$ the Gram of $U$), unit determinant, so
+$L_c = (F \oplus U) \perp C$ with $C$ of rank $6 - 2r$.
+
+*Lemma 5c.2 (normal form for $D$).* Four exact integral moves preserve
+$F$ and the pairing: (i) $u_i \mapsto u_i + \lambda f_j$ ($j \ne i$)
+clears the off-diagonal of $D$ exactly and touches nothing else;
+(ii) $u_i \mapsto u_i + t f_i$ ($t \in \mathbb{Z}$) shifts
+$d_i = h(u_i, u_i)$ by $2t$; (iii) a basis change of $F$ by
+$A \in GL_r(\mathbb{Z}[i])$ (with the dual change of $U$) replaces $D$
+by $A^{-1} D A^{-*}$, and the diagonal-parity vector
+$\delta = (d_i \bmod 2)$ transforms by the mod-$\pi$ reduction of
+$A^{-1}$ — the hermitian cross terms are trace terms, always even —
+with every element of $GL_r(\mathbb{F}_2) = SL_r(\mathbb{F}_2)$
+realized (transvections lift); (iv) $u_i \mapsto u_i + z$
+($z \in C$) shifts $d_i$ by $h(z,z)$, i.e. flips its parity iff
+$q(z) = 1$. The parity vector is the boundary-type datum:
+$\delta_j = \langle \mathbf{1}, \bar u_j \rangle$ in the residue
+pairing, so for type A ($\mathbf{1} \in \bar F$) it equals the
+coordinate vector of the all-ones vector in the chosen basis —
+**nonzero and frozen**, since $q$ vanishes on $F^{\perp} = F \oplus C$
+and move (iv) is parity-trivial — and $GL_r(\mathbb{F}_2)$ acts
+transitively on nonzero vectors, normalizing
+$D = \mathrm{diag}(1, 0, \ldots, 0)$ exactly. For type B,
+$q$ is nonzero on $F^{\perp}$, hence on $C$ (the $F$-part contributes
+nothing), so $C$ is odd, move (iv) flips each parity freely, and
+$D = \mathrm{diag}(1, \ldots, 1)$. In both cases the same argument
+shows the parity of $C$ *is* the type, as at corank one.
+
+*Corollary (corank three closes with no genus theory).* At $r = 3$,
+$C = 0$: $L_1 = F \oplus U$ outright. The type is forced to A by the
+corank-3 enumeration — and independently, $\delta \ne 0$ because
+$\delta = 0$ would make every norm on $F \oplus U$ even while $L_1$ is
+odd. So every maximal isotropic $F$ extends to a
+$\mathbb{Z}[i]$-basis of $L_1$ with Gram exactly
+$\begin{pmatrix} 0 & I_3 \\ I_3 & \mathrm{diag}(1,0,0)\end{pmatrix}$,
+and the basis-to-basis map between any two such presentations is an
+isometry carrying $F$ to $F'$. Exactly one corank-3 cusp, by pure
+integral normal form — no complement, no genus, no class number.
+
+*Lemma 5c.3 (corank-2 complement local uniqueness).* Same-type rank-2
+complements share a genus: at the ramified prime, parity and
+determinant classify (odd: diagonalize and collapse as in Lemma 5b.3;
+even: always $H$, by the Hensel certificate); at $3$ for $c = 3$ the
+Jordan shape is fixed at (unimodular rank 1) $\perp$ ($3$-modular
+rank 1), and both blocks have unique isometry classes because the norm
+is surjective on units in the unramified extension
+$\mathbb{Q}_3(i)/\mathbb{Q}_3$ — the unit coefficients of both the
+unimodular and the $3$-modular block collapse; at other
+odd primes rank and determinant; at $\infty$ the signature is $(1,1)$,
+forced by cancellation from $(3,3) - (2,2)$.
+
+*Lemma 5c.4 (one class per corank-2 complement genus).* $SU$ of a
+rank-2 complement is a simply connected $\mathbb{Q}$-group of type
+$A_1$ with noncompact real points $SU(1,1)$, and noncompactness at the
+archimedean place is the strong-approximation hypothesis — which
+matters here: the nonsplit lattice's complement
+$\mathrm{diag}(1,-3)$ is $\mathbb{Q}$-*anisotropic* (3 is not a global
+norm), so its $\mathbb{Q}$-Witt index is zero, yet strong approximation
+applies all the same [@platonovrapinchuk1994]. Determinant groups: the odd complements are
+diagonal, giving the full local norm-one unit groups everywhere; the
+even complement is a single hyperbolic plane at the ramified prime,
+where the unit maps give at least the index-two subgroup $E_1$
+[@kirschmer2019], and the global unit $i$ absorbs any residual defect
+exactly as in Lemma 5b.4. The determinant double coset is trivial;
+each genus is one isometry class.
+
+*Conclusion.* Same-type complements are isometric; gluing with the
+identical $\begin{pmatrix} 0 & I \\ I & D\end{pmatrix}$ blocks gives
+$g \in U(L_c)$ with $gF = F'$. One orbit per realized type at corank
+two (both types in $L_1$, only B in $L_3$); one orbit at corank three.
+$\blacksquare$ Certificates — the corank-3 canonical basis produced by
+the explicit moves (basis determinant $-1$), the parity transformation
+law on complex test matrices, transvection generation of
+$GL_r(\mathbb{F}_2)$ with its transitive action, the exact standard
+splits of both types at corank two (type A: $D = \mathrm{diag}(1,0)$
+with even complement Gram $\begin{pmatrix} -4 & 5 \\ 5 & -6
+\end{pmatrix}$ of determinant $-1$; type B: $D = \mathrm{diag}(1,1)$
+with odd complements $\mathrm{diag}(1,-1)$ and $\mathrm{diag}(1,-3)$),
+the parity identity behind the oddness argument, and the parity-flip
+move — are in `code/corank23_lemmas.py`.
+
+*Remark (what dissolved).* Both legs that Theorem 5 originally left
+conditional — within-type integral transitivity and the parabolic
+local–global passage — are now gone at every corank, and neither was
+*computed*: the splitting arguments are directly global, so the adelic
+bookkeeping they would have required never materializes. The feared
+delicacy of the $D$-normalization at the ramified prime (which parity
+patterns are realizable) turned out to be a non-question: the proof
+normalizes patterns, it never needs to realize them. And the deepest
+corank is the *simplest* case, not the hardest — at $r = 3$ the
+complement vanishes and the whole orbit problem is an exercise in
+integral row reduction.
 
 **Lemma (skew-adjoint spectral separation).** Let $M$ be skew-adjoint for
 a bilinear pairing: $\langle Mx, y\rangle + \langle x, My\rangle = 0$. Then
@@ -803,9 +926,11 @@ is a formal structural observation (real classification of hermitian
 forms plus functoriality of exterior representations) whose contribution
 is the no-go interpretation; Theorem 4 is classical arithmetic-group
 theory newly assembled for this pair; Theorem 5's dyadic type invariant
-and predicted spectra are the potentially least routine arithmetic
-contribution, and its exact counts await the completion legs stated
-there.
+and the exact spectra of Theorems 5b–5c are the potentially least
+routine arithmetic contribution — every ingredient is standard
+(splitting, Jordan theory, determinant groups, strong approximation),
+but we did not find the boundary-multiplicity separation of this
+discriminant pair, or the type invariant driving it, in print.
 
 # The interpretive layer
 
@@ -846,15 +971,15 @@ companion essay develops the frame; nothing in §§1–6 depends on it.
 
 # Directions
 
-- **Counting the boundary: done — and corrected.** Theorem 5 now
-  includes the dyadic type invariant, found precisely by refusing to
-  leave the $p = 2$ leg cite-grade: cusp spectra $(2,2,1)$ vs $(1,1)$,
-  class numbers one. Remaining flags: within-class transitivity at
-  fixed invariants, and finer invariants at higher $\pi$-precision —
-  the honest residue of the ramified dyadic classification; after
-  Theorem 5b the remaining declared work is the corank-2 and corank-3
-  normal-form analysis of $D$ at the ramified prime (the corank-one
-  legs are closed).
+- **Counting the boundary: closed.** Theorem 5's dyadic type invariant
+  was found by refusing to leave the $p = 2$ leg cite-grade; Theorems
+  5b and 5c then proved the spectra $(2,2,1)$ vs $(1,1)$ exactly, at
+  every corank, dissolving both conditional legs along the way. No
+  declared work remains on the boundary counts. What the episode
+  leaves behind is methodological: the corank ordering of difficulty
+  inverted (the deepest cusp was the easiest, being pure normal form),
+  and the two correction notes stand as the $\theta^3$ lesson operating
+  at theorem level, twice.
 - **The degeneration route.** Sharpen the hypothesis-grade remark after
   Theorem 4: formalize what a corank-$\le 2$ degeneration argument for
   Weil classes would need, and whether Schoen-type limits exist there —

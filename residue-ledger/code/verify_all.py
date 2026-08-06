@@ -31,6 +31,7 @@ SCRIPTS = [
     ("cusp_class_numbers.py",       "Theorem 5 part 1: class numbers, odd-place analysis"),
     ("dyadic_types.py",             "Theorem 5 part 2: dyadic types, predicted spectra"),
     ("theorem5_legs.py",            "Theorem 5b: corank-1 unconditional (four-lemma repair)"),
+    ("corank23_lemmas.py",          "Theorem 5c: coranks 2-3 unconditional (full spectra)"),
     ("k3_residue_angle.py",         "Proposition 6: K3 loop incl. rational-Picard calibration"),
 ]
 
@@ -68,9 +69,13 @@ THEOREM LEG GRADING
     corank-1 class number one (5b.4) ...... PROVED-IN-TEXT + CITED (Kirschmer
                                             determinant groups; [B9] substrate)
     corank-1 exact counts (2 vs 1) ........ PROVED (Theorem 5b)
-    corank 2, 3 within-type transitivity .. CONDITIONAL (D-normalization lemmas)
-    corank 2, 3 parabolic local-global .... CONDITIONAL
-    => spectra (2,2,1) vs (1,1) ........... corank 1 PROVED; rest predicted
+    corank-3 canonical form (C = 0) ....... PROVED-BY-CODE ([E1]; pure normal
+                                            form, no genus theory)
+    corank-2 normal forms + parity law .... PROVED-IN-TEXT ([E2]-[E5], [E7])
+    corank-2 complement genus + h = 1 ..... PROVED-IN-TEXT + CITED (Jordan at 3;
+                                            Kirschmer at 2; strong approx)
+    parabolic local-global (all coranks) .. DISSOLVED (proofs directly global)
+    => spectra (2,2,1) vs (1,1) ........... PROVED (Theorems 5b + 5c)
   Proposition 6 (K3 loop)
     finite clauses (walls, slopes, ........ PROVED-BY-CODE
       counts, heights, calibration)

@@ -25,10 +25,11 @@ For L_c = Z[i]^6 with h_c = diag(1,1,1,-1,-1,-c), c in {1,3}:
   Witt's theorem for the residue hermitian space (verified at the point-
   count level in [N5]) plus Hensel lifting gives transitivity. The dyadic
   place carries a genuine TYPE invariant (originally graded cite-level
-  here, then worked out in dyadic_types.py). PREDICTED spectra
+  here, then worked out in dyadic_types.py). Spectra
      Gamma_1: (2, 2, 1) at coranks (1, 2, 3);
      Gamma_3: (1, 1) at coranks (1, 2);
-  corank 1 exact (theorem5_legs.py), coranks 2, 3 conditional.
+  EXACT at every corank: theorem5_legs.py (corank 1) and
+  corank23_lemmas.py (coranks 2, 3).
 
 Checks:
   [N1] diagonal determinant lemma (global + local shape).
@@ -123,10 +124,10 @@ def main():
     print("\nTHEOREM 5, part 1 (genus class numbers; odd-place cusp analysis):")
     print("  h(genus L_1) = h(genus L_3) = 1; one local orbit at every odd place.")
     print("  CORRECTION: the dyadic place carries a genuine type invariant —")
-    print("  see dyadic_types.py — predicting cusp spectra (2,2,1) vs (1,1),")
-    print("  NOT one cusp per depth as this script originally concluded.")
-    print("  Corank-1 counts are proved exactly in theorem5_legs.py; coranks")
-    print("  2, 3 remain conditional on the D-normalization lemmas.")
+    print("  see dyadic_types.py — giving cusp spectra (2,2,1) vs (1,1), NOT")
+    print("  one cusp per depth as this script originally concluded. The")
+    print("  spectra are proved exact at every corank: theorem5_legs.py")
+    print("  (corank 1) and corank23_lemmas.py (coranks 2, 3).")
 
 if __name__ == "__main__":
     main()

@@ -37,16 +37,16 @@ Certified here:
        q(v) = 0 for isotropic v, so 1 in F^perp = F). Verified by FULL
        ENUMERATION of all such subspaces. Corank-3 count stays 1.
 
-PREDICTED cusp spectra (counts = number of mod-pi type classes; each
-class one orbit IF within-type transitivity holds at that corank —
-PROVED at corank 1 by theorem5_legs.py, conditional at coranks 2, 3):
+Cusp spectra (counts = number of mod-pi type classes; each class one
+orbit by within-type transitivity — PROVED at corank 1 by
+theorem5_legs.py and at coranks 2, 3 by corank23_lemmas.py):
 
     Gamma_1 (split):    corank 1 -> 2,  corank 2 -> 2,  corank 3 -> 1
     Gamma_3 (nonsplit): corank 1 -> 1,  corank 2 -> 1
 
-What is UNCONDITIONAL: corank-one multiplicity (2 vs 1, Theorem 5b),
-corank-two TYPE SUPPORT (both types occur for Gamma_1, type A excluded
-for Gamma_3), and the existence of the corank-3 boundary. This CORRECTS
+EXACT AND UNCONDITIONAL at every corank. This file proves the type
+bounds, exclusions, and forcing; the transitivity that turns bounds
+into equalities lives in the two companion scripts. All of it CORRECTS
 the earlier "one bit" claim — found by pushing the leg we had graded
 cite-level, exactly the theta^3 lesson operating at theorem level.
 """
@@ -144,15 +144,14 @@ def main():
     print("     the all-ones vector — corank-3 planes are FORCED type A; the")
     print("     count remains 1.")
 
-    print("\nTHEOREM 5, dyadic-type leg (PREDICTED spectra; type bounds proved):")
+    print("\nTHEOREM 5, dyadic-type leg (type bounds, exclusions, forcing):")
     print("  Gamma_1 (split):    corank 1 -> 2,  corank 2 -> 2,  corank 3 -> 1")
     print("  Gamma_3 (nonsplit): corank 1 -> 1,  corank 2 -> 1")
-    print("  UNCONDITIONAL here: the type lower bounds, the L_3 exclusions, and")
-    print("  the corank-3 forcing. Corank-1 EXACT counts (2 vs 1) are proved in")
-    print("  theorem5_legs.py (Theorem 5b); coranks 2, 3 exactness remains")
-    print("  conditional on the D-normalization lemmas. Found by refusing to")
-    print("  leave the dyadic leg cite-grade — the theta^3 lesson, at theorem")
-    print("  level.")
+    print("  EXACT AND UNCONDITIONAL at every corank: this file proves the type")
+    print("  bounds; theorem5_legs.py (corank 1) and corank23_lemmas.py")
+    print("  (coranks 2, 3) prove the within-type transitivity that makes them")
+    print("  equalities. Found by refusing to leave the dyadic leg cite-grade —")
+    print("  the theta^3 lesson, at theorem level.")
 
 if __name__ == "__main__":
     main()

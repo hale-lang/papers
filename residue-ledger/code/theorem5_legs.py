@@ -241,8 +241,8 @@ def main():
     print("  Complements isometric; isometries glue:")
     print("     Gamma_1: EXACTLY 2 corank-1 cusps;  Gamma_3: EXACTLY 1.")
     print("  Leg 2 (parabolic local-global) dissolves at corank 1: the proof")
-    print("  is directly global. Coranks 2, 3 remain conditional, reduced to")
-    print("  the analogous D-normalization lemmas.")
+    print("  is directly global. Coranks 2, 3: see corank23_lemmas.py, which")
+    print("  runs the same architecture at rank r and closes the full spectra.")
 
 if __name__ == "__main__":
     main()
