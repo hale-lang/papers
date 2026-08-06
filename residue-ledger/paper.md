@@ -2,7 +2,7 @@
 title: "The Tangent Space Cannot See the Discriminant"
 subtitle: "Local rigidity and arithmetic boundary separation for Weil classes"
 author: Riley Rook
-date: "Draft v0.14 — August 2026"
+date: "Draft v0.15 — August 2026"
 ---
 
 **Abstract.** We study exact infinitesimal Hodge-obstruction maps for
@@ -24,9 +24,10 @@ strictly larger germ — only the full rational Weil plane recovers the
 cell (verified as a boundary regression). We certify the statement by sparse exact
 computations (SymPy rationals; no floating point, no transcendence numerics)
 in dimensions four and six. In dimension six the certificates run on two
-hermitian forms: the split class of discriminant $[-1]$, covered by
-Markman's algebraicity theorem, and the nonsplit class $[-3]$, not covered
-by results known to us. The two produce identical infinitesimal datasets —
+hermitian forms: the split class of discriminant $[-1]$, solved for
+$\mathbb{Q}(i)$ by Schoen's method completed by Koike's Prym dominance
+calculation and uniformly by Markman, and the nonsplit class $[-3]$, not
+covered by results known to us. The two produce identical infinitesimal datasets —
 as the theorem forces: the local obstruction data depends only on the real
 signature $(n,n)$, while the discriminant lives in
 $\mathbb{Q}^{\times}/N_{K/\mathbb{Q}}(K^{\times})$. We then prove the
@@ -71,9 +72,20 @@ for these classes is settled — Schoen [@schoen1988; @schoen1998] and van
 Geemen [@vangeemen1996] for $\mathbb{Q}(\sqrt{-3})$ and $\mathbb{Q}(i)$ at
 $\det H = 1$, Markman [@markman2023; @markman2025] in general — and with
 Moonen–Zarhin [@moonenzarhin1999] this closes the Hodge conjecture for all
-abelian varieties of dimension $\le 5$. The open boundary is the sixfold
-case outside Markman's split discriminant class [@markman2025; cf.
-@mostaed2026]. Computations below are for $K = \mathbb{Q}(i)$; the rigidity theorem
+abelian varieties of dimension $\le 5$. For sixfolds the split case has
+its own history: Schoen's Prym construction already covered a
+$\mathbb{Q}(\sqrt{-3})$ sixfold family [@schoen1988; @schoen1998], and
+for $K = \mathbb{Q}(i)$ and trivial discriminant the case was
+established by Schoen's specialization method, completed by
+Koike's proof [@koike2004] that a Prym family of fourth-order cyclic
+covers dominates the nine-dimensional Weil Shimura variety; Markman's
+construction [@markman2025] later proved the split case uniformly over
+arbitrary imaginary quadratic fields. (Conventions: Koike's discriminant
+$\delta$ is stated modulo squares; our labels $[-1]$, $[-3]$ are raw
+determinant classes in $\mathbb{Q}^{\times}/N_{K/\mathbb{Q}}(K^{\times})$
+— his $\delta = 1$ Gaussian component is our split class $[-1]$.) The
+open boundary is the sixfold case outside the split discriminant class
+[@koike2004; @markman2025; cf. @mostaed2026]. Computations below are for $K = \mathbb{Q}(i)$; the rigidity theorem
 is uniform in $K$ and $n \ge 2$.
 
 **Theorem 1 (infinitesimal rigidity of rational Weil classes).** Let
@@ -172,7 +184,8 @@ generator and for the plane jointly, with kernel exactly the
 $c \in \{1, 3\}$. Here $h_1$ is split — it admits the explicit
 3-dimensional $K$-isotropic subspace
 $\langle f_1{+}f_4,\, f_2{+}f_5,\, f_3{+}f_6 \rangle$ (verified exactly) —
-and lies in Markman's solved discriminant class $[-1]$; $h_3$ has
+and lies in the solved discriminant class $[-1]$ (Koike [@koike2004] for
+$K = \mathbb{Q}(i)$, Markman [@markman2025] uniformly); $h_3$ has
 discriminant class $[-3] \ne [-1]$, since $3$ is not a norm from
 $\mathbb{Q}(i)$ (if $a^2 + b^2 = 3$ with $a, b \in \mathbb{Q}$, clearing
 denominators gives a primitive $x^2 + y^2 = 3z^2$; mod 3 this forces
@@ -200,8 +213,20 @@ We emphasize the scope: *global* atypicality machinery (Zilber–Pink,
 André–Oort, Ax–Schanuel; e.g. [@mostaed2026]) consumes arithmetic input and
 is not addressed by this statement; dimension-only or local-tangent
 atypicality calculations are. Consistently, every successful algebraicity
-attack to date (Prym towers [@schoen1988], theta functions
-[@vangeemen1996], secant sheaves [@markman2025]) is constructive.
+attack to date (Prym towers [@schoen1988; @koike2004], theta functions
+[@vangeemen1996], secant sheaves [@markman2025]) is constructive. Koike's
+calculation [@koike2004] deserves particular note as a methodological
+ancestor of this paper's shape — a nine-dimensional unitary Shimura
+family, an exact first-order map, an isomorphism certified at one
+specially constructed point, a global conclusion. But the two
+computations answer different questions: Koike computes the differential
+of a Prym *realization* map and proves that algebraic cycles dominate the
+split Gaussian family; we compute the infinitesimal Hodge *obstruction*
+of each rational Weil class and identify its local Hodge locus, including
+on the nonsplit component where no such cycle construction is known. His
+successful calculation is constructive and family-dominating; ours
+establishes that the local Hodge equations themselves do not know which
+component admits such a construction.
 
 **Theorem 3 (real conjugacy: the germ cannot see the discriminant).** Let
 $\Phi$ be the realification of $\varphi = \mathrm{diag}(1,1,1,1,1,3^{-1/2})$
@@ -434,7 +459,16 @@ $(1,0,0)$ contains isotropic and root lifts but no positive-square
 lift).
 
 All parts elementary and verified in exact arithmetic; offered as an
-instrument, not as new K3 theory (§§6, 8).
+instrument, not as new K3 theory (§§6, 8). Extremal Picard behavior
+along explicit one-dimensional K3 families is a going concern of the
+recent literature: Carini–Viganò [@carinivigano] show every Picard
+number $0 \le \rho \le 20$ occurs in the fibers of some one-dimensional
+deformation of any complex K3 (while the generic local family sees only
+$0$ and $1$), and Viganò [@vigano2024] determines the admissible Picard
+numbers of algebraic twistor fibers, with CM structure at the special
+fibers. The novelty claimed here is not the existence or density of the
+Picard jump but the explicit residue-valued observable $z_\gamma$ that
+resolves the discontinuous Picard reading class by class.
 
 The organizing invariant throughout is the first-order quantity
 $e(\gamma) = \kappa_{\exp} - \mathrm{rank}_{\mathbb{C}} \mu_\gamma$ with
@@ -1013,35 +1047,106 @@ legs [@vangeemen2022; @vangeemen1994]; Hodge loci in $A_g$ as special
 subvarieties (Mumford–Tate theory; [@moonen1998; @cattani1995;
 @deligne1982]); the infinitesimal formalism [@green1994; @voisin2013];
 atypicality [@baldi2021]; the algebraicity results [@schoen1988;
-@schoen1998; @vangeemen1996; @markman2023; @markman2025; @moonenzarhin1999];
-Lefschetz (1,1) and the K3 facts under Proposition 6; the boundary results
+@schoen1998; @vangeemen1996; @koike2004; @markman2023; @markman2025;
+@moonenzarhin1999];
+Lefschetz (1,1) and the K3 facts under Proposition 6, with the
+Picard-number behavior of explicit one-parameter K3 families an active
+modern topic [@carinivigano; @vigano2024]; the boundary results
 framing the audit reading [@atiyah1962; @kollar1992; @voisin2002]. The
 representation-theoretic decomposition behind Theorem 1 is elementary and
 surely known in spirit.
 
-To our knowledge new, in decreasing order of confidence: (1) the
-exact-arithmetic certification pipeline — identical-vanishing bounds plus
-one exact attainment plus homogeneity, with the audit-suite discipline of
-§4; (2) Theorem 1 in the stated form — in particular the reduced-germ
-conclusion for a *single* rational Weil class, at every point including
-split CM points, uniform in $n$ (van Geemen's fourfold work provides a
-close precedent on uniqueness of the deforming family; we did not find the
-rank-$n(n+1)$, reduced-germ statement in print); (3) Theorem 2's computed
-discriminant-blindness certificate at the sixfold solved/open boundary;
-(4) the $\pm 2ni$-eigenpair definition of the Weil space, degeneracy-free
-at $\mathbb{Q}(i)$; (5) the residue-ledger observable layer — the K3 loop
-as an instrument, the coset reading of walls, the frozen-floor/fixed-part
-identification, and the $\delta_H$ proposal. We would be glad to learn any
-of these is on record. Classification of the later additions: Theorem 3
-is a formal structural observation (real classification of hermitian
-forms plus functoriality of exterior representations) whose contribution
-is the no-go interpretation; Theorem 4 is classical arithmetic-group
-theory newly assembled for this pair; Theorem 5's dyadic type invariant
-and the exact spectra of Theorems 5b–5c are the potentially least
-routine arithmetic contribution — every ingredient is standard
-(splitting, Jordan theory, determinant groups, strong approximation),
-but we did not find the boundary-multiplicity separation of this
-discriminant pair, or the type invariant driving it, in print.
+The closest published antecedent to Theorem 1 is van Geemen's study of
+Hodge classes on a decomposable abelian fourfold [@vangeemen2022]. He
+determines the locus of codimension-two classes on $J \times J$ that
+deform into Weil-type families and proves that a class outside a
+distinguished singular locus (of a determinantal cubic) deforms in at
+most one such family — a class *in* the singular locus may deform in
+infinitely many, for different imaginary quadratic fields — and he
+observes that the analogous uniqueness appears to persist for $n > 2$.
+The same paper supplies two of our proof's classical ingredients: the
+$n^2$-dimensional $K$-linear domain, and the persistence of the
+$K$-action, polarization, and Weil plane along it. What we did not find
+there, or elsewhere in print, is the pointwise, infinitesimal, and
+scheme-theoretic form: the rank formula $n(n+1)$, the every-point kernel
+identity $\ker\mu_\gamma = T\Omega_{K,h}$, the smooth *reduced* local
+zero scheme equal to the Weil germ, uniform in $n \ge 2$, with the sharp
+failure at $n = 1$. Van Geemen's uniqueness is set-theoretic and centered
+at the decomposable fourfold; Theorem 1 is the upgrade of that shape to
+per-class infinitesimal rigidity. A specialist may yet recognize the rank
+computation as an unstated corollary of standard period-domain
+representation theory; that is the main open novelty question for
+Theorem 1, and we would be glad to learn of a source.
+
+The exact-computation methodology also has published precedents, which
+sharpen rather than diminish the calibration discipline of §4.
+Movasati–Villaflor [@movasativillaflor] compute exact periods of linear
+algebraic cycles on Fermat hypersurfaces and prove, in specific cases,
+that the corresponding local Hodge loci are smooth reduced components —
+a genuine precedent for establishing the *scheme-theoretic* quality of a
+Hodge locus by exact symbolic computation. Conversely, Duque
+Franco–Villaflor [@duquefrancovillaflor] construct "fake linear cycles"
+whose Hodge loci are nonreduced even though the Zariski tangent spaces
+have the expected dimensions — detecting this requires second-order
+IVHS data. These examples are external evidence that the reduced-germ
+conclusion of Theorem 1 is not cosmetic: first-order tangent dimensions
+do not in general determine the scheme structure of a Hodge locus. Our
+dimension sandwich closes the gap only because an actual smooth
+$n^2$-dimensional subdomain sits inside the zero scheme with tangent
+dimension exactly matching the kernel.
+
+The contributions divide into three kinds, and the division is worth
+making explicit.
+
+*New theorem candidates.* (1) Theorem 1 in the stated form — the
+reduced-germ conclusion for a *single* rational Weil class, at every
+point including split CM points, uniform in $n \ge 2$, with the sharp
+$n = 1$ failure (van Geemen's fourfold uniqueness is the close
+precedent, as discussed above; we did not find the rank-$n(n+1)$,
+reduced-germ statement in print). (2) Theorem 5's dyadic type invariant
+and the exact cusp spectra of Theorems 5b–5c — every ingredient is
+standard (splitting, Jordan theory, determinant groups, strong
+approximation), but we did not find the boundary-multiplicity
+separation of this discriminant pair, or the type invariant driving it,
+in print. The known prior-art zone is the arithmetic unitary
+cusp-counting literature: Zink's 1979 note on cusp numbers of
+arithmetic subgroups of unitary groups [@zink1979] is the
+closest-titled prior work and has not yet been compared line by line
+with Theorems 5–5c — this is the single largest unresolved literature
+risk for the boundary half — and the Picard modular literature
+(cusps of $SU(2,1)$ lattices via isotropic subspaces and ideal
+classes, e.g. Stover [@stover]) is the adjacent tradition. A
+specialist in hermitian lattices may recognize the classification as
+a short specialization of a general orbit theorem; this is where
+expert literature review has the highest value, and the novelty claim
+for the spectra is explicitly provisional until the Zink comparison
+is done.
+
+*New applications and syntheses.* (3) Theorem 2's computed
+discriminant-blindness certificate at the sixfold solved/open boundary,
+and the local-to-boundary hierarchy it anchors (tangent blind, germ
+blind, boundary seeing — Theorems 2, 3, 4, 5 in sequence). (4) The
+exact-arithmetic certification pipeline — identical-vanishing bounds
+plus one exact attainment plus homogeneity, with the audit-suite
+discipline of §4. The exactness tradition itself is shared with the
+Fermat Hodge-locus literature [@movasativillaflor;
+@duquefrancovillaflor]; what is ours is the sparse exterior-power
+implementation, the uniform-in-$n$ theorem it certifies, and the
+calibration-channel discipline. (5) The $\pm 2ni$-eigenpair definition
+of the Weil space, degeneracy-free at $\mathbb{Q}(i)$. (6) The
+residue-ledger observable layer — the K3 loop as an instrument, the
+coset reading of walls, the frozen-floor/fixed-part identification, and
+the $\delta_H$ proposal.
+
+*Formal or classical consequences, newly assembled.* Theorem 3 is a
+formal structural observation (real classification of hermitian forms
+plus functoriality of exterior representations) whose contribution is
+the no-go interpretation at the solved/open pair, not the existence of
+the real isometry; Theorem 4 is classical arithmetic-group theory newly
+assembled for this pair; the K3 density and 19/20 facts of Proposition
+6 are known geometry [@carinivigano; @vigano2024], instrumented rather
+than extended. We would be glad to learn any item of the first two lists is
+on record.
 
 # The interpretive layer
 
@@ -1132,6 +1237,10 @@ exact points, with semicontinuity/homogeneity closing the gap; the split
 form's $K$-isotropic 3-space is asserted exactly. Companions in
 `supplements/`: the essay *The Ledger Reading* and the interactive
 instrument *The K3 Residue Angle*. Attributions verified against sources,
-August 2026.
+August 2026, including the five references added in the v0.15 prior-art
+pass ([@koike2004; @movasativillaflor; @duquefrancovillaflor;
+@carinivigano; @vigano2024]), checked against arXiv and the publishers'
+records; Koike's discriminant convention was reconciled against the
+original paper.
 
 # References

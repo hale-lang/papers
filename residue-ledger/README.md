@@ -1,7 +1,7 @@
 # residue-ledger
 
 *The Tangent Space Cannot See the Discriminant: local rigidity and
-arithmetic boundary separation for Weil classes* — draft v0.14,
+arithmetic boundary separation for Weil classes* — draft v0.15,
 August 2026. **Not yet submitted anywhere; treat as
 a working draft.**
 
@@ -156,7 +156,12 @@ the companion essay is *Zero-Mode Shadows*.
 
 ## Status and honesty notes
 
-Draft v0.14 (fifth-referee editorial pass: stale conditional grading
+Draft v0.15 (novelty-search results folded into §7: Zink 1979 named
+as the closest-titled prior work for Theorems 5-5c and flagged as the
+single largest unresolved literature risk — the spectra's novelty claim
+is explicitly provisional until a line-by-line Zink comparison is done;
+Stover's Picard modular cusp work cited as the adjacent tradition and
+citation-tree entry point. Prior v0.14: fifth-referee editorial pass: stale conditional grading
 sentence in Theorem 5's proof replaced — Theorems 5b/5c close those
 exact legs; the class-set/determinant-coset implication made logically
 explicit in Lemma L6 (strong approximation makes each fiber a single
