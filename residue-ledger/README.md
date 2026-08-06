@@ -1,7 +1,7 @@
 # residue-ledger
 
 *The Tangent Space Cannot See the Discriminant: local rigidity and
-arithmetic boundary separation for Weil classes* — draft v0.12,
+arithmetic boundary separation for Weil classes* — draft v0.13,
 August 2026. **Not yet submitted anywhere; treat as
 a working draft.**
 
@@ -150,7 +150,14 @@ the companion essay is *Zero-Mode Shadows*.
 
 ## Status and honesty notes
 
-Draft v0.12 (fourth-referee explication pass on Theorem 5c: move (iv)
+Draft v0.13 (structural: the boundary arithmetic moved to a dedicated
+section — "The arithmetic of the boundary" — with the local-lattice
+toolkit stated as formal lemmas L1-L6 (dyadic unit norms; odd/even
+unimodular dyadic classification; determinant groups at the ramified
+prime; the inert prime; global inputs), each tagged with its machine
+certificate; Theorems 5/5b/5c keep their statements in Results with a
+pointer; positional section references renumbered. Prior v0.12:
+fourth-referee explication pass on Theorem 5c: move (iv)
 stated as the full integral shear — u_i += z with c -= h(c,z) f_i —
 so the complement is replaced by an isometric copy rather than left
 dangling, with an exact two-lattice certificate; 3-adic-primitivity
