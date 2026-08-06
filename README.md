@@ -20,7 +20,9 @@ discriminant class and return identical infinitesimal data, and an
 explicit real conjugacy theorem upgrades this to every order, while
 the arithmetic quotients ARE separated — by their rational boundary
 (Witt indices 3 vs 2; totally degenerate cusps exist only on the
-split side; local difference exactly at the primes 2 and 3): the
+split side; local difference exactly at the primes 2 and 3; both
+quotients connected with one cusp per available corank, so the whole
+distinction is one bit — the existence of the deepest cusp): the
 tangent cannot see the discriminant, the germ cannot see it, the
 cusps can. Includes a K3 period-loop
 instrument and an interpretive companion essay. See

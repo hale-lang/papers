@@ -2,7 +2,7 @@
 title: "The Tangent Space Cannot See the Discriminant"
 subtitle: "Infinitesimal rigidity of Weil classes, with exact certificates in dimensions four and six"
 author: Riley Rook
-date: "Draft v0.5 — August 2026"
+date: "Draft v0.6 — August 2026"
 ---
 
 **Abstract.** We study exact infinitesimal Hodge-obstruction maps for
@@ -39,8 +39,11 @@ where the discriminant *does* first appear: the two arithmetic quotients
 differ in their rational boundary — the Witt indices are 3 and 2, so the
 split quotient admits totally degenerate cusps while the nonsplit one
 does not — and the local difference is concentrated at exactly the primes
-2 and 3. The tangent cannot see the discriminant; the germ cannot see it;
-the cusps can. A K3
+2 and 3. Both quotients are connected (class number one) with exactly one
+cusp at each available corank, so components and multiplicities carry
+nothing: the whole distinction is the existence of the deepest cusp. The
+tangent cannot see the discriminant; the germ cannot see it; the cusps
+can — and what they see is exactly one bit. A K3
 period-loop instrument motivates the reading that organizes the paper —
 integer invariants as zero-mode shadows of continuous residual data — and
 the sixfold result marks that reading's own boundary: some discrete
@@ -280,6 +283,48 @@ We flag, as a hypothesis and not a claim, that this narrowing of the
 degeneration route may be a structural component of the nonsplit sixfold
 case's resistance; in any case, any degeneration-based attack on it must
 work at corank $\le 2$.
+
+**Theorem 5 (one cusp per depth; connected quotients).** For both
+$c \in \{1, 3\}$: the genus of the hermitian lattice
+$L_c = (\mathbb{Z}[i]^6, h_c)$ has class number one, so
+$\Gamma_c \backslash \Omega$ is connected; and $\Gamma_c$ acts with
+exactly **one orbit** on primitive isotropic sublattices of every
+available rank — the cusp counts are $(1, 1, 1)$ at coranks $(1,2,3)$ for
+the split quotient and $(1, 1)$ at coranks $(1,2)$ for the nonsplit one.
+Components and cusp multiplicities therefore carry no discriminant
+information at all: **the entire arithmetic distinction between the two
+quotients is the existence of the corank-3 cusp.**
+
+*Proof, with graded legs.* Class numbers: $SU(3,3)$ is simply connected
+and $\mathbb{R}$-isotropic, so strong approximation holds and the class
+set of the genus maps to the determinant double coset
+$X = U^1(K)\backslash U^1(\mathbb{A}_f)/\prod_p \det U(L_{c,p})$. Because
+the forms are *diagonal*, $\mathrm{diag}(u, 1, \ldots, 1)$ with
+$u\bar u = 1$ lies in $U(L_c)$ at every place, so each local determinant
+image is the full norm-one unit group; by Hilbert 90 (every norm-one
+element is $y/\bar y$, locally and globally) $X$ is a quotient of
+$\mathbb{A}_{K,f}^{\times}/(K^{\times}\widehat{\mathcal{O}}^{\times})
+= \mathrm{Cl}(\mathbb{Q}(i)) = 1$. Cusp counts: with $X$ trivial,
+$\Gamma_c$-orbits of primitive isotropic sublattices biject with products
+of local orbits. At every $p$ where $L_c$ is unimodular, primitive
+vectors have full pairing ideal (no scale invariants), and Witt's theorem
+on the residue hermitian space plus Hensel lifting gives one local orbit
+at odd $p$. At $p = 3$ for $L_3$, a positioning certificate closes the
+one possible new invariant: no primitive isotropic vector has
+$3$-divisible unimodular part — isotropy would force
+$3 \mid \mathrm{Nm}(v_6)$ with $v_6$ a unit, and
+$\mathrm{Nm}$ on the units of $\mathbb{Z}[i]/3$ takes only the values
+$\{1, 2\}$ (finite check); the difference argument extends this to
+vectors primitive in an isotropic plane, so all cusp data at $3$ reduces
+to the unimodular block, whose residue space is the nondegenerate
+hermitian $4$-space over $\mathbb{F}_9$ — certified at the point-count
+level: the enumerated isotropic quadric has exactly
+$(3^5+1)(3^4-1)/(3^2-1) = 2440$ projective points, matching the
+Hermitian-variety formula. Grading: the strong-approximation and
+Hilbert-90 legs and the odd-place local analysis are
+proof-plus-certificate (`code/cusp_class_numbers.py`); the dyadic place
+and the sublattice-level local–global bookkeeping are standard hermitian
+lattice theory [@jacobowitz1962], cite-grade. $\blacksquare$
 
 **Lemma (skew-adjoint spectral separation).** Let $M$ be skew-adjoint for
 a bilinear pairing: $\langle Mx, y\rangle + \langle x, My\rangle = 0$. Then
@@ -542,13 +587,11 @@ companion essay develops the frame; nothing in §§1–6 depends on it.
 
 # Directions
 
-- **Counting the boundary.** Theorem 4 gives the *menu* of boundary
-  coranks; the finer invariants are counts: the number of
-  $\Gamma_c$-orbits of isotropic subspaces at each corank (cusp counts),
-  the class number of each hermitian genus (component counts of the
-  adelic double coset), and their mass-formula values. All are
-  computable-in-principle refinements of Theorem 4 and the natural next
-  certificates.
+- **Counting the boundary: done.** Theorem 5 computes the counts — class
+  numbers one, one cusp per available corank; nothing but the existence
+  bit survives. The remaining countable refinement is dyadic: replace
+  the cite-grade Jacobowitz leg at $p = 2$ with an explicit certificate
+  (a finite computation in the ramified dyadic hermitian classification).
 - **The degeneration route.** Sharpen the hypothesis-grade remark after
   Theorem 4: formalize what a corank-$\le 2$ degeneration argument for
   Weil classes would need, and whether Schoen-type limits exist there —
@@ -579,7 +622,8 @@ floats verify an asymptotic numerically) and accompany this draft in
 `code/`: `two_meters.py`, `two_meters_generic.py`, `two_meters_vgeneral.py`,
 `two_meters_polarized.py`, `two_meters_polarized_full.py`,
 `resonance_excess.py`, `sixfold_rig.py`, `conjugacy_theorem.py`,
-`arithmetic_quotient.py`, `k3_residue_angle.py`. Every
+`arithmetic_quotient.py`, `cusp_class_numbers.py`, `k3_residue_angle.py`.
+Every
 load-bearing identity is asserted identically in parameters or verified at
 exact points, with semicontinuity/homogeneity closing the gap; the split
 form's $K$-isotropic 3-space is asserted exactly. Companions in
