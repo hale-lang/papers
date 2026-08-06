@@ -2,7 +2,7 @@
 title: "The Tangent Space Cannot See the Discriminant"
 subtitle: "Local rigidity and arithmetic boundary separation for Weil classes"
 author: Riley Rook
-date: "Draft v0.13 — August 2026"
+date: "Draft v0.14 — August 2026"
 ---
 
 **Abstract.** We study exact infinitesimal Hodge-obstruction maps for
@@ -632,10 +632,14 @@ $\mathbb{F}_9$ omits $0$. (Certificates [N3], [B8], [E8].)
 
 **Lemma L6 (global inputs).** $SU$ of a nondegenerate hermitian
 $\mathbb{Q}(i)$-space of rank $\ge 2$ with noncompact real points
-satisfies strong approximation [@platonovrapinchuk1994]; the class set
-of a genus maps to the determinant double coset
+satisfies strong approximation [@platonovrapinchuk1994]. Strong
+approximation makes every fiber of the determinant map a single special
+genus — and, in the indefinite case, a special genus is a single
+isometry class — so the class set of a genus is *parametrized by* (not
+merely mapped to) the determinant double coset
 $X = U^1(\mathbb{Q})\backslash U^1(\mathbb{A}_f)/\prod_p \det
-U(L_p)$ [cf. @shimura1964]; Hilbert 90 identifies the norm-one idele
+U(L_p)$ [cf. @shimura1964; @kirschmer2019]: $X$ trivial *implies* class
+number one. Hilbert 90 identifies the norm-one idele
 class quotient with a quotient of
 $\mathbb{A}_{K,f}^{\times}/(K^{\times}\widehat{\mathcal{O}}^{\times})
 = \mathrm{Cl}(\mathbb{Q}(i)) = 1$. Noncompactness at the archimedean
@@ -645,8 +649,9 @@ and indeed fails for one of the lattices below.
 ## Proof of Theorem 5
 
 *Proof, with graded legs.* Class numbers: $SU(3,3)$ is simply connected and $\mathbb{R}$-isotropic,
-so strong approximation holds [@platonovrapinchuk1994] and the class set
-of the genus maps to the determinant double coset
+so strong approximation holds [@platonovrapinchuk1994] and, by Lemma
+L6, the class set of the genus is parametrized by the determinant
+double coset
 $X = U^1(K)\backslash U^1(\mathbb{A}_f)/\prod_p \det U(L_{c,p})$. Because
 the forms are *diagonal*, $\mathrm{diag}(u, 1, \ldots, 1)$ with
 $u\bar u = 1$ lies in $U(L_c)$ at every place, so each local determinant
@@ -687,10 +692,11 @@ the corank-3 forcing is a full enumeration — all 15 totally isotropic
 3-subspaces of $(\mathbb{F}_2^6, \mathrm{dot})$ contain the all-ones
 vector. Grading: strong approximation, Hilbert 90, the odd-place
 analysis, and the dyadic type classification are proof-plus-certificate
-(`code/cusp_class_numbers.py`, `code/dyadic_types.py`); the remaining
-flags are the within-class transitivity at fixed invariants and the
-absence of finer invariants at higher $\pi$-precision — standard
-hermitian lattice theory territory [@jacobowitz1962]. $\blacksquare$
+(`code/cusp_class_numbers.py`, `code/dyadic_types.py`); the dyadic
+certificates prove type separation and realization, and Theorems 5b and
+5c prove within-type integral transitivity directly at every corank —
+so no invariant at higher $\pi$-precision survives and no additional
+parabolic local–global calculation is required. $\blacksquare$
 
 *Correction note (methodological, kept deliberately).* An earlier
 version of this theorem asserted one cusp per available corank, with the
@@ -774,8 +780,8 @@ connected $\mathbb{Q}$-group of type $A_3$ whose real points are the
 noncompact $SU(2,2)$ — noncompactness at the archimedean place is what
 strong approximation needs; the $\mathbb{Q}$-Witt index varies with the
 discriminant class and plays no role. So strong approximation applies
-[@platonovrapinchuk1994] and the class set maps
-to the determinant double coset $X_C = U^1(\mathbb{Q})\backslash
+[@platonovrapinchuk1994] and, by Lemma L6, the class set is
+parametrized by the determinant double coset $X_C = U^1(\mathbb{Q})\backslash
 U^1(\mathbb{A}_f)/\prod_p \det U(C_p)$. For the odd (diagonalized)
 complements the diagonal maps give the full norm-one unit group at
 every place. For the even complement $H \perp H$ the same trick
@@ -926,8 +932,8 @@ diagonal, giving the full local norm-one unit groups everywhere; the
 even complement is a single hyperbolic plane at the ramified prime,
 where the unit maps give at least the index-two subgroup $E_1$
 [@kirschmer2019], and the global unit $i$ absorbs any residual defect
-exactly as in Lemma 5b.4. The determinant double coset is trivial;
-each genus is one isometry class.
+exactly as in Lemma 5b.4. The determinant double coset is trivial; by
+Lemma L6, each genus is one isometry class.
 
 *Conclusion.* Same-type complements are isometric; gluing with the
 identical $\begin{pmatrix} 0 & I \\ I & D\end{pmatrix}$ blocks gives
@@ -1118,7 +1124,8 @@ per-leg grading (PROVED-BY-CODE / PROVED-IN-TEXT / CITED / CONDITIONAL): `two_me
 `two_meters_polarized.py`, `two_meters_polarized_full.py`,
 `resonance_excess.py`, `sixfold_rig.py`, `conjugacy_theorem.py`,
 `arithmetic_quotient.py`, `cusp_class_numbers.py`, `dyadic_types.py`,
-`n1_sharpness.py`, `theorem5_legs.py`, `k3_residue_angle.py`.
+`n1_sharpness.py`, `theorem5_legs.py`, `corank23_lemmas.py`,
+`k3_residue_angle.py`.
 Every
 load-bearing identity is asserted identically in parameters or verified at
 exact points, with semicontinuity/homogeneity closing the gap; the split

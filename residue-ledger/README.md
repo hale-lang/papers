@@ -1,7 +1,7 @@
 # residue-ledger
 
 *The Tangent Space Cannot See the Discriminant: local rigidity and
-arithmetic boundary separation for Weil classes* — draft v0.13,
+arithmetic boundary separation for Weil classes* — draft v0.14,
 August 2026. **Not yet submitted anywhere; treat as
 a working draft.**
 
@@ -71,7 +71,7 @@ results:
   record the correction trail: one-cusp-per-depth asserted, retracted,
   then the richer spectra proved — the paper's own calibration lesson
   applied to itself, twice).
-- **Proposition C (K3 dichotomy loop).** A twistor-type rational
+- **Proposition 6 (K3 dichotomy loop).** A twistor-type rational
   period conic in the K3 period domain whose very general fibers are nonprojective of
   Picard rank 19 while every one of its dense Noether–Lefschetz walls
   is projective of rank 20 — the instrument behind the paper's
@@ -79,7 +79,7 @@ results:
   continuous residual data").
 
 The paper is deliberately explicit about what is classical and what is
-new (§6): most of the mathematics is known; the contributions are the
+new (§7): most of the mathematics is known; the contributions are the
 certification pipeline, the reducedness statements, the
 discriminant-blindness computation, and the observable layer.
 
@@ -125,7 +125,7 @@ discriminant-blindness computation, and the observable layer.
     the parity transformation law, transvection generation of GL_r(F_2),
     exact standard splits of both corank-2 types with their even/odd
     complements).
-  - `k3_residue_angle.py` — Proposition C (emits
+  - `k3_residue_angle.py` — Proposition 6 (emits
     `k3_residue_data.json`); `build_k3_page.py` regenerates the
     interactive supplement from it.
 
@@ -135,8 +135,14 @@ discriminant-blindness computation, and the observable layer.
   docstrings and in the verifier's grading legend — the suite
   distinguishes PROVED-BY-CODE / PROVED-IN-TEXT / CITED / CONDITIONAL.
   Run `python3 verify_all.py` from inside `code/` for the full suite;
-  `requirements.txt` pins the environment; CI runs the suite on every
-  push touching this directory. Floats appear only in one numerical
+  `requirements.txt` pins the environment. A GitHub Actions workflow
+  (`.github/workflows/residue-ledger-verify.yml`) is configured to run
+  the suite on every push touching this directory, but at the time of
+  writing hosted runners have not picked up any run (an
+  infrastructure-side issue), so there is NO independently green CI
+  certificate yet: the verification of record is the local suite run
+  reported in each version's commit message (last full pass: v0.12,
+  15/15, 252s; code unchanged since). Floats appear only in one numerical
   asymptotic check and in the K3 page's plotting data — every
   proof-critical identity is exact.
 - `supplements/` — self-contained HTML companions: `ledger-essay.html`
@@ -150,7 +156,17 @@ the companion essay is *Zero-Mode Shadows*.
 
 ## Status and honesty notes
 
-Draft v0.13 (structural: the boundary arithmetic moved to a dedicated
+Draft v0.14 (fifth-referee editorial pass: stale conditional grading
+sentence in Theorem 5's proof replaced — Theorems 5b/5c close those
+exact legs; the class-set/determinant-coset implication made logically
+explicit in Lemma L6 (strong approximation makes each fiber a single
+special genus, indefinite special genera are single classes, so X
+trivial IMPLIES class number one) and wired into all three proofs;
+corank23_lemmas.py added to the paper's reproducibility list;
+Proposition-6 naming and §7 references synchronized in this README; the
+CI claim replaced with the honest status — no independently green
+Actions run yet, local suite is the verification of record. Prior
+v0.13: structural: the boundary arithmetic moved to a dedicated
 section — "The arithmetic of the boundary" — with the local-lattice
 toolkit stated as formal lemmas L1-L6 (dyadic unit norms; odd/even
 unimodular dyadic classification; determinant groups at the ramified
@@ -183,7 +199,7 @@ in the K3 script).
 Attributions were checked against sources in August 2026.
 The split/nonsplit discriminant distinction is settled invariantly in
 the paper (explicit K-isotropic subspace for the split form; a descent
-argument for the nonsplit class). The novelty claims in §6 are stated
+argument for the nonsplit class). The novelty claims in §7 are stated
 with an explicit invitation to correction. An expert read of Theorem
 1's novelty (in particular the reduced-germ conclusion for a single
 rational Weil class) is the main gate before any submission.
