@@ -8,8 +8,9 @@ a primitive totally isotropic rank-r sublattice of L_c (r = 2 for both
 lattices; r = 3 for L_1 only, by Witt index).
 
   Lemma 5c.1 (dual system). The pairing map L_c -> F^dual is surjective:
-    for c = 1 by unimodularity; for c = 3 because every primitive vector
-    of F is a primitive isotropic vector of L_3, so the positioning
+    for c = 1 by unimodularity; for c = 3 because every vector of F
+    nonzero in F/3F is 3-ADICALLY primitive (only local primitivity is
+    used) and isotropic, so the positioning
     certificate ([N3]/[B8]: Nm never 0 on units of Z[i]/3) makes
     F/3F -> M_0/3M_0 injective (M_0 = the rank-5 unimodular Jordan block
     at 3), the projection of F into M_0 is a primitive sublattice of a
@@ -17,7 +18,7 @@ lattices; r = 3 for L_1 only, by Witt index).
     PID globalizes. Lifting a dual basis gives U with pairing matrix I:
     F (+) U has Gram [[0,I],[I,D]] (D = Gram(U), hermitian), unit
     determinant, so L_c = (F (+) U) _|_ C with C of rank 6-2r.
-  Lemma 5c.2 (normal form for D). Three exact integral moves:
+  Lemma 5c.2 (normal form for D). Four exact integral moves:
     (i)  u_i += lambda f_j (j != i): clears the off-diagonal of D
          exactly, touching nothing else;
     (ii) u_i += t f_i (t in Z): shifts d_i = h(u_i,u_i) by 2t;
@@ -27,7 +28,12 @@ lattices; r = 3 for L_1 only, by Witt index).
          terms are trace terms, always even) — certified in [E2] — and
          every element of GL_r(F_2) = SL_r(F_2) lifts (transvection
          generation, certified in [E3]);
-    (iv) u_i += z (z in C): shifts d_i by h(z,z) — parity q(z).
+    (iv) the SHEAR by z in C: u_i += z AND c -= h(c,z) f_i for every
+         c in C — the corrected complement stays orthogonal to the new
+         u_i, its Gram is UNCHANGED (correction terms pair C against
+         the isotropic F), and d_i shifts by h(z,z): parity flips iff
+         q(z) = 1 while C is replaced by an isometric copy ([E7]
+         demonstrates the full shear exactly).
     The parity vector delta satisfies delta_j = b(ones, u_j mod pi):
     * type A (ones in F mod pi): delta = the coordinate vector of the
       all-ones vector in the F-basis — NONZERO and frozen (q vanishes
@@ -54,8 +60,11 @@ lattices; r = 3 for L_1 only, by Witt index).
     rank alone (every unit is a norm, unramified CFT); at other odd
     primes rank + determinant; at infinity signature (1,1).
   Lemma 5c.4 (one class per corank-2 complement genus). SU of a rank-2
-    complement is the simply connected R-isotropic SU(1,1)-form, so
-    strong approximation applies; determinant groups: odd complements
+    complement is a simply connected Q-group of type A_1 with noncompact
+    real points SU(1,1) — noncompactness at infinity is the strong-
+    approximation hypothesis, which matters: the L_3 complement
+    diag(1,-3) is Q-ANISOTROPIC (3 is not a global norm), yet strong
+    approximation applies all the same; determinant groups: odd complements
     are diagonal, giving the FULL local norm-one units everywhere; the
     even complement (a single H at 2) gives at least E_1 there, and the
     global unit i kills any residual index-2 defect exactly as in
@@ -98,8 +107,11 @@ Certificates:
        coefficient tuples — so delta = 0 would force L even; L_1 is
        odd (h(f1,f1) = 1): delta != 0 at corank 3 with no appeal to
        enumeration.
-  [E7] parity-flip demo (type B): u_1 += f3 shifts d_1: 1 -> 2 exactly,
-       pairings intact — move (iv) in action.
+  [E7] the full shear, exactly (type B, both lattices): z = f3 gives
+       u_1' = u_1 + f3 and the corrected complement <f3 - f1, f6>; all
+       block pairings restored, complement Gram UNCHANGED
+       (diag(1,-1) / diag(1,-3)), d_1: 1 -> 2 — move (iv) as a genuine
+       block-preserving basis operation, not just a parity bookkeeper.
   [E8] the L_3 positioning substrate re-asserted (Nm on units of
        Z[i]/3 = {1,2}, never 0) — the engine of Lemma 5c.1 at c = 3.
 """
@@ -261,31 +273,45 @@ def main():
     # parity = sum Nm(b_i) delta_i mod 2. Sweep exact Gaussian coefficients:
     coeffs = [0, 1, sI, 1 + sI]
     checked = 0
-    for d1 in (0, 1):
-        Fs, Us = Fn, Un                     # the [E1] basis, D = diag(1,0,0)
-        delta = [1, 0, 0]
+    Fs, Us = Fn, Un                         # the [E1] basis, D = diag(1,0,0)
+    delta = [1, 0, 0]
+    for i, j in ((0, 1), (0, 2), (1, 2)):   # all index pairs of the block
         for tup in iproduct(range(4), repeat=4):
             a1, a2, b1, b2 = (coeffs[t] for t in tup)
-            x = [expand(a1 * Fs[0][s] + a2 * Fs[1][s]
-                        + b1 * Us[0][s] + b2 * Us[1][s]) for s in range(6)]
+            x = [expand(a1 * Fs[i][s] + a2 * Fs[j][s]
+                        + b1 * Us[i][s] + b2 * Us[j][s]) for s in range(6)]
             nrm = herm(x, x)
-            pred = (int(expand(b1 * conjugate(b1))) * delta[0]
-                    + int(expand(b2 * conjugate(b2))) * delta[1]) % 2
+            pred = (int(expand(b1 * conjugate(b1))) * delta[i]
+                    + int(expand(b2 * conjugate(b2))) * delta[j]) % 2
             assert int(nrm) % 2 == pred
             checked += 1
-        break
     assert herm(F6[0], F6[0]) == 1          # L_1 is odd
     print(f"[E6] parity identity h(x,x) = sum Nm(b_i) delta_i mod 2 verified on")
     print(f"     {checked} exact coefficient tuples: delta = 0 would make the")
     print("     lattice EVEN, and L_1 is odd (h(f1,f1) = 1) — so delta != 0 at")
     print("     corank 3, independently of the [D5] enumeration.")
 
-    # ---- [E7] parity-flip demo (move (iv), type B) ---------------------------
-    u1s = [expand(a + b) for a, b in zip(F6[0], F6[2])]    # f1 + f3
-    assert pairing(FB, [u1s, F6[1]]) == eye(2)
-    assert herm(u1s, u1s) == 2                             # d_1: 1 -> 2
-    print("[E7] parity flip: u_1 += f3 (odd vector of C) shifts d_1 = 1 -> 2 with")
-    print("     pairings intact — type-B parities are free, D -> diag(1,1).")
+    # ---- [E7] the full shear (move (iv)), exactly, both lattices -------------
+    for eps, name, cg in ((EPS1, "L_1", Matrix([[1, 0], [0, -1]])),
+                          (EPS3, "L_3", Matrix([[1, 0], [0, -3]]))):
+        z = F6[2]                                          # odd vector of C
+        u1s = [expand(a + b) for a, b in zip(F6[0], z)]    # u_1' = u_1 + z
+        Cold = [F6[2], F6[5]]
+        Cnew = []
+        for c in Cold:                                     # c' = c - h(c,z) f_1
+            lam = herm(c, z, eps)
+            Cnew.append([expand(c[t] - lam * FB[0][t]) for t in range(6)])
+        U2 = [u1s, F6[1]]
+        assert pairing(FB, U2, eps) == eye(2)              # F-U pairing intact
+        for c in Cnew:                                     # complement orthogonal
+            for x in FB + U2:
+                assert simplify(herm(x, c, eps)) == 0, (name, x, c)
+        assert gram(Cnew, eps) == cg                       # Gram UNCHANGED
+        assert herm(u1s, u1s, eps) == 2                    # d_1: 1 -> 2
+        print(f"[E7] full shear ({name}): u_1' = u_1 + f3, complement corrected to")
+        print(f"     <f3 - f1, f6>: all pairings restored, complement Gram")
+        print(f"     unchanged {cg.tolist()}, d_1: 1 -> 2 — move (iv) is a genuine")
+        print(f"     block-preserving basis operation.")
 
     # ---- [E8] the L_3 positioning substrate ----------------------------------
     nm_vals = {(a * a + b * b) % 3

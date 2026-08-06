@@ -2,7 +2,7 @@
 title: "The Tangent Space Cannot See the Discriminant"
 subtitle: "Local rigidity and arithmetic boundary separation for Weil classes"
 author: Riley Rook
-date: "Draft v0.11 — August 2026"
+date: "Draft v0.12 — August 2026"
 ---
 
 **Abstract.** We study exact infinitesimal Hodge-obstruction maps for
@@ -573,11 +573,13 @@ primitive totally isotropic of rank $r$.
 \mathrm{Hom}_{\mathbb{Z}[i]}(F, \mathbb{Z}[i])$ is surjective. For
 $c = 1$: unimodularity plus the fact that a primitive sublattice of a
 free module over the PID $\mathbb{Z}[i]$ is a direct summand. For
-$c = 3$: every primitive vector of $F$ is a primitive isotropic vector
-of $L_3$, so the positioning lemma applies to it; hence
+$c = 3$: every vector of $F$ that is nonzero in $F/3F$ is
+$3$-*adically* primitive in $L_3 \otimes \mathbb{Z}_3$ — only local
+primitivity is used — and isotropic, so the positioning lemma applies
+to it; hence
 $F/3F \to M_0/3M_0$ is injective ($M_0$ the rank-5 unimodular Jordan
-block at 3 — a kernel element would be a primitive vector of $F$ with
-$3$-divisible unimodular part), the projection of $F$ into $M_0$ is a
+block at 3 — a kernel element would be a locally primitive isotropic
+vector with $3$-divisible unimodular part), the projection of $F$ into $M_0$ is a
 primitive sublattice of a unimodular lattice, and already
 $M_0 \to F^{\vee}$ is surjective; away from 3 self-duality gives local
 surjectivity, and a finite cokernel that vanishes locally everywhere is
@@ -596,9 +598,17 @@ by $A^{-1} D A^{-*}$, and the diagonal-parity vector
 $\delta = (d_i \bmod 2)$ transforms by the mod-$\pi$ reduction of
 $A^{-1}$ — the hermitian cross terms are trace terms, always even —
 with every element of $GL_r(\mathbb{F}_2) = SL_r(\mathbb{F}_2)$
-realized (transvections lift); (iv) $u_i \mapsto u_i + z$
-($z \in C$) shifts $d_i$ by $h(z,z)$, i.e. flips its parity iff
-$q(z) = 1$. The parity vector is the boundary-type datum:
+realized (transvections lift); (iv) the *shear* by $z \in C$:
+$$u_i \mapsto u_i + z, \qquad c \mapsto c - h(c, z)\, f_i \ \
+\text{for every } c \in C.$$
+The corrected complement stays orthogonal to the new $u_i$ — with $h$
+linear in its first variable, $h(u_i + z,\, c - h(c,z) f_i) =
+\overline{h(c,z)} - \overline{h(c,z)}\,h(u_i, f_i) = 0$ — its Gram
+matrix is *unchanged* (the correction terms pair $C$ against the
+isotropic $F$), every other pairing is untouched, and $d_i$ shifts by
+$h(z,z)$: the parity of $d_i$ flips iff $q(z) = 1$, while the
+complement is replaced by an isometric copy, which is exactly what the
+genus argument downstream requires. The parity vector is the boundary-type datum:
 $\delta_j = \langle \mathbf{1}, \bar u_j \rangle$ in the residue
 pairing, so for type A ($\mathbf{1} \in \bar F$) it equals the
 coordinate vector of the all-ones vector in the chosen basis —

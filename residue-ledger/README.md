@@ -1,7 +1,7 @@
 # residue-ledger
 
 *The Tangent Space Cannot See the Discriminant: local rigidity and
-arithmetic boundary separation for Weil classes* — draft v0.11,
+arithmetic boundary separation for Weil classes* — draft v0.12,
 August 2026. **Not yet submitted anywhere; treat as
 a working draft.**
 
@@ -150,7 +150,12 @@ the companion essay is *Zero-Mode Shadows*.
 
 ## Status and honesty notes
 
-Draft v0.11 (Theorem 5c added: coranks 2 and 3 proved by the rank-r
+Draft v0.12 (fourth-referee explication pass on Theorem 5c: move (iv)
+stated as the full integral shear — u_i += z with c -= h(c,z) f_i —
+so the complement is replaced by an isometric copy rather than left
+dangling, with an exact two-lattice certificate; 3-adic-primitivity
+wording in Lemma 5c.1; the parity-identity sweep extended to all index
+pairs. Prior v0.11: Theorem 5c added: coranks 2 and 3 proved by the rank-r
 splitting architecture — at corank 3 the complement vanishes and the
 count is pure integral normal form — making the full cusp spectra
 (2,2,1) vs (1,1) exact and unconditional at every corank; third-referee
