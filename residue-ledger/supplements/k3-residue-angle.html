@@ -1,0 +1,205 @@
+<title>The K3 Residue Angle</title>
+<style>
+  :root {
+    --paper:#FAFAF7; --ink:#1B1E1C; --muted:#5C635E; --accent:#2E6B4F;
+    --rule:#D9DBD4; --grid:#E4E5DE; --quote:#F1F4EF;
+    --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100; --s5:#e87ba4;
+  }
+  @media (prefers-color-scheme: dark) { :root {
+    --paper:#161917; --ink:#E5E7E1; --muted:#9AA29B; --accent:#6FBF97;
+    --rule:#2C312D; --grid:#242825; --quote:#1C201D;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181;
+  } }
+  :root[data-theme="dark"] {
+    --paper:#161917; --ink:#E5E7E1; --muted:#9AA29B; --accent:#6FBF97;
+    --rule:#2C312D; --grid:#242825; --quote:#1C201D;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181;
+  }
+  :root[data-theme="light"] {
+    --paper:#FAFAF7; --ink:#1B1E1C; --muted:#5C635E; --accent:#2E6B4F;
+    --rule:#D9DBD4; --grid:#E4E5DE; --quote:#F1F4EF;
+    --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100; --s5:#e87ba4;
+  }
+  html { background: var(--paper); }
+  body { background: var(--paper); color: var(--ink); margin: 0; padding: 0 1.25rem;
+    font-family: "Palatino Linotype", Palatino, "URW Palladio L", "Book Antiqua", Georgia, serif;
+    line-height: 1.6; }
+  .sheet { max-width: 62rem; margin: 0 auto; padding: 3.5rem 0 4.5rem; }
+  .eyebrow { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .72rem;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin: 0 0 1.2rem; }
+  h1 { font-size: clamp(1.7rem, 4.5vw, 2.4rem); font-weight: 400; line-height: 1.15;
+    margin: 0 0 .8rem; text-wrap: balance; }
+  .sub { font-style: italic; color: var(--muted); margin: 0 0 2rem; max-width: 60ch; }
+  p { max-width: 66ch; }
+  .panel { border: 1px solid var(--rule); padding: 1.1rem 1rem .6rem; margin: 1.6rem 0; }
+  .paneltitle { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .72rem;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 .6rem; }
+  .chartwrap { position: relative; overflow-x: auto; }
+  svg { display: block; max-width: 100%; height: auto; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .axis { stroke: var(--muted); stroke-width: 1; }
+  .tick { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 10.5px;
+    fill: var(--muted); font-variant-numeric: tabular-nums; }
+  .wall { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 2 4; opacity: .55; }
+  .floorline { stroke: var(--s5); stroke-width: 1; stroke-dasharray: 2 5; opacity: .5; }
+  .ser { fill: none; stroke-width: 2; stroke-linejoin: round; }
+  .s1 { stroke: var(--s1); } .s2 { stroke: var(--s2); } .s3 { stroke: var(--s3); }
+  .s4 { stroke: var(--s4); } .s5 { stroke: var(--s5); }
+  .dlabel { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 10.5px; }
+  .s1t { fill: var(--s1); } .s2t { fill: var(--s2); } .s3t { fill: var(--s3); }
+  .s4t { fill: var(--s4); } .s5t { fill: var(--s5); }
+  .rho { stroke: var(--muted); stroke-width: 1.6; }
+  .rhodot { fill: var(--accent); }
+  .lg { display: inline-flex; align-items: center; gap: .45rem;
+    font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .72rem;
+    color: var(--ink); margin: 0 1.1rem .5rem 0; }
+  .sw { width: 14px; height: 3px; display: inline-block; border-radius: 2px; }
+  .swdash { background-image: linear-gradient(90deg, currentColor 60%, transparent 40%);
+    background-size: 6px 3px; }
+  .s1bg { background: var(--s1); color: var(--s1); } .s2bg { background: var(--s2); color: var(--s2); }
+  .s3bg { background: var(--s3); color: var(--s3); } .s4bg { background: var(--s4); color: var(--s4); }
+  .s5bg { background: var(--s5); color: var(--s5); }
+  .crosshair { stroke: var(--muted); stroke-width: 1; opacity: 0; }
+  .tip { position: absolute; pointer-events: none; background: var(--paper);
+    border: 1px solid var(--rule); padding: .4rem .6rem; font-family: ui-monospace, Menlo,
+    Consolas, monospace; font-size: .7rem; line-height: 1.5; opacity: 0; white-space: nowrap;
+    font-variant-numeric: tabular-nums; }
+  table { border-collapse: collapse; font-size: .85rem; font-variant-numeric: tabular-nums; }
+  th { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .68rem;
+    letter-spacing: .08em; text-transform: uppercase; font-weight: 400; color: var(--muted);
+    text-align: left; padding: .35rem .9rem .35rem 0; border-bottom: 1px solid var(--ink); }
+  td { padding: .35rem .9rem .35rem 0; border-bottom: 1px solid var(--rule); }
+  .tablewrap { overflow-x: auto; }
+  details { margin: 1rem 0; }
+  summary { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .75rem;
+    color: var(--accent); cursor: pointer; }
+  summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .note { font-size: .85rem; color: var(--muted); max-width: 66ch; }
+  code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .9em; }
+</style>
+
+<div class="sheet">
+  <p class="eyebrow">The residue ledger · instrument two</p>
+  <h1>The K3 Residue Angle</h1>
+  <p class="sub">A rational loop of periods through the K3 moduli, and the exact residue
+  reading r(γ, t) — the Hodge-length of each rational class's off-(1,1) component — for five
+  lattice classes. Zeros are Noether–Lefschetz wall-crossings — and the loop is sharply
+  dichotomous: away from walls the fibers are <em>nonprojective</em> with ρ = 19 (their
+  Néron–Severi lattice is negative definite), while at every wall the clearing coset contains a
+  positive-square class, so the wall surface is <em>projective</em> with ρ = 20, the maximum.
+  Clearing and projectivity arrive together, and Lefschetz (1,1) applies in full exactly there.</p>
+
+  <div class="panel">
+    <p class="paneltitle">Residue reading r(γ, t) along the period loop ω(t) — exact curves, sampled at t = k/8</p>
+    <div class="chartwrap" id="cw">
+      <svg viewBox="0 0 880 400" role="img"
+           aria-label="Residue readings of five K3 lattice classes along a period loop. Four curves touch zero at their walls; the frozen class stays at the constant floor 1 over root 2.">
+        <line x1="52" y1="288.8" x2="712" y2="288.8" class="grid"/><line x1="52" y1="217.5" x2="712" y2="217.5" class="grid"/><line x1="52" y1="146.2" x2="712" y2="146.2" class="grid"/><line x1="52" y1="75.0" x2="712" y2="75.0" class="grid"/>
+        <line x1="52" y1="360" x2="712" y2="360" class="axis"/>
+        <line x1="382.0" y1="18" x2="382.0" y2="360" class="wall"/><line x1="581.2" y1="18" x2="581.2" y2="360" class="wall"/><line x1="347.8" y1="18" x2="347.8" y2="360" class="wall"/><line x1="464.5" y1="18" x2="464.5" y2="360" class="wall"/><line x1="299.5" y1="18" x2="299.5" y2="360" class="wall"/><line x1="496.5" y1="18" x2="496.5" y2="360" class="wall"/><line x1="322.5" y1="18" x2="322.5" y2="360" class="wall"/>
+        <line x1="52" y1="259.2" x2="712" y2="259.2" class="floorline"/>
+        <polyline points="52.0,312.6 62.3,311.2 72.6,309.8 82.9,308.3 93.2,306.8 103.6,305.1 113.9,303.4 124.2,301.5 134.5,299.5 144.8,297.5 155.1,295.3 165.4,293.0 175.8,290.5 186.1,287.9 196.4,285.2 206.7,282.4 217.0,279.4 227.3,276.3 237.6,273.2 247.9,270.0 258.2,267.0 268.6,264.1 278.9,261.7 289.2,259.9 299.5,259.2 309.8,260.1 320.1,263.3 330.4,269.4 340.8,279.4 351.1,293.7 361.4,312.6 371.7,335.2 382.0,360.0 392.3,335.2 402.6,312.6 412.9,293.7 423.2,279.4 433.6,269.4 443.9,263.3 454.2,260.1 464.5,259.2 474.8,259.9 485.1,261.7 495.4,264.1 505.8,267.0 516.1,270.0 526.4,273.2 536.7,276.3 547.0,279.4 557.3,282.4 567.6,285.2 577.9,287.9 588.2,290.5 598.6,293.0 608.9,295.3 619.2,297.5 629.5,299.5 639.8,301.5 650.1,303.4 660.4,305.1 670.8,306.8 681.1,308.3 691.4,309.8 701.7,311.2 712.0,312.6" class="ser s1"/><polyline points="52.0,223.7 62.3,223.1 72.6,222.4 82.9,221.8 93.2,221.2 103.6,220.6 113.9,220.0 124.2,219.5 134.5,218.9 144.8,218.5 155.1,218.0 165.4,217.7 175.8,217.5 186.1,217.5 196.4,217.7 206.7,218.1 217.0,218.9 227.3,220.2 237.6,222.0 247.9,224.6 258.2,228.2 268.6,233.1 278.9,239.6 289.2,248.1 299.5,259.2 309.8,273.5 320.1,291.5 330.4,313.6 340.8,339.8 351.1,350.3 361.4,318.5 371.7,287.1 382.0,259.2 392.3,237.5 402.6,223.7 412.9,217.8 423.2,218.9 433.6,225.3 443.9,235.1 454.2,246.8 464.5,259.2 474.8,271.7 485.1,283.8 495.4,295.2 505.8,305.7 516.1,315.5 526.4,324.3 536.7,332.5 547.0,339.8 557.3,346.6 567.6,352.7 577.9,358.3 588.2,356.5 598.6,351.8 608.9,347.5 619.2,343.5 629.5,339.8 639.8,336.5 650.1,333.3 660.4,330.4 670.8,327.7 681.1,325.2 691.4,322.8 701.7,320.6 712.0,318.5" class="ser s2"/><polyline points="52.0,271.1 62.3,271.8 72.6,272.6 82.9,273.5 93.2,274.4 103.6,275.5 113.9,276.7 124.2,278.0 134.5,279.4 144.8,281.0 155.1,282.8 165.4,284.8 175.8,287.0 186.1,289.6 196.4,292.5 206.7,295.8 217.0,299.5 227.3,303.9 237.6,308.8 247.9,314.6 258.2,321.2 268.6,329.0 278.9,337.9 289.2,348.2 299.5,360.0 309.8,346.6 320.1,331.8 330.4,315.8 340.8,299.5 351.1,284.1 361.4,271.1 371.7,262.3 382.0,259.2 392.3,262.3 402.6,271.1 412.9,284.1 423.2,299.5 433.6,315.8 443.9,331.8 454.2,346.6 464.5,360.0 474.8,348.2 485.1,337.9 495.4,329.0 505.8,321.2 516.1,314.6 526.4,308.8 536.7,303.9 547.0,299.5 557.3,295.8 567.6,292.5 577.9,289.6 588.2,287.0 598.6,284.8 608.9,282.8 619.2,281.0 629.5,279.4 639.8,278.0 650.1,276.7 660.4,275.5 670.8,274.4 681.1,273.5 691.4,272.6 701.7,271.8 712.0,271.1" class="ser s3"/><polyline points="52.0,45.9 62.3,46.7 72.6,47.7 82.9,48.8 93.2,50.1 103.6,51.6 113.9,53.4 124.2,55.4 134.5,57.7 144.8,60.4 155.1,63.6 165.4,67.3 175.8,71.6 186.1,76.7 196.4,82.6 206.7,89.7 217.0,98.0 227.3,107.9 237.6,119.7 247.9,133.8 258.2,150.7 268.6,171.0 278.9,195.3 289.2,224.5 299.5,259.2 309.8,300.3 320.1,347.9 330.4,318.1 340.8,259.2 351.1,198.5 361.4,140.7 371.7,91.8 382.0,57.7 392.3,42.2 402.6,45.9 412.9,66.0 423.2,98.0 433.6,137.0 443.9,178.6 454.2,220.0 464.5,259.2 474.8,295.4 485.1,328.1 495.4,357.3 505.8,336.7 516.1,313.7 526.4,293.3 536.7,275.3 547.0,259.2 557.3,245.0 567.6,232.2 577.9,220.8 588.2,210.6 598.6,201.4 608.9,193.0 619.2,185.5 629.5,178.6 639.8,172.4 650.1,166.6 660.4,161.4 670.8,156.6 681.1,152.1 691.4,148.0 701.7,144.2 712.0,140.7" class="ser s4"/><polyline points="52.0,259.2 62.3,259.2 72.6,259.2 82.9,259.2 93.2,259.2 103.6,259.2 113.9,259.2 124.2,259.2 134.5,259.2 144.8,259.2 155.1,259.2 165.4,259.2 175.8,259.2 186.1,259.2 196.4,259.2 206.7,259.2 217.0,259.2 227.3,259.2 237.6,259.2 247.9,259.2 258.2,259.2 268.6,259.2 278.9,259.2 289.2,259.2 299.5,259.2 309.8,259.2 320.1,259.2 330.4,259.2 340.8,259.2 351.1,259.2 361.4,259.2 371.7,259.2 382.0,259.2 392.3,259.2 402.6,259.2 412.9,259.2 423.2,259.2 433.6,259.2 443.9,259.2 454.2,259.2 464.5,259.2 474.8,259.2 485.1,259.2 495.4,259.2 505.8,259.2 516.1,259.2 526.4,259.2 536.7,259.2 547.0,259.2 557.3,259.2 567.6,259.2 577.9,259.2 588.2,259.2 598.6,259.2 608.9,259.2 619.2,259.2 629.5,259.2 639.8,259.2 650.1,259.2 660.4,259.2 670.8,259.2 681.1,259.2 691.4,259.2 701.7,259.2 712.0,259.2" class="ser s5" stroke-dasharray="7 4"/>
+        <text x="718.0" y="144.2" class="dlabel s4t">E · quartic class, walls (1 ± √10)/3</text><text x="718.0" y="262.7" class="dlabel s5t">D · frozen: floor 1/√2, no walls</text><text x="718.0" y="275.7" class="dlabel s3t">C · elliptic fiber, walls ±1</text><text x="718.0" y="316.1" class="dlabel s1t">A · (−2)-curve wall at t = 0</text><text x="718.0" y="329.1" class="dlabel s2t">B · elliptic fiber, walls 1 ± √2</text>
+        <line x1="52.0" y1="360" x2="52.0" y2="364" class="axis"/><text x="52.0" y="376" class="tick" text-anchor="middle">-4</text><line x1="134.5" y1="360" x2="134.5" y2="364" class="axis"/><text x="134.5" y="376" class="tick" text-anchor="middle">-3</text><line x1="217.0" y1="360" x2="217.0" y2="364" class="axis"/><text x="217.0" y="376" class="tick" text-anchor="middle">-2</text><line x1="299.5" y1="360" x2="299.5" y2="364" class="axis"/><text x="299.5" y="376" class="tick" text-anchor="middle">-1</text><line x1="382.0" y1="360" x2="382.0" y2="364" class="axis"/><text x="382.0" y="376" class="tick" text-anchor="middle">0</text><line x1="464.5" y1="360" x2="464.5" y2="364" class="axis"/><text x="464.5" y="376" class="tick" text-anchor="middle">1</text><line x1="547.0" y1="360" x2="547.0" y2="364" class="axis"/><text x="547.0" y="376" class="tick" text-anchor="middle">2</text><line x1="629.5" y1="360" x2="629.5" y2="364" class="axis"/><text x="629.5" y="376" class="tick" text-anchor="middle">3</text><line x1="712.0" y1="360" x2="712.0" y2="364" class="axis"/><text x="712.0" y="376" class="tick" text-anchor="middle">4</text><text x="44" y="363.5" class="tick" text-anchor="end">0</text><text x="44" y="262.7" class="tick" text-anchor="end">1/√2</text><text x="44" y="221.0" class="tick" text-anchor="end">1</text><text x="44" y="78.5" class="tick" text-anchor="end">2</text>
+        <text x="382.0" y="394" class="tick" text-anchor="middle">t  (loop parameter; t and −1/t are antipodal)</text>
+        <line id="xh" class="crosshair" x1="0" y1="18" x2="0" y2="360"/>
+        <rect id="hit" x="52" y="18" width="660" height="342" fill="transparent"/>
+      </svg>
+      <div class="tip" id="tip"></div>
+    </div>
+    <div><span class="lg"><span class="sw s1bg"></span>A · (−2)-curve wall at t = 0</span><span class="lg"><span class="sw s2bg"></span>B · elliptic fiber, walls 1 ± √2</span><span class="lg"><span class="sw s3bg"></span>C · elliptic fiber, walls ±1</span><span class="lg"><span class="sw s4bg"></span>E · quartic class, walls (1 ± √10)/3</span><span class="lg"><span class="sw s5bg swdash"></span>D · frozen: floor 1/√2, no walls</span></div>
+  </div>
+
+  <div class="panel">
+    <p class="paneltitle">Picard number ρ(t) along the loop — the imposed count (jumps at the showcased walls)</p>
+    <svg viewBox="0 0 880 84" role="img" aria-label="Picard number 19 along the loop with isolated jumps to 20 at each wall.">
+      <line x1="52" y1="52.2" x2="712" y2="52.2" class="rho"/><line x1="382.0" y1="52.2" x2="382.0" y2="19.8" class="rho"/><circle cx="382.0" cy="19.8" r="3.2" class="rhodot"/><line x1="581.2" y1="52.2" x2="581.2" y2="19.8" class="rho"/><circle cx="581.2" cy="19.8" r="3.2" class="rhodot"/><line x1="347.8" y1="52.2" x2="347.8" y2="19.8" class="rho"/><circle cx="347.8" cy="19.8" r="3.2" class="rhodot"/><line x1="464.5" y1="52.2" x2="464.5" y2="19.8" class="rho"/><circle cx="464.5" cy="19.8" r="3.2" class="rhodot"/><line x1="299.5" y1="52.2" x2="299.5" y2="19.8" class="rho"/><circle cx="299.5" cy="19.8" r="3.2" class="rhodot"/><line x1="496.5" y1="52.2" x2="496.5" y2="19.8" class="rho"/><circle cx="496.5" cy="19.8" r="3.2" class="rhodot"/><line x1="322.5" y1="52.2" x2="322.5" y2="19.8" class="rho"/><circle cx="322.5" cy="19.8" r="3.2" class="rhodot"/><text x="44" y="55.7" class="tick" text-anchor="end">19</text><text x="44" y="23.3" class="tick" text-anchor="end">20</text>
+    </svg>
+    <p class="note">ρ = 19 at very general t, 20 at each wall — verified exactly, including over
+    ℚ(√2) at the irrational wall t = 1 + √2. The walls of the <em>full</em> lattice are dense on
+    the loop; only the five showcased classes' walls are marked. The count is the unstable,
+    imposed integer; the residue reading above is the continuous data that compensates it.</p>
+  </div>
+
+  <div class="panel">
+    <p class="paneltitle">The wall ledger — walls are projective (ρ = 20); Lefschetz (1,1) + RR apply in full</p>
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th>class</th><th>γ²</th><th>walls (exact)</th><th>|dr/dθ| at wall (chart-free)</th><th>backing at the wall</th></tr></thead>
+      <tbody>
+        <tr><td>A = u₁−v₁+u₂</td><td>−2</td><td>0 and ∞ (antipodes)</td><td>√2/2</td><td>a (−2) class becomes algebraic; ±γ effective (RR: χ = 1); irreducibility chamber-dependent</td></tr>
+        <tr><td>B = u₁+v₂</td><td>0</td><td>1 ± √2</td><td>1</td><td>square-0 class becomes algebraic — elliptic fibration after reflection into the nef chamber</td></tr>
+        <tr><td>C = u₁</td><td>0</td><td>±1</td><td>√2/2</td><td>square-0 class becomes algebraic — elliptic fibration after nef reflection</td></tr>
+        <tr><td>E = 2u₁+v₁+u₂</td><td>4</td><td>(1 ± √10)/3</td><td>√5</td><td>square-4 polarization-type class becomes algebraic (ampleness chamber-dependent)</td></tr>
+        <tr><td>D = u₃</td><td>0</td><td>none on the real loop — frozen</td><td>—</td><td>r ≥ 1/√2 exactly (conserved channel q₃ ≠ 0); clears only at t = ±i on the complexified conic — frozen is family-relative</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="note">Every crossing pair satisfies t₊·t₋ = −1 exactly, and antipodal walls have
+    <em>identical</em> angular crossing strength |dr/dθ| = √((q₁²+q₂²)/2) — the differing slopes in
+    the t-chart are stereographic artifacts (dθ/dt = 2/(1+t²)). In the angular coordinate the whole
+    instrument is one formula: z_γ(θ) = (q₁cosθ + q₂sinθ + i·q₃)/√2, with r = |z| — a rotating
+    channel plus a conserved channel. D's floor is the conserved channel: a class whose residue has a
+    component along a direction conserved by the family cannot clear on that family (though it does
+    clear at t = ±i on the complexified twistor line — frozen is family-relative). One more structure:
+    the residue is invariant under the permanent rank-19 lattice N, so it factors through Λ/N ≅ ℤ³ —
+    a wall clears an entire coset at once (isotropic, root, and positive-square lifts together); the
+    class labels here are lift-specific readings of their wall, not intrinsic wall types.</p>
+  </div>
+
+  <div class="panel">
+    <p class="paneltitle">Wall densification — distinct wall directions by height bound H</p>
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th>H</th><th>primitive directions [q₁ : q₂]</th><th>walls on the loop</th></tr></thead>
+      <tbody><tr><td>1</td><td>4</td><td>8</td></tr><tr><td>2</td><td>8</td><td>16</td></tr><tr><td>3</td><td>16</td><td>32</td></tr><tr><td>4</td><td>24</td><td>48</td></tr><tr><td>5</td><td>40</td><td>80</td></tr><tr><td>6</td><td>48</td><td>96</td></tr></tbody>
+    </table>
+    </div>
+    <p class="note">Walls of the full lattice are dense — the Noether–Lefschetz picture. Each is cut by
+    an explicit rational quadratic (here) and by an algebraic equation in general
+    (Cattani–Deligne–Kaplan): residue-free-ness is polynomially certified even where cycles are
+    hard to construct.</p>
+  </div>
+
+  <details>
+    <summary>table view — sampled r(γ, t) values (t = k/8)</summary>
+    <div class="tablewrap"><table><thead><tr><th>t</th><th>A</th><th>B</th><th>C</th><th>E</th><th>D</th></tr></thead><tbody><tr><td>-4.000</td><td>0.333</td><td>0.957</td><td>0.624</td><td>2.205</td><td>0.707</td></tr><tr><td>-3.875</td><td>0.342</td><td>0.961</td><td>0.619</td><td>2.199</td><td>0.707</td></tr><tr><td>-3.750</td><td>0.352</td><td>0.965</td><td>0.613</td><td>2.192</td><td>0.707</td></tr><tr><td>-3.625</td><td>0.363</td><td>0.970</td><td>0.607</td><td>2.184</td><td>0.707</td></tr><tr><td>-3.500</td><td>0.374</td><td>0.974</td><td>0.600</td><td>2.175</td><td>0.707</td></tr><tr><td>-3.375</td><td>0.385</td><td>0.978</td><td>0.593</td><td>2.164</td><td>0.707</td></tr><tr><td>-3.250</td><td>0.398</td><td>0.982</td><td>0.585</td><td>2.152</td><td>0.707</td></tr><tr><td>-3.125</td><td>0.411</td><td>0.986</td><td>0.576</td><td>2.138</td><td>0.707</td></tr><tr><td>-3.000</td><td>0.424</td><td>0.990</td><td>0.566</td><td>2.121</td><td>0.707</td></tr><tr><td>-2.875</td><td>0.439</td><td>0.993</td><td>0.554</td><td>2.102</td><td>0.707</td></tr><tr><td>-2.750</td><td>0.454</td><td>0.996</td><td>0.542</td><td>2.080</td><td>0.707</td></tr><tr><td>-2.625</td><td>0.470</td><td>0.998</td><td>0.528</td><td>2.054</td><td>0.707</td></tr><tr><td>-2.500</td><td>0.488</td><td>1.000</td><td>0.512</td><td>2.024</td><td>0.707</td></tr><tr><td>-2.375</td><td>0.506</td><td>1.000</td><td>0.494</td><td>1.988</td><td>0.707</td></tr><tr><td>-2.250</td><td>0.525</td><td>0.999</td><td>0.474</td><td>1.946</td><td>0.707</td></tr><tr><td>-2.125</td><td>0.545</td><td>0.996</td><td>0.451</td><td>1.897</td><td>0.707</td></tr><tr><td>-2.000</td><td>0.566</td><td>0.990</td><td>0.424</td><td>1.838</td><td>0.707</td></tr><tr><td>-1.875</td><td>0.587</td><td>0.981</td><td>0.394</td><td>1.769</td><td>0.707</td></tr><tr><td>-1.750</td><td>0.609</td><td>0.968</td><td>0.359</td><td>1.686</td><td>0.707</td></tr><tr><td>-1.625</td><td>0.631</td><td>0.950</td><td>0.319</td><td>1.587</td><td>0.707</td></tr><tr><td>-1.500</td><td>0.653</td><td>0.925</td><td>0.272</td><td>1.469</td><td>0.707</td></tr><tr><td>-1.375</td><td>0.673</td><td>0.891</td><td>0.218</td><td>1.326</td><td>0.707</td></tr><tr><td>-1.250</td><td>0.690</td><td>0.845</td><td>0.155</td><td>1.156</td><td>0.707</td></tr><tr><td>-1.125</td><td>0.702</td><td>0.785</td><td>0.083</td><td>0.951</td><td>0.707</td></tr><tr><td>-1.000</td><td>0.707</td><td>0.707</td><td>0.000</td><td>0.707</td><td>0.707</td></tr><tr><td>-0.875</td><td>0.701</td><td>0.607</td><td>0.094</td><td>0.419</td><td>0.707</td></tr><tr><td>-0.750</td><td>0.679</td><td>0.481</td><td>0.198</td><td>0.085</td><td>0.707</td></tr><tr><td>-0.625</td><td>0.636</td><td>0.326</td><td>0.310</td><td>0.294</td><td>0.707</td></tr><tr><td>-0.500</td><td>0.566</td><td>0.141</td><td>0.424</td><td>0.707</td><td>0.707</td></tr><tr><td>-0.375</td><td>0.465</td><td>0.068</td><td>0.533</td><td>1.133</td><td>0.707</td></tr><tr><td>-0.250</td><td>0.333</td><td>0.291</td><td>0.624</td><td>1.539</td><td>0.707</td></tr><tr><td>-0.125</td><td>0.174</td><td>0.511</td><td>0.685</td><td>1.882</td><td>0.707</td></tr><tr><td>+0.000</td><td>0.000</td><td>0.707</td><td>0.707</td><td>2.121</td><td>0.707</td></tr><tr><td>+0.125</td><td>0.174</td><td>0.859</td><td>0.685</td><td>2.230</td><td>0.707</td></tr><tr><td>+0.250</td><td>0.333</td><td>0.957</td><td>0.624</td><td>2.205</td><td>0.707</td></tr><tr><td>+0.375</td><td>0.465</td><td>0.998</td><td>0.533</td><td>2.063</td><td>0.707</td></tr><tr><td>+0.500</td><td>0.566</td><td>0.990</td><td>0.424</td><td>1.838</td><td>0.707</td></tr><tr><td>+0.625</td><td>0.636</td><td>0.945</td><td>0.310</td><td>1.565</td><td>0.707</td></tr><tr><td>+0.750</td><td>0.679</td><td>0.877</td><td>0.198</td><td>1.273</td><td>0.707</td></tr><tr><td>+0.875</td><td>0.701</td><td>0.795</td><td>0.094</td><td>0.982</td><td>0.707</td></tr><tr><td>+1.000</td><td>0.707</td><td>0.707</td><td>0.000</td><td>0.707</td><td>0.707</td></tr><tr><td>+1.125</td><td>0.702</td><td>0.619</td><td>0.083</td><td>0.454</td><td>0.707</td></tr><tr><td>+1.250</td><td>0.690</td><td>0.535</td><td>0.155</td><td>0.224</td><td>0.707</td></tr><tr><td>+1.375</td><td>0.673</td><td>0.455</td><td>0.218</td><td>0.019</td><td>0.707</td></tr><tr><td>+1.500</td><td>0.653</td><td>0.381</td><td>0.272</td><td>0.163</td><td>0.707</td></tr><tr><td>+1.625</td><td>0.631</td><td>0.313</td><td>0.319</td><td>0.325</td><td>0.707</td></tr><tr><td>+1.750</td><td>0.609</td><td>0.250</td><td>0.359</td><td>0.468</td><td>0.707</td></tr><tr><td>+1.875</td><td>0.587</td><td>0.193</td><td>0.394</td><td>0.595</td><td>0.707</td></tr><tr><td>+2.000</td><td>0.566</td><td>0.141</td><td>0.424</td><td>0.707</td><td>0.707</td></tr><tr><td>+2.125</td><td>0.545</td><td>0.094</td><td>0.451</td><td>0.807</td><td>0.707</td></tr><tr><td>+2.250</td><td>0.525</td><td>0.051</td><td>0.474</td><td>0.897</td><td>0.707</td></tr><tr><td>+2.375</td><td>0.506</td><td>0.012</td><td>0.494</td><td>0.977</td><td>0.707</td></tr><tr><td>+2.500</td><td>0.488</td><td>0.024</td><td>0.512</td><td>1.048</td><td>0.707</td></tr><tr><td>+2.625</td><td>0.470</td><td>0.057</td><td>0.528</td><td>1.113</td><td>0.707</td></tr><tr><td>+2.750</td><td>0.454</td><td>0.088</td><td>0.542</td><td>1.172</td><td>0.707</td></tr><tr><td>+2.875</td><td>0.439</td><td>0.116</td><td>0.554</td><td>1.225</td><td>0.707</td></tr><tr><td>+3.000</td><td>0.424</td><td>0.141</td><td>0.566</td><td>1.273</td><td>0.707</td></tr><tr><td>+3.125</td><td>0.411</td><td>0.165</td><td>0.576</td><td>1.317</td><td>0.707</td></tr><tr><td>+3.250</td><td>0.398</td><td>0.187</td><td>0.585</td><td>1.357</td><td>0.707</td></tr><tr><td>+3.375</td><td>0.385</td><td>0.208</td><td>0.593</td><td>1.394</td><td>0.707</td></tr><tr><td>+3.500</td><td>0.374</td><td>0.227</td><td>0.600</td><td>1.428</td><td>0.707</td></tr><tr><td>+3.625</td><td>0.363</td><td>0.245</td><td>0.607</td><td>1.459</td><td>0.707</td></tr><tr><td>+3.750</td><td>0.352</td><td>0.261</td><td>0.613</td><td>1.488</td><td>0.707</td></tr><tr><td>+3.875</td><td>0.342</td><td>0.277</td><td>0.619</td><td>1.514</td><td>0.707</td></tr><tr><td>+4.000</td><td>0.333</td><td>0.291</td><td>0.624</td><td>1.539</td><td>0.707</td></tr></tbody></table></div>
+  </details>
+
+  <p class="note">Instrument: <code>k3_residue_angle.py</code> (exact sympy; all identities asserted
+  identically in t). Setting: Λ = U³ ⊕ E₈(−1)², ω(t) = (1−t²)P₁ + 2tP₂ + i(1+t²)P₃ with
+  P_i = u_i + v_i; r(γ,t)² = 2|Q(γ,ω)|²/Q(ω,ω̄). Companion: "The Ledger Reading" essay and the
+  two-meters Weil-class suite. Interpretation layer only — the mathematics shown is classical.</p>
+</div>
+
+<script type="application/json" id="d">{"curves": [{"n": "A", "s": [[-4.0, 0.3327561323230812], [-3.875, 0.3421706960668562], [-3.75, 0.35208636407628924], [-3.625, 0.36253872538183207], [-3.5, 0.37356584666459114], [-3.375, 0.3852082338872491], [-3.25, 0.39750867699135645], [-3.125, 0.4105119194116386], [-3.0, 0.4242640687119285], [-2.875, 0.4388116281225118], [-2.75, 0.45419997623661446], [-2.625, 0.4704710464924356], [-2.5, 0.4876598490941707], [-2.375, 0.5057893211310834], [-2.25, 0.5248627654168188], [-2.125, 0.5448528172315606], [-2.0, 0.565685424949238], [-1.875, 0.5872167040995551], [-1.75, 0.6091996884068717], [-1.625, 0.631236954878978], [-1.5, 0.6527139518645054], [-1.375, 0.6727069918315263], [-1.25, 0.6898602743283391], [-1.125, 0.7022301826956058], [-1.0, 0.7071067811865476], [-0.875, 0.7008491990521533], [-0.75, 0.6788225099390857], [-0.625, 0.6356016010665596], [-0.5, 0.565685424949238], [-0.375, 0.46494692461581205], [-0.25, 0.3327561323230812], [-0.125, 0.17405705383053477], [0.0, 0.0], [0.125, 0.17405705383053477], [0.25, 0.3327561323230812], [0.375, 0.46494692461581205], [0.5, 0.565685424949238], [0.625, 0.6356016010665596], [0.75, 0.6788225099390857], [0.875, 0.7008491990521533], [1.0, 0.7071067811865476], [1.125, 0.7022301826956058], [1.25, 0.6898602743283391], [1.375, 0.6727069918315263], [1.5, 0.6527139518645054], [1.625, 0.631236954878978], [1.75, 0.6091996884068717], [1.875, 0.5872167040995551], [2.0, 0.565685424949238], [2.125, 0.5448528172315606], [2.25, 0.5248627654168188], [2.375, 0.5057893211310834], [2.5, 0.4876598490941707], [2.625, 0.4704710464924356], [2.75, 0.45419997623661446], [2.875, 0.4388116281225118], [3.0, 0.4242640687119285], [3.125, 0.4105119194116386], [3.25, 0.39750867699135645], [3.375, 0.3852082338872491], [3.5, 0.37356584666459114], [3.625, 0.36253872538183207], [3.75, 0.35208636407628924], [3.875, 0.3421706960668562], [4.0, 0.3327561323230812]]}, {"n": "B", "s": [[-4.0, 0.9566738804288584], [-3.875, 0.9609753621393763], [-3.75, 0.9653034481758263], [-3.625, 0.9696348237044259], [-3.5, 0.9739395288041126], [-3.375, 0.9781792420701673], [-3.25, 0.9823050960267173], [-3.125, 0.9862548863864617], [-3.0, 0.9899494936611666], [-2.875, 0.9932882777881856], [-2.75, 0.9961431297007567], [-2.625, 0.9983507623485315], [-2.5, 0.99970269064305], [-2.375, 0.999932177630859], [-2.25, 0.9986972064181135], [-2.125, 0.9955582726620796], [-2.0, 0.9899494936611666], [-1.875, 0.9811412430996732], [-1.75, 0.9681923619323497], [-1.625, 0.9498902253707698], [-1.5, 0.924678098474716], [-1.375, 0.8905723244133275], [-1.25, 0.8450788360522153], [-1.125, 0.7851323570416149], [-1.0, 0.7071067811865476], [-0.875, 0.6069854670362399], [-0.75, 0.48083261120685233], [-0.625, 0.3257458205466118], [-0.5, 0.1414213562373095], [-0.375, 0.06780475983980593], [-0.25, 0.29116161578269606], [-0.125, 0.5112925956271959], [0.0, 0.7071067811865476], [0.125, 0.8594067032882654], [0.25, 0.9566738804288584], [0.375, 0.99769860907143], [0.5, 0.9899494936611666], [0.625, 0.9454573815865074], [0.75, 0.8768124086713189], [0.875, 0.7947129310680667], [1.0, 0.7071067811865476], [1.125, 0.6193280083495968], [1.25, 0.5346417126044628], [1.375, 0.45484165924972514], [1.5, 0.3807498052542948], [1.625, 0.31258368438718626], [1.75, 0.25020701488139374], [1.875, 0.19329216509943686], [2.0, 0.1414213562373095], [2.125, 0.09414736180104175], [2.25, 0.051028324415524046], [2.375, 0.011646464631307842], [2.5, 0.024382992454708534], [2.625, 0.05740866936366029], [2.75, 0.0877431772275278], [2.875, 0.11566502154316208], [3.0, 0.1414213562373095], [3.125, 0.16523104756318455], [3.25, 0.18728774204400447], [3.375, 0.20776277429566908], [3.5, 0.22680783547493033], [3.625, 0.24455737294076174], [3.75, 0.26113072002324783], [3.875, 0.276633970005664], [4.0, 0.29116161578269606]]}, {"n": "C", "s": [[-4.0, 0.6239177481057773], [-3.875, 0.6188046660725202], [-3.75, 0.613217084099537], [-3.625, 0.6070960983225938], [-3.5, 0.6003736821395215], [-3.375, 0.5929710081829181], [-3.25, 0.584796419035361], [-3.125, 0.5757429669748232], [-3.0, 0.565685424949238], [-2.875, 0.5544766496656739], [-2.75, 0.5419431534641422], [-2.625, 0.5278797158560958], [-2.5, 0.5120428415488792], [-2.375, 0.4941428564997756], [-2.25, 0.47383444100129474], [-2.125, 0.450705455430519], [-2.0, 0.4242640687119285], [-1.875, 0.39392453900011815], [-1.75, 0.358992673525478], [-1.625, 0.3186532704917918], [-1.5, 0.27196414661021057], [-1.375, 0.21786533258180113], [-1.25, 0.1552185617238763], [-1.125, 0.08290217434600902], [-1.0, 0.0], [-0.875, 0.09386373201591339], [-0.75, 0.1979898987322333], [-0.625, 0.3098557805199478], [-0.5, 0.4242640687119285], [-0.375, 0.532751684455618], [-0.25, 0.6239177481057773], [-0.125, 0.6853496494577307], [0.0, 0.7071067811865476], [0.125, 0.6853496494577307], [0.25, 0.6239177481057773], [0.375, 0.532751684455618], [0.5, 0.4242640687119285], [0.625, 0.3098557805199478], [0.75, 0.1979898987322333], [0.875, 0.09386373201591339], [1.0, 0.0], [1.125, 0.08290217434600902], [1.25, 0.1552185617238763], [1.375, 0.21786533258180113], [1.5, 0.27196414661021057], [1.625, 0.3186532704917918], [1.75, 0.358992673525478], [1.875, 0.39392453900011815], [2.0, 0.4242640687119285], [2.125, 0.450705455430519], [2.25, 0.47383444100129474], [2.375, 0.4941428564997756], [2.5, 0.5120428415488792], [2.625, 0.5278797158560958], [2.75, 0.5419431534641422], [2.875, 0.5544766496656739], [3.0, 0.565685424949238], [3.125, 0.5757429669748232], [3.25, 0.584796419035361], [3.375, 0.5929710081829181], [3.5, 0.6003736821395215], [3.625, 0.6070960983225938], [3.75, 0.613217084099537], [3.875, 0.6188046660725202], [4.0, 0.6239177481057773]]}, {"n": "E", "s": [[-4.0, 2.204509376640413], [-3.875, 2.1985846942844165], [-3.75, 2.1917376163749003], [-3.625, 2.1838270203496135], [-3.5, 2.1746868930831558], [-3.375, 2.1641212584360034], [-3.25, 2.1518979340974393], [-3.125, 2.1377408203361083], [-3.0, 2.1213203435596424], [-2.875, 2.1022415771195333], [-2.75, 2.080029436629041], [-2.625, 2.054110194060723], [-2.5, 2.0237883737408087], [-2.375, 1.98821789063041], [-2.25, 1.946366088420703], [-2.125, 1.8969691835231175], [-2.0, 1.8384776310850235], [-1.875, 1.7689903210999096], [-1.75, 1.6861777089833057], [-1.625, 1.5871967663543534], [-1.5, 1.468606391695137], [-1.375, 1.3263029895769296], [-1.25, 1.155515959499968], [-1.125, 0.9509367057336329], [-1.0, 0.7071067811865476], [-0.875, 0.4192580030044131], [-0.75, 0.08485281374238571], [-0.625, 0.2939657404932838], [-0.5, 0.7071067811865476], [-0.375, 1.1333081287510418], [-0.25, 1.5389971119942505], [-0.125, 1.8819918945426573], [0.0, 2.1213203435596424], [0.125, 2.2301060022037267], [0.25, 2.204509376640413], [0.375, 2.0632019779826662], [0.5, 1.8384776310850235], [0.625, 1.565168942626403], [0.75, 1.2727922061357855], [0.875, 0.9824403950998934], [1.0, 0.7071067811865476], [1.125, 0.45352365965757874], [1.25, 0.22420458915671018], [1.375, 0.019110994086122907], [1.5, 0.16317848796612636], [1.625, 0.3247228565963974], [1.75, 0.4677783321695622], [1.875, 0.5945569129007995], [2.0, 0.7071067811865476], [2.125, 0.8072635490599962], [2.25, 0.8966405575870654], [2.375, 0.9766392483682433], [2.5, 1.048468675552467], [2.625, 1.113168101075852], [2.75, 1.1716294841558124], [2.875, 1.2246183208745098], [3.0, 1.2727922061357855], [3.125, 1.3167169815128308], [3.25, 1.3568805801147263], [3.375, 1.3937047906615054], [3.5, 1.4275551997539733], [3.625, 1.4587495695859494], [3.75, 1.487564888222322], [3.875, 1.5142433021507042], [4.0, 1.5389971119942505]]}, {"n": "D", "s": [[-4.0, 0.7071067811865476], [-3.875, 0.7071067811865476], [-3.75, 0.7071067811865476], [-3.625, 0.7071067811865476], [-3.5, 0.7071067811865476], [-3.375, 0.7071067811865476], [-3.25, 0.7071067811865476], [-3.125, 0.7071067811865476], [-3.0, 0.7071067811865476], [-2.875, 0.7071067811865476], [-2.75, 0.7071067811865476], [-2.625, 0.7071067811865476], [-2.5, 0.7071067811865476], [-2.375, 0.7071067811865476], [-2.25, 0.7071067811865476], [-2.125, 0.7071067811865476], [-2.0, 0.7071067811865476], [-1.875, 0.7071067811865476], [-1.75, 0.7071067811865476], [-1.625, 0.7071067811865476], [-1.5, 0.7071067811865476], [-1.375, 0.7071067811865476], [-1.25, 0.7071067811865476], [-1.125, 0.7071067811865476], [-1.0, 0.7071067811865476], [-0.875, 0.7071067811865476], [-0.75, 0.7071067811865476], [-0.625, 0.7071067811865476], [-0.5, 0.7071067811865476], [-0.375, 0.7071067811865476], [-0.25, 0.7071067811865476], [-0.125, 0.7071067811865476], [0.0, 0.7071067811865476], [0.125, 0.7071067811865476], [0.25, 0.7071067811865476], [0.375, 0.7071067811865476], [0.5, 0.7071067811865476], [0.625, 0.7071067811865476], [0.75, 0.7071067811865476], [0.875, 0.7071067811865476], [1.0, 0.7071067811865476], [1.125, 0.7071067811865476], [1.25, 0.7071067811865476], [1.375, 0.7071067811865476], [1.5, 0.7071067811865476], [1.625, 0.7071067811865476], [1.75, 0.7071067811865476], [1.875, 0.7071067811865476], [2.0, 0.7071067811865476], [2.125, 0.7071067811865476], [2.25, 0.7071067811865476], [2.375, 0.7071067811865476], [2.5, 0.7071067811865476], [2.625, 0.7071067811865476], [2.75, 0.7071067811865476], [2.875, 0.7071067811865476], [3.0, 0.7071067811865476], [3.125, 0.7071067811865476], [3.25, 0.7071067811865476], [3.375, 0.7071067811865476], [3.5, 0.7071067811865476], [3.625, 0.7071067811865476], [3.75, 0.7071067811865476], [3.875, 0.7071067811865476], [4.0, 0.7071067811865476]]}]}</script>
+<script>
+(function () {
+  var data = JSON.parse(document.getElementById('d').textContent).curves;
+  var svg = document.querySelector('#cw svg'), hit = document.getElementById('hit'),
+      xh = document.getElementById('xh'), tip = document.getElementById('tip'),
+      cw = document.getElementById('cw');
+  var ML = 52, PW = 660, TMIN = -4.0, TMAX = 4.0;
+  function px2t(px) { return TMIN + (px - ML) / PW * (TMAX - TMIN); }
+  function t2px(tv) { return ML + (tv - TMIN) / (TMAX - TMIN) * PW; }
+  hit.addEventListener('mousemove', function (ev) {
+    var pt = svg.createSVGPoint(); pt.x = ev.clientX; pt.y = ev.clientY;
+    var loc = pt.matrixTransform(svg.getScreenCTM().inverse());
+    var tv = Math.max(TMIN, Math.min(TMAX, px2t(loc.x)));
+    var i = Math.round((tv - TMIN) * 8);
+    var ts = TMIN + i / 8;
+    xh.setAttribute('x1', t2px(ts)); xh.setAttribute('x2', t2px(ts));
+    xh.style.opacity = 1;
+    var rows = 't = ' + ts.toFixed(3);
+    data.forEach(function (c) { rows += '<br>' + c.n + ' · r = ' + c.s[i][1].toFixed(3); });
+    tip.innerHTML = rows;
+    var wr = cw.getBoundingClientRect();
+    tip.style.left = Math.min(ev.clientX - wr.left + 14, wr.width - 150) + 'px';
+    tip.style.top = (ev.clientY - wr.top + 10) + 'px';
+    tip.style.opacity = 1;
+  });
+  hit.addEventListener('mouseleave', function () {
+    xh.style.opacity = 0; tip.style.opacity = 0;
+  });
+})();
+</script>

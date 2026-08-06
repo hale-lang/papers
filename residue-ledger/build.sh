@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# Build residue-ledger/paper.pdf from residue-ledger/paper.md.
+#
+# Requires: pandoc, xelatex (or lualatex). Unicode requires a
+# Unicode-capable engine.
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR"
+
+ENGINE="${PDF_ENGINE:-xelatex}"
+
+pandoc paper.md \
+  --output paper.pdf \
+  --pdf-engine="$ENGINE" \
+  --bibliography references.bib \
+  --citeproc \
+  --variable=geometry:margin=1in \
+  --variable=fontsize:11pt \
+  --variable=mainfont:'Latin Modern Roman' \
+  --variable=monofont:'Latin Modern Mono' \
+  --variable=colorlinks:true \
+  --variable=linkcolor:NavyBlue \
+  --variable=urlcolor:NavyBlue \
+  --variable=citecolor:NavyBlue \
+  --toc \
+  --toc-depth=1 \
+  --metadata title='Exact Transversality Certificates for Weil Classes through Dimension Six' \
+  --metadata author='Riley Rook' \
+  --metadata date='Draft v0.1 — August 2026'
+
+echo "[residue-ledger] paper.pdf written"

@@ -1,0 +1,322 @@
+<title>The Ledger Reading of i</title>
+<style>
+  :root {
+    --paper: #FAFAF7;
+    --ink: #1B1E1C;
+    --muted: #5C635E;
+    --accent: #2E6B4F;
+    --residue: #A32A22;
+    --rule: #D9DBD4;
+    --quote-bg: #F1F4EF;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #161917;
+      --ink: #E5E7E1;
+      --muted: #9AA29B;
+      --accent: #6FBF97;
+      --residue: #E0796E;
+      --rule: #2C312D;
+      --quote-bg: #1C201D;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #161917;
+    --ink: #E5E7E1;
+    --muted: #9AA29B;
+    --accent: #6FBF97;
+    --residue: #E0796E;
+    --rule: #2C312D;
+    --quote-bg: #1C201D;
+  }
+  :root[data-theme="light"] {
+    --paper: #FAFAF7;
+    --ink: #1B1E1C;
+    --muted: #5C635E;
+    --accent: #2E6B4F;
+    --residue: #A32A22;
+    --rule: #D9DBD4;
+    --quote-bg: #F1F4EF;
+  }
+
+  html { background: var(--paper); }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Palatino Linotype", Palatino, "URW Palladio L", "Book Antiqua", Georgia, serif;
+    line-height: 1.65;
+    margin: 0;
+    padding: 0 1.25rem;
+  }
+  .sheet {
+    max-width: 66ch;
+    margin: 0 auto;
+    padding: 4rem 0 5rem;
+  }
+  .mono {
+    font-family: ui-monospace, "Cascadia Mono", Menlo, Consolas, monospace;
+  }
+
+  header.masthead {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  .eyebrow {
+    font-family: ui-monospace, "Cascadia Mono", Menlo, Consolas, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 1.4rem;
+  }
+  h1 {
+    font-size: clamp(2rem, 5.5vw, 2.9rem);
+    line-height: 1.12;
+    font-weight: 400;
+    margin: 0 0 1rem;
+    text-wrap: balance;
+    letter-spacing: -0.01em;
+  }
+  .subtitle {
+    font-size: 1.08rem;
+    font-style: italic;
+    color: var(--muted);
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  section { margin: 0 0 2.75rem; }
+  h2 {
+    font-size: 1.28rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 2.5rem 0 0.9rem;
+    text-wrap: balance;
+  }
+  h2 .no {
+    font-family: ui-monospace, "Cascadia Mono", Menlo, Consolas, monospace;
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.35rem;
+  }
+  p { margin: 0 0 1.05rem; }
+  em { font-style: italic; }
+  .m {
+    font-style: italic;
+    white-space: nowrap;
+  }
+  strong { font-weight: 600; }
+
+  .abstract {
+    font-size: 1.06rem;
+    border-left: 2px solid var(--accent);
+    padding-left: 1.15rem;
+    margin: 0 0 2.5rem;
+  }
+  .abstract p { margin-bottom: 0.7rem; }
+  .abstract p:last-child { margin-bottom: 0; }
+
+  figure {
+    margin: 2rem 0;
+    padding: 1.4rem 1.1rem 1rem;
+    border: 1px solid var(--rule);
+    overflow-x: auto;
+  }
+  figure svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+  figcaption {
+    font-family: ui-monospace, "Cascadia Mono", Menlo, Consolas, monospace;
+    font-size: 0.74rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-top: 1rem;
+    max-width: 58ch;
+  }
+  .ax { stroke: var(--muted); stroke-width: 1; }
+  .curve { stroke: var(--accent); stroke-width: 2; fill: none; }
+  .gapline { stroke: var(--residue); stroke-width: 1.3; stroke-dasharray: 4 3; }
+  .rdot { fill: var(--residue); }
+  .odot { fill: none; stroke: var(--muted); stroke-width: 1.2; }
+  .lbl { font-family: ui-monospace, "Cascadia Mono", Menlo, Consolas, monospace; font-size: 10.5px; fill: var(--muted); }
+  .lbl-r { font-family: ui-monospace, "Cascadia Mono", Menlo, Consolas, monospace; font-size: 10.5px; fill: var(--residue); }
+  .lbl-a { font-family: ui-monospace, "Cascadia Mono", Menlo, Consolas, monospace; font-size: 10.5px; fill: var(--accent); }
+  .paneltitle { font-family: ui-monospace, "Cascadia Mono", Menlo, Consolas, monospace; font-size: 10.5px; letter-spacing: 0.1em; fill: var(--ink); }
+
+  blockquote.audit {
+    background: var(--quote-bg);
+    border-left: 3px solid var(--accent);
+    margin: 2rem 0;
+    padding: 1.3rem 1.4rem;
+    font-size: 1.12rem;
+    font-style: italic;
+    line-height: 1.55;
+  }
+  blockquote.audit p { margin: 0; }
+
+  .dict-wrap { overflow-x: auto; margin: 1.8rem 0; }
+  table.dict {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.95rem;
+    font-variant-numeric: tabular-nums;
+  }
+  table.dict caption {
+    font-family: ui-monospace, "Cascadia Mono", Menlo, Consolas, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-align: left;
+    padding-bottom: 0.6rem;
+  }
+  table.dict th {
+    font-family: ui-monospace, "Cascadia Mono", Menlo, Consolas, monospace;
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: left;
+    padding: 0.45rem 1.2rem 0.45rem 0;
+    border-bottom: 1px solid var(--ink);
+  }
+  table.dict td {
+    padding: 0.55rem 1.2rem 0.55rem 0;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  table.dict td:first-child { width: 40%; }
+
+  ol.retro { padding-left: 1.3rem; margin: 0 0 1.05rem; }
+  ol.retro li { margin-bottom: 1rem; }
+
+  footer.colophon {
+    border-top: 1px solid var(--rule);
+    margin-top: 3rem;
+    padding-top: 1.3rem;
+    font-family: ui-monospace, "Cascadia Mono", Menlo, Consolas, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+
+  a { color: var(--accent); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+
+<div class="sheet">
+  <header class="masthead">
+    <p class="eyebrow">Working note · August 2026</p>
+    <h1>The Ledger Reading</h1>
+    <p class="subtitle">Why <span class="m">i</span> exists, what it compensates for, and what the Hodge conjecture is actually asking.</p>
+  </header>
+
+  <div class="abstract">
+    <p>Whole numbers and exact incidence are idealizations imposed on a continuous reality. The imaginary unit is the compensation mathematics was forced to invent so that counting, once imposed, stays consistent under deformation. Carried up to its natural altitude, the Hodge conjecture becomes an audit of that compensation: it asks whether <span class="m">i</span> keeps honest books.</p>
+  </div>
+
+  <section>
+    <h2><span class="no">§ 1</span>The premise: rotate what "real" means</h2>
+    <p>The standard story runs: the real numbers exist, and <span class="m">i</span> is adjoined to them — an "imaginary" extension, tolerated for its usefulness. This note runs the story in the other direction.</p>
+    <p>Nothing in nature is an exact integer. Physical configurations are continuous; every quantity is a reading of the continuum, precise without bound but never <em>exact</em> in the arithmetic sense. Counting — "these two curves meet in exactly two points" — is not a property configurations own. It is a demand an observer places on them: a discretization, imposed for the excellent reason that it makes the world discussable.</p>
+    <p>Take that as the premise. It is an ontological stance, not a theorem, and everything below should be read as: <em>suppose this — then look at what the mathematics has been doing all along.</em></p>
+  </section>
+
+  <section>
+    <h2><span class="no">§ 2</span>i is the compensation</h2>
+    <p>Impose exact counting on continuous geometry and it immediately misbehaves. A line meets a parabola in 2 points; slide the line down and it meets in 1; slide further, 0. The count — the thing the discretization promised would be a stable fact — is unstable under the smallest deformation. The demand "a degree-2 crossing has 2 solutions" is issued by the model and refused by the page.</p>
+    <p>Where do the refused solutions go? Take <span class="m">y = x² + c</span> against <span class="m">y = 0</span>, with <span class="m">c &gt; 0</span>: no real intersection. The roots are <span class="m">± i√c</span> — and they are not arbitrary symbols. Their real part, 0, is the location of <em>closest approach</em>. Their imaginary part, <span class="m">√c</span>, grows with the size of the miss. The intersections demanded by the count did not vanish; they moved off-page by exactly the amount the incidence failed, anchored at exactly the place it came closest to succeeding.</p>
+
+    <figure>
+      <svg viewBox="0 0 560 210" role="img" aria-label="Left: a parabola missing the x-axis with the gap marked. Right: the complex root plane, with the conjugate pair of roots on the imaginary axis.">
+        <text x="40" y="16" class="paneltitle">THE REAL PAGE</text>
+        <line x1="24" y1="150" x2="256" y2="150" class="ax" />
+        <line x1="40" y1="24" x2="40" y2="186" class="ax" />
+        <path d="M 60 25 Q 140 185 220 25" class="curve" />
+        <text x="196" y="44" class="lbl-a">y = x²+c</text>
+        <line x1="140" y1="105" x2="140" y2="150" class="gapline" />
+        <text x="148" y="132" class="lbl-r">gap c</text>
+        <circle cx="140" cy="150" r="3" class="odot" />
+        <text x="128" y="168" class="lbl">x = 0</text>
+        <text x="243" y="144" class="lbl">x</text>
+
+        <text x="330" y="16" class="paneltitle">WHERE THE COUNT WENT</text>
+        <line x1="324" y1="105" x2="546" y2="105" class="ax" />
+        <line x1="428" y1="24" x2="428" y2="186" class="ax" />
+        <text x="533" y="99" class="lbl">Re</text>
+        <text x="434" y="34" class="lbl">Im</text>
+        <circle cx="428" cy="63" r="4" class="rdot" />
+        <text x="440" y="60" class="lbl-r">+i√c</text>
+        <circle cx="428" cy="147" r="4" class="rdot" />
+        <text x="440" y="160" class="lbl-r">−i√c</text>
+      </svg>
+      <figcaption>The demanded intersections of a near-miss don't vanish — they are stored: real part at the point of closest approach, imaginary part scaling with the gap, in a conjugate pair because the page cannot say which side the failure leaned.</figcaption>
+    </figure>
+
+    <p><span class="m">i</span> is where the model stores the residual of a demanded-but-unrealized coincidence. And the storage format is forced. The residue always comes in conjugate pairs <span class="m">± i</span>, because nothing on the real page distinguishes the two orientations of the failure — complex conjugation, the one nontrivial symmetry of <span class="m">ℂ</span> over <span class="m">ℝ</span>, is the indistinguishability of a near-miss's two sides.</p>
+    <p>Under this reading the classical naming misleads — but the correction is subtler than a reversal. The integer reading is real; what it is not is <em>complete</em>. It is a compressed summary — a zero-mode shadow — of a continuous residual state, and <span class="m">i</span> is the part of that state the count forgets: the conserved channel carrying the location and magnitude of where exact incidence failed to fit. Neither side is a fiction: there is a continuous state, and there is the discrete summary of its exact zeros.</p>
+  </section>
+
+  <section>
+    <h2><span class="no">§ 3</span>Counting becomes conservation</h2>
+    <p>Mathematics made this compensation move more than once, each time patching a different failure of imposed counting:</p>
+    <p>Parallel lines refuse their demanded intersection — so add <em>points at infinity</em> (the projective plane). Tangency merges two demanded points into one — so count with <em>multiplicity</em>. Real curves refuse crossings — so admit <em>complex</em> points. Three ideal-element constructions, one purpose: keep the books.</p>
+    <p>Run all three at once and the imposed bookkeeping becomes exact. That is Bézout's theorem: in the complex projective plane, counted with multiplicity, curves of degree <span class="m">m</span> and <span class="m">n</span> meet in <em>exactly</em> <span class="m">mn</span> points — always, for every configuration, invariant under every deformation. Over <span class="m">ℝ</span> intersection counting is not a conserved quantity; over <span class="m">ℂ</span> it is a conservation law. Algebraic geometry works over <span class="m">ℂ</span> for precisely this reason: it is the completed arena in which the fiction of exact counting, fully compensated, finally holds.</p>
+  </section>
+
+  <section>
+    <h2><span class="no">§ 4</span>The same story at altitude</h2>
+    <p>Cohomology is the mature form of the ledger. A cohomology class is a deformation-invariant incidence-demand — an accounting entry recording what intersections <em>must</em> number, however the geometry is deformed. The cup product is demanded intersection; Poincaré duality is the double-entry rule matching demands to their dual supports.</p>
+    <p>The supply side is actual geometry: <em>algebraic cycles</em>, the loci genuinely cut out by polynomial equations. These are the <span class="m">i</span>-invariant objects — the complex structure <span class="m">J</span> (multiplication by <span class="m">i</span> on tangent spaces) preserves them — and that invariance forces their ledger entries into balanced type <span class="m">(p,p)</span>.</p>
+    <p>And the ledger has a built-in residue meter: the Weil operator, which acts on a class of type <span class="m">(p,q)</span> as <span class="m">i^{p−q}</span>. A class with <span class="m">p ≠ q</span> carries a phase — it is twisted by the compensator, marked as holding stored residue. A class of type <span class="m">(p,p)</span> reads <span class="m">i⁰ = 1</span>: phase-free, residue-free, indistinguishable from a plain demand for real incidence. Rationality, meanwhile, says the entry is written in the observer's counting vocabulary — <span class="m">ℚ</span>, ratios of whole numbers.</p>
+
+    <div class="dict-wrap">
+      <table class="dict">
+        <caption>The dictionary</caption>
+        <tr><th>Classical object</th><th>Rotated reading</th></tr>
+        <tr><td>complex structure <span class="m">J</span>, the unit <span class="m">i</span></td><td>the compensation apparatus</td></tr>
+        <tr><td>cohomology class</td><td>incidence-demand (ledger entry)</td></tr>
+        <tr><td>cup product</td><td>demanded intersection count</td></tr>
+        <tr><td>algebraic cycle</td><td>realized incidence (geometric supply)</td></tr>
+        <tr><td>Weil operator <span class="m">i^{p−q}</span></td><td>residue meter</td></tr>
+        <tr><td>type <span class="m">(p,p)</span></td><td>residue-free entry</td></tr>
+        <tr><td><span class="m">ℚ</span>-coefficients</td><td>counting vocabulary, loosened to ratios</td></tr>
+        <tr><td>Hodge conjecture</td><td>the audit</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="no">§ 5</span>The bend: the conjecture as an audit</h2>
+    <p>The Hodge conjecture, classically: on a smooth complex projective variety, every rational class of type <span class="m">(p,p)</span> is a <span class="m">ℚ</span>-combination of algebraic cycle classes. Rotate it:</p>
+    <blockquote class="audit">
+      <p>Every ledger entry that is written in the counting vocabulary and shows zero residue is backed by actually-existing geometry. <span class="m">i</span> is a faithful ledger: it stores every residual of a demanded incidence, and it never mints a residue-free rational entry that geometry cannot redeem.</p>
+    </blockquote>
+    <p>That is the content of the conjecture under this reading. The compensation apparatus was introduced for one purpose — to make imposed counting consistent. The conjecture asserts the apparatus is <em>exactly</em> that and nothing more: pure bookkeeping, no creation. If it is true, the discretization sin is fully redeemable — every balanced account can be cashed out in geometry. If it is false, somewhere in the completed arena there is unbacked currency: a rational, phase-free demand that no configuration of polynomial-cut geometry will ever honor — a permanent, irredeemable trace of having modeled a continuous world with exact counts.</p>
+  </section>
+
+  <section>
+    <h2><span class="no">§ 6</span>What the frame retrodicts</h2>
+    <p>A re-reading earns attention when known facts, scattered under the old description, fall into place under the new one. Three do:</p>
+    <ol class="retro">
+      <li><strong>Where the audit is proven, we possess the interface.</strong> The one fully proven case is <span class="m">p = 1</span> — the Lefschetz (1,1) theorem — and its proof runs through the exponential sequence <span class="m">0 → ℤ → 𝒪 → 𝒪* → 0</span>: literally the map that imposes the integers on the continuum of functions. The single point where mathematics holds the fiction-to-continuum interface as an explicit object is the single point where the audit is a theorem (and there it even holds integrally). No higher analog of the exponential sequence exists; at higher <span class="m">p</span> the audit interrogates depths of the interface that have never been constructed.</li>
+      <li><strong>The integral version is false, and had to be.</strong> With strict <span class="m">ℤ</span>-coefficients the conjecture fails — Atiyah–Hirzebruch's torsion counterexamples, Kollár's non-torsion ones — while the rational version remains open. Under the rotation this asymmetry is expected rather than curious: exact whole-number accounting is precisely the imposed fiction, and it is provably too rigid to balance. Only ratios — relative counts, the arithmetic closest to what measurement actually delivers — can possibly be redeemed. The known integral/rational split is the fingerprint of the original modeling sin.</li>
+      <li><strong>Drop the polynomial vocabulary and the audit fails.</strong> On general compact Kähler manifolds — complex structure present, projective embedding absent — the natural analog is false (Voisin): residue-free classes exist with no analytic cycles backing them. Rotated: the books balance only when demand and supply are written in the same finite polynomial language. Projectivity is not a technical convenience in the statement; it is the condition that the geometry side speaks the vocabulary whose counting <span class="m">i</span> was built to compensate.</li>
+    </ol>
+    <p>None of these is a new theorem. All three are known asymmetries that the standard framing records and the rotated framing <em>predicts</em>.</p>
+  </section>
+
+  <section>
+    <h2><span class="no">§ 7</span>What this is, honestly</h2>
+    <p>An interpretation — every mathematical fact cited above is classical, and no proof strategy is claimed. What the rotation offers is two things. First, an organizing principle: near-miss roots, conjugate pairing, points at infinity, multiplicity, Bézout, the (1,1) theorem, the integral counterexamples, and the Kähler failure become one story — <em>mathematics compensates imposed discreteness, and the compensation apparatus is</em> <span class="m">i</span>. Second, a question with a direction. If the conjecture is false, this frame says the failure will not look like a missing construction; it will look like a <em>frozen residue</em> — a demand permanently held in compensation, with a conserved obstruction that should itself be measurable. Whether that can be made precise is the work.</p>
+    <p>An update from the instruments this essay led to (a K3 period-loop computation, built after the first draft): the strongest reading of §1–§2 does not survive contact with its own example, and the surviving thesis is better. Erase the integral lattice from that instrument and nothing ever jumps — the counting phenomena this essay reads as imposed are, at altitude, genuine <em>arithmetic incidence</em>: a continuously moving kernel meeting an integral lattice. The durable claim is dual: <strong>integer invariants are zero-mode shadows of continuous residual data</strong> — the residual does not abolish the integers; it is the state of which they are the exact-zero summary, the way singular values refine rank without making rank fictional.</p>
+    <p>In one sentence, then, with the correction folded in: we discretized a continuous world; <span class="m">i</span> is where mathematics keeps the continuous state that the discrete summary forgets; and the Hodge conjecture asks whether the books balance — whether every rational, residue-free entry in the summary is backed by geometry.</p>
+  </section>
+
+  <footer class="colophon">
+    Working note · prepared August 2026 · interpretation, not theorem — the mathematics cited is classical throughout.
+  </footer>
+</div>
