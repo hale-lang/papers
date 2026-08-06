@@ -25,8 +25,8 @@ pandoc paper.md \
   --variable=citecolor:NavyBlue \
   --toc \
   --toc-depth=1 \
-  --metadata title='Exact Transversality Certificates for Weil Classes through Dimension Six' \
+  --metadata title='The Tangent Space Cannot See the Discriminant' \
   --metadata author='Riley Rook' \
-  --metadata date='Draft v0.1 — August 2026'
+  --metadata date='Draft v0.3 — August 2026'
 
 echo "[residue-ledger] paper.pdf written"

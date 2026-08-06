@@ -7,8 +7,8 @@ one standalone mathematics paper.
 
 ## residue-ledger/
 
-*Exact Transversality Certificates for Weil Classes through Dimension
-Six.* Standalone mathematics paper (draft v0.2, not yet submitted),
+*The Tangent Space Cannot See the Discriminant* (the Residue Ledger
+project). Standalone mathematics paper (draft v0.3, not yet submitted),
 independent of the capacity-allocation pair. A local rigidity theorem
 for rational Weil classes on polarized abelian 2n-folds of Weil type
 (kernel of the infinitesimal Hodge obstruction = the n²-dimensional

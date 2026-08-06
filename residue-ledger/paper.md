@@ -1,14 +1,16 @@
 ---
-title: "Exact Transversality Certificates for Weil Classes through Dimension Six"
-subtitle: "A local rigidity theorem for rational Weil classes, uniform in dimension, with the finding that the arithmetic discriminant separating solved from open sixfold families is invisible to local period geometry"
+title: "The Tangent Space Cannot See the Discriminant"
+subtitle: "Infinitesimal rigidity of Weil classes, with exact certificates in dimensions four and six"
 author: Riley Rook
-date: "Draft v0.2 — August 2026"
+date: "Draft v0.3 — August 2026"
 ---
 
 **Abstract.** We study exact infinitesimal Hodge-obstruction maps for
-rational Weil classes on polarized abelian varieties of Weil type. For a
-Weil-type abelian $2n$-fold over an imaginary quadratic field $K$, the
-tangent space of the polarized period domain decomposes as
+rational Weil classes on polarized abelian varieties of Weil type, and
+prove a first-order no-go result at the open boundary of the Hodge
+conjecture for abelian varieties. For a Weil-type abelian $2n$-fold over an
+imaginary quadratic field $K$, the tangent space of the polarized period
+domain decomposes as
 $\operatorname{Sym}^2 P^{\vee} \oplus (P^{\vee}\otimes Q^{\vee}) \oplus
 \operatorname{Sym}^2 Q^{\vee}$, where $P, Q$ are the two eigenspaces of the
 $K$-action on $H^{1,0}$. We identify the kernel of the obstruction map of
@@ -75,19 +77,35 @@ $\mathbb{Q}^{\times}/N_{K/\mathbb{Q}}(K^{\times})$.*
 and stays Hodge, along the whole $K$-linear cell — only the complex
 structure varies [@vangeemen2022, §2.3] — so $T\,\Omega_{K,h} \subseteq
 \ker\mu_\gamma$ at every point, and moreover $\Omega_{K,h} \subseteq
-Z_\gamma$. (ii) Injectivity on the symmetric-square blocks: verified by
-exact computation at the split point in dimensions four and six (§§3–4);
-since a nonzero rational class contains both conjugate eigencomponents
-$\gamma = a w_+ + \bar a w_-$, its obstruction sees both blocks, giving
-rank $n(n+1)$. (iii) The unitary symplectic group acts transitively on the
-Weil domain [@vangeemen1994, Lemma 5.10], fixes $W$ (determinant-1 action
-on $\Lambda^{2n} V_{\pm}$), and $\mu$ is equivariant, so the rank is
-constant on the family. Finally, reducedness is internal: $\Omega_{K,h}
-\subseteq Z_\gamma$ gives $\dim_x Z_\gamma \ge n^2$, while $\dim T_x
-Z_\gamma = \dim \ker\mu_\gamma = n^2$ gives $\dim_x Z_\gamma \le n^2$;
-hence $Z_\gamma$ is smooth of dimension $n^2$ at $x$ with regular local
-ring, and its germ coincides with the smooth $n^2$-dimensional Weil germ it
-contains. $\blacksquare$
+Z_\gamma$. (ii) Injectivity on the symmetric-square blocks, for every $n$,
+by wedge replacement. Write $V_\sigma = P \oplus \bar Q$ (the $K$-eigenspace
+with its Hodge splitting), so $w_+$ spans $\Lambda^{2n} V_\sigma =
+\Lambda^n P \wedge \Lambda^n \bar Q$. A tangent vector in the
+$\operatorname{Sym}^2 P^{\vee}$ block acts on $V$ by a nonzero map
+$\varphi: P \to \bar P \subset V_{\bar\sigma}$ (with its conjugate on
+$\bar P$); the derivation applied to $w_+$ replaces each $P$-slot by its
+$\varphi$-image, and since the images lie in $V_{\bar\sigma}$, linearly
+independent of every factor of $w_+$, the slot-replacement wedges indexed by
+(removed basis vector, inserted basis vector) are linearly independent —
+so the result vanishes only if $\varphi = 0$. The
+$\operatorname{Sym}^2 Q^{\vee}$ block acts likewise on the
+$\bar Q$-factors. A nonzero rational class $\gamma = a w_+ + \bar a w_-$
+receives contributions from both eigencomponents, and these cannot cancel:
+under the arithmetic meter $D(J_K)$ the $w_+$-side images sit at eigenvalue
+$(2n-2)i$ and the $w_-$-side images at $-(2n-2)i$, distinct graded pieces
+for every $n \ge 2$. Hence $\mu_\gamma$ is injective on
+$\operatorname{Sym}^2 P^{\vee} \oplus \operatorname{Sym}^2 Q^{\vee}$,
+giving rank $n(n+1)$. The exact split-point computations in dimensions four
+and six (§§3–4) are machine certificates of this leg. (iii) The unitary
+symplectic group acts transitively on the Weil domain
+[@vangeemen1994, Lemma 5.10], fixes $W$ (determinant-1 action on
+$\Lambda^{2n} V_{\pm}$), and $\mu$ is equivariant, so the rank is constant
+on the family. Finally, reducedness is internal: $\Omega_{K,h} \subseteq
+Z_\gamma$ gives $\dim_x Z_\gamma \ge n^2$, while $\dim T_x Z_\gamma =
+\dim \ker\mu_\gamma = n^2$ gives $\dim_x Z_\gamma \le n^2$; hence
+$Z_\gamma$ is smooth of dimension $n^2$ at $x$ with regular local ring, and
+its germ coincides with the smooth $n^2$-dimensional Weil germ it contains.
+$\blacksquare$
 
 *Convention.* Our implemented $\mu$ is the two-sided real map recording
 both off-$(n,n)$ blocks $H^{n-1,n+1} \oplus H^{n+1,n-1}$; complex ranks are
@@ -120,15 +138,19 @@ obstruction). Every first-order quantity computed is identical for the two
 classes — as Theorem 1 forces, since the local data depends only on the
 real signature.*
 
-The safe and sharp formulations of the blindness: *the local infinitesimal
-Hodge geometry of a rational Weil class is independent of the hermitian
-discriminant; in particular tangent rank, kernel, transversality excess,
-and reducedness of the local Hodge germ cannot distinguish the split and
-nonsplit sixfold components.* Equivalently: the solved/open distinction
-cannot be caused by a failure of local Hodge transversality; any method
-that separates the components must use information not present in the local
-first-order variation of Hodge structure — rational/integral structure,
-global monodromy, the arithmetic quotient, or explicit cycle construction.
+This is a first-order **no-go result**, not a coincidence of two ranks:
+any attempted distinction between the split and nonsplit components that
+factors only through the local infinitesimal Hodge dataset —
+$\dim T$, $\dim T\Omega$, $\operatorname{rank}\mu_\gamma$,
+$\ker\mu_\gamma$, the excess $e(\gamma)$, the inert polarization channel —
+must fail. In particular the solved/open difference cannot be explained by
+a loss of transversality, an enlarged infinitesimal Hodge locus, a
+nonreduced tangent structure, or a special first-order resonance. The safe
+and sharp formulation: *methods whose input is only the local first-order
+variation of Hodge structure cannot distinguish these discriminant
+classes.* Any method that separates them must use information not present
+there — rational/integral structure, global monodromy, the arithmetic
+quotient, or explicit cycle construction.
 We emphasize the scope: *global* atypicality machinery (Zilber–Pink,
 André–Oort, Ax–Schanuel; e.g. [@mostaed2026]) consumes arithmetic input and
 is not addressed by this statement; dimension-only or local-tangent
@@ -278,9 +300,15 @@ $c = 1$ (and in the fourfold rig); $c = 3$ broke the coincidence and
 exposed it. The form-side computation restores the structurally forced 0 —
 forced, because the polarized tangent space is *defined* by first-order
 persistence of $E$, so its known-zero reading was logically incapable of
-being a discovery. The Weil rows are provably immune (transposition
-preserves the tangent space; $J_K, J$ antisymmetric). Recommended audit
-suite for instruments of this kind: the dual-representation identity
+being a discovery. Note where the bug appeared: only in the nonsplit
+model — exactly the setting where a false positive could have been
+mistaken for the sought arithmetic distinction. This is the strongest
+argument for the discipline we would name **calibrated exact computation**
+(proof-carrying instrumentation): exact instruments should carry invariant
+channels whose readings are known independently of the implementation. The
+Weil rows are provably immune (transposition preserves the tangent space;
+$J_K, J$ antisymmetric). Recommended audit suite: the dual-representation
+identity
 $\rho_{\Lambda^k V^{\vee}}(A) = -\rho_{\Lambda^k V}(A)^{T}$ in dual bases;
 a finite group-level pullback test; exact covariance under a random
 rational basis change; and at least one known-zero channel.
@@ -372,8 +400,14 @@ delivered the second, converse correction: two arithmetically different
 states (split and nonsplit discriminant) have *identical* local continuous
 readings. The discriminant is not a rounding artifact accumulating in the
 margins; it is additional rational structure that the continuous sections
-do not see. The ledger, in other words, found its own blind spot. The
-resulting ontology is not two-part but three-part:
+do not see. The ledger, in other words, found its own blind spot. Together
+the two instruments give a **two-way non-reduction**: continuous data can
+refine a discrete readout (K3), and continuous local data can be blind to
+discrete arithmetic information (sixfolds) — integer invariants can be
+zero-mode shadows, but arithmetic structure is not itself merely a shadow.
+Geometry is continuous locally; arithmetic is discrete globally; neither
+determines the other. The resulting ontology is not two-part but
+three-part:
 $$\text{mathematical state} \;=\; \text{continuous period geometry}
 \;+\; \text{rational/integral arithmetic structure}
 \;+\; \text{cycle realization},$$
@@ -385,18 +419,29 @@ companion essay develops the frame; nothing in §§1–6 depends on it.
 
 # Directions
 
-- **Real conjugacy and higher jets.** Since $h_1$ and $h_3$ become
-  isomorphic over $\mathbb{R}$, the entire local homogeneous period
-  geometry — not only its tangent representation — should be
-  discriminant-blind after real-analytic identification, the arithmetic
-  distinction residing in the $\mathbb{Q}$-form and the arithmetic
-  quotient. Proving that conjugacy, and hence blindness of all higher
-  jets, is the natural next proposition.
+- **Real conjugacy and higher jets — the next theorem, before any
+  second-order run.** Since $h_1$ and $h_3$ become isomorphic over
+  $\mathbb{R}$, one should construct a real $K$-linear isometry between
+  the two hermitian spaces and check that it induces an
+  $Sp(12,\mathbb{R})$-conjugacy carrying the polarized Weil cells, the
+  Weil plane, the period-domain embedding, and the obstruction
+  construction from $c = 1$ to $c = 3$. If it does, *every finite jet* of
+  the local period geometry agrees — the discriminant lives entirely in
+  the rational form, integral lattice, arithmetic quotient, and
+  cycle-realization problem, and the headline strengthens to: *the
+  arithmetic discriminant is invisible to the entire local period germ.*
+  The order of operations matters: without the conjugacy theorem, a
+  second-order computation is a possible separator; with it, second order
+  becomes another calibration channel *forced* to agree, where any
+  disagreement exposes a convention defect — exactly as the spurious
+  $\theta^3$ rank did.
 - **The sixfold arithmetic.** Given Theorems 1–2, the blunt question:
   what is the *coarsest* invariant that separates the split and nonsplit
   components? Candidates consume exactly the inputs the blindness
   statement names: monodromy, the arithmetic quotient, Hecke structure,
-  cycle constructions.
+  cycle constructions. The division of labor is clean: infinitesimal
+  Hodge theory answers where the class *persists*; arithmetic and
+  construction answer whether it is *algebraic*.
 - **The $\delta_H$ meter.** Decay laws for the height-graded minimal
   residue along period paths; extremal (noble) angles by Hurwitz; possible
   transfer of Markov-spectrum structure into Noether–Lefschetz counting.

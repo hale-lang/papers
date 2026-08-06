@@ -1,7 +1,8 @@
 # residue-ledger
 
-*Exact Transversality Certificates for Weil Classes through Dimension
-Six* — draft v0.2, August 2026. **Not yet submitted anywhere; treat as
+*The Tangent Space Cannot See the Discriminant: infinitesimal rigidity
+of Weil classes, with exact certificates in dimensions four and six* —
+draft v0.3, August 2026. **Not yet submitted anywhere; treat as
 a working draft.**
 
 A local rigidity theorem for rational Weil classes on polarized
@@ -62,12 +63,17 @@ discriminant-blindness computation, and the observable layer.
   Every script is self-checking (asserts on all load-bearing
   identities); run with `python3 <script>` from inside `code/`.
 - `supplements/` — self-contained HTML companions: `ledger-essay.html`
-  (the interpretive essay, including its own post-instrument
-  correction) and `k3-residue-angle.html` (the interactive instrument).
+  (*Zero-Mode Shadows*, the interpretive essay, including its own
+  post-instrument corrections) and `k3-residue-angle.html` (the
+  interactive instrument).
+
+Naming: **The Residue Ledger** is the project/instrument-suite identity;
+the technical paper is *The Tangent Space Cannot See the Discriminant*;
+the companion essay is *Zero-Mode Shadows*.
 
 ## Status and honesty notes
 
-Draft v0.2. Attributions were checked against sources in August 2026.
+Draft v0.3. Attributions were checked against sources in August 2026.
 The split/nonsplit discriminant distinction is settled invariantly in
 the paper (explicit K-isotropic subspace for the split form; a descent
 argument for the nonsplit class). The novelty claims in §6 are stated
