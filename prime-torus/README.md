@@ -35,8 +35,9 @@ Headline results:
   ledger: hard windows push the defect past the boundary; the linear
   taper (Bettin–Conrey–Farmer's window) converts it to −Λ(m)/log N;
   the quadratic taper's channel is Selberg's Λ₂ — the taper degree
-  walks the generalized von Mangoldt tower, and the sieve parity
-  barrier enters the leakage geometry at degree two.
+  walks the generalized von Mangoldt tower, with the first explicit
+  two-prime convolution channel (Λ⋆Λ) appearing at degree two: a
+  contact point with sieve parity phenomena, not a barrier statement.
 - **Theorem 5 (finite-spectrum indeterminacy of the FE channel —
   CLASS-RELATIVE).** The uncompleted Riemann FE multiplier (exactly
   ζ's gamma ratio), the trivial-zero divisor, order/type, and the
