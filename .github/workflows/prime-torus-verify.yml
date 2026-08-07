@@ -1,0 +1,17 @@
+name: prime-torus verify
+on:
+  push:
+    paths: ['prime-torus/**']
+  pull_request:
+    paths: ['prime-torus/**']
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r prime-torus/code/requirements.txt
+      - run: cd prime-torus/code && python verify_all.py

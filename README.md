@@ -1,7 +1,7 @@
 # Papers
 
 Two papers on capacity-allocation bounds in coordinated systems, and
-one standalone mathematics paper.
+two standalone mathematics papers.
 
 **Author.** Riley Rook <rileyrook@gmail.com>
 
@@ -28,6 +28,32 @@ cannot see the discriminant, the marked real-analytic germ cannot
 see it, the rational boundary can. Includes a K3 period-loop
 instrument and an interpretive companion essay. See
 `residue-ledger/README.md`.
+
+## prime-torus/
+
+*The Prime Torus Cannot See the Critical Line* (draft v0.1, not yet
+submitted). Standalone mathematics paper, sibling to residue-ledger:
+the same blindness-and-coupling architecture at the number-theoretic
+substrate. The Möbius lift of the integers' free multiplicative
+structure to the infinite prime torus is critical at exponent 1/2
+unconditionally (energy ζ(2σ)/ζ(4σ)); unimodular twists are unitary
+rotations, so all unmarked torus statistics are twist-blind while
+Helson zeta functions realize essentially arbitrary zero sets — and
+symmetrically, the exact ζ functional-equation data (gamma factor,
+trivial zeros, counting law TO ALL ORDERS) provably contains both
+RH-true and RH-false spectra (witnesses: Nakamura's exact-gamma-factor
+functions times an explicit FE-symmetric quartic; distributional
+realization in Burnol's property-S class). The Riemann Hypothesis is
+repositioned as a marked restriction statement (Littlewood's
+criterion, decomposed as free field → Archimedean height cutoff →
+aligned phase), and the finite Möbius inverse defect gets an exact
+leakage ledger: polynomial windows redistribute the boundary defect
+into the generalized von Mangoldt tower, with Selberg's Λ₂ appearing
+at degree two — the taper ladder meets the sieve parity barrier. All
+finite identities machine-certified in exact arithmetic. Makes NO
+claim of progress on RH: the results are no-go statements, a ledger,
+and an assembled architecture, with everything classical cited as
+such. See `prime-torus/README.md`.
 
 ## convergence/
 
