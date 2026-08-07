@@ -2,7 +2,7 @@
 title: "The Prime Torus Cannot See the Critical Line"
 subtitle: "Arithmetic blindness and marked-boundary leakage for the Riemann zeta function"
 author: Riley Rook
-date: "Draft v0.1 — August 2026"
+date: "Draft v0.2 — August 2026"
 ---
 
 **Abstract.** We assemble an exact architecture for the Riemann
@@ -19,15 +19,19 @@ twist-invariant — while Helson zeta functions realize essentially
 arbitrary zero and pole sets in $21/40 < \mathrm{Re}\, s < 1$
 unconditionally. No argument consuming only unmarked prime-torus
 geometry can decide a critical-line statement. (3) Symmetrically, the
-functional-equation channel — gamma factor, conductor, reflection
-symmetry, trivial-zero pattern, and the Riemann–von Mangoldt counting
-law *to all orders* — provably contains both RH-true and RH-false
-spectra: an indeterminacy theorem whose witnesses are Nakamura's
-exact-gamma-factor functions and their product with an explicit
-FE-symmetric quartic carrying a planted off-line quadruple, with a
-second, distributional realization inside Burnol's property-S class.
-No argument whose premises are invariant under this channel can decide
-RH either. (4) What RH is, then, is a statement about the *coupling*:
+functional-equation channel — the uncompleted Riemann FE multiplier,
+the trivial-zero divisor, order and exponential type, and the two-term
+Riemann–von Mangoldt asymptotic with its $O(\log T)$ remainder class —
+provably contains both RH-true and RH-false spectra: a
+*class-relative* indeterminacy theorem whose witnesses are Nakamura's
+functions (which carry ζ's exact gamma-ratio multiplier) and their
+product with an explicit FE-symmetric quartic carrying a planted
+off-line quadruple, with a second, distributional realization inside
+Burnol's property-S class. The witnesses share this data with each
+other, not with ζ itself — whose pole, residue, Dirichlet
+coefficients, and exact counting constants remain available to a
+proof — so the conclusion is: no argument *uniform over that class*
+can decide critical-line placement. (4) What RH is, then, is a statement about the *coupling*:
 by a classical criterion of Littlewood, RH is equivalent to convergence
 of the height-cut, phase-aligned readings
 $\sum_{n \le x} \mu(n)n^{-\sigma}$ for every $\sigma > 1/2$ — the first
@@ -37,13 +41,15 @@ $1 - \zeta V_{N,w}$ has an exact leakage ledger: hard windows push the
 defect past the boundary; polynomial windows redistribute it into the
 generalized von Mangoldt tower, with the linear taper (the
 Bettin–Conrey–Farmer window) producing $\Lambda(m)/\log N$ and the
-quadratic taper producing Selberg's $\Lambda_2$ — the taper ladder
-meets the sieve parity barrier at degree two. Every finite identity is
+quadratic taper producing Selberg's $\Lambda_2$ — the first explicit
+two-prime convolution channel appearing at degree two. Every finite identity is
 machine-certified in exact arithmetic (no floating point in any
 proof-critical channel). The claims are deliberately modest: nearly
 every ingredient is classical and cited as such; what is ours is the
-formalized two-sided no-go, the window-tower observation, and the
-assembled architecture with its certificate suite.
+paired-channel architecture (the torus channel forgets the zeros; the
+FE channel forgets the arithmetic; RH lives in the marked coupling),
+the class-relative indeterminacy formalization, the window-tower
+packaging, and the certificate suite.
 
 # Results
 
@@ -59,7 +65,10 @@ distinguishes PROVED-BY-CODE / PROVED-IN-TEXT / CITED / EXPLORATORY.
 **Theorem 1 (free-field criticality).** The Möbius lift
 $$F_\sigma(z) = \sum_{n \ge 1} \mu(n)\, n^{-\sigma} z^{\alpha(n)}
 = \prod_p \big(1 - p^{-\sigma} z_p\big)$$
-lies in $H^2(\mathbb{T}^\infty)$ exactly for $\sigma > 1/2$, with
+(the product understood coefficientwise, as the $H^2$-limit of its
+finite-prime sections — not as a pointwise-convergent infinite product
+on the boundary torus) lies in $H^2(\mathbb{T}^\infty)$ exactly for
+$\sigma > 1/2$, with
 $$\lVert F_\sigma \rVert_2^2 \;=\; \sum_{n \ge 1}
 \frac{\mu(n)^2}{n^{2\sigma}} \;=\; \frac{\zeta(2\sigma)}{\zeta(4\sigma)}.$$
 The critical exponent $1/2$ is the finite-energy boundary of the free
@@ -80,14 +89,18 @@ multiplicative with $|\chi(p)| = 1$ and
 $F_{\chi,\sigma}(z) = \prod_p (1 - \chi(p) p^{-\sigma} z_p)$. The
 coordinate rotation $(U_\chi z)_p = \chi(p) z_p$ is Haar-unitary and
 $F_{\chi,\sigma} = F_\sigma \circ U_\chi$; hence every unmarked
-rotation-invariant statistic — all Haar $L^q$ norms, moments, value
-distributions, the energy threshold of Theorem 1 — is identical across
-all such twists. But the associated Helson zeta functions
+rotation-invariant statistic — all Haar-distributional data, including
+each $L^q$ norm and moment where defined, and the energy threshold of
+Theorem 1 — is identical across all such twists. But the associated Helson zeta functions
 $\zeta_\chi(s) = \prod_p (1 - \chi(p)p^{-s})^{-1}$ realize essentially
 arbitrary zero and pole configurations after continuation — in
 $21/40 < \mathrm{Re}\, s < 1$ unconditionally, and in the whole strip
 $1/2 < \mathrm{Re}\, s < 1$ under RH [@helson1969; @seip2020;
-@bochkovromanov2021]. Consequently: **no argument that consumes only
+@bochkovromanov2021]; a 2024 preprint of Andersson [@andersson2024]
+proposes prescription throughout $\mathrm{Re}\, s < 1$
+unconditionally — if confirmed, the cleanest witness pair. We keep
+Bochkov–Romanov as the load-bearing citation and state the
+unconditional conclusion in their proven region. Consequently: **no argument that consumes only
 unmarked prime-torus geometry can decide a critical-line statement.**
 
 *Proof.* The rotation identity and the twist-invariance of the
@@ -155,8 +168,10 @@ the exact ledger of what the finite Möbius inverse fails to cancel.
 Then:
 (i) hard cutoff $w = 1$: $c(m) = \delta_{m,1}$ for every $m \le N$ —
 no interior leakage; the whole defect is pushed beyond the boundary;
-(ii) linear taper $w(u) = 1 - u$ (the Nyman–Beurling-optimal window of
-Bettin–Conrey–Farmer [@bettinconreyfarmer]): for $2 \le m \le N$,
+(ii) linear taper $w(u) = 1 - u$ (the Bettin–Conrey–Farmer window,
+conditionally shown to attain the conjectured optimal Nyman–Beurling
+asymptotic under RH plus a zero-derivative moment hypothesis
+[@bettinconreyfarmer]): for $2 \le m \le N$,
 $\log N \cdot c(m) = -\sum_{d \mid m} \mu(d) \log d = \Lambda(m)$ —
 the boundary defect becomes the prime harmonic
 $-\Lambda(m)/\log N$ in the interior;
@@ -165,9 +180,7 @@ $\sum_{d \mid m} \mu(d) \log^2 d = \Lambda_2(m) - 2\Lambda(m)\log m$,
 where $\Lambda_2 = \mu * \log^2$ is Selberg's function, satisfying
 $\Lambda_2 = \Lambda \log + \Lambda * \Lambda$.
 In general the window's polynomial degree walks the generalized von
-Mangoldt tower $\Lambda_j = \mu * \log^j$: **the taper ladder is the
-parity ladder**, and the sieve parity barrier [@friedlanderiwaniec]
-enters the leakage geometry exactly at degree two.
+Mangoldt tower $\Lambda_j = \mu * \log^j$.
 
 *Proof.* All identities are certified division-free in the free
 $\mathbb{Z}$-module over $\{\log p\}$ and its symmetric square
@@ -179,21 +192,41 @@ $N \to \infty$) is equivalent to RH [@baezduarte2003;
 @bettinconreyfarmer]; the ledger above is the exact coefficient-side
 geometry of that meter's leakage. $\blacksquare$
 
-**Theorem 5 (FE-channel indeterminacy).** Let $I_0$ assign to a
-spectrum-bearing function the data: the exact $\zeta$
-functional-equation format
-$F(1-s) = \Gamma_{\cos}(s) F(s)$ with
-$\Gamma_{\cos}(s) = 2\Gamma(s)(2\pi)^{-s}\cos(\pi s/2)$; the
-trivial-zero pattern; and the Riemann–von Mangoldt counting law **to
-all orders** (leading $(T/2\pi)\log T$, the linear term, and the
-$O(\log T)$ error class). There exist $F_+, F_-$ with identical
-$I_0$-data such that all nontrivial zeros of $F_+$ lie on the critical
-line (unconditionally, refereed), while $F_-$ carries an explicitly
-planted off-line quadruple $\{3/4 \pm 2i,\ 1/4 \pm 2i\}$ with the rest
-of its spectrum on the line. Consequently the RH-configuration is not
-a function of $I_0$, and **no argument whose premises are
-$I_0$-invariant can decide it** — in particular, any proof of RH for
-$\zeta$ must consume data outside $I_0$.
+*Remark (interpretation, deliberately modest).* At degree two the new
+term contains the first explicit two-prime convolution channel
+$\Lambda * \Lambda$ — the point where the leakage geometry first
+meets the algebraic shape underlying sieve parity phenomena
+[@friedlanderiwaniec]. This is a contact point, not a barrier
+statement: Selberg's $\Lambda_2$ does not break the parity barrier,
+and neither does this proposition. The window tower is a packaging of
+binomial/Möbius-convolution identities, claimed as organization, not
+as new sieve theory.
+
+**Theorem 5 (finite-spectrum indeterminacy of the FE channel).** Let
+$I_0$ assign to an entire function the data: the uncompleted Riemann
+functional-equation multiplier — $F(1-s) = \Gamma_{\cos}(s) F(s)$ with
+$\Gamma_{\cos}(s) = 2\Gamma(s)(2\pi)^{-s}\cos(\pi s/2)$, exactly
+$\zeta$'s gamma ratio; the trivial-zero divisor; the order and
+exponential type; and the two-term Riemann–von Mangoldt asymptotic
+$N(T) = (T/2\pi)\log T + cT + O(\log T)$ together with its remainder
+class. There exist entire $F_+, F_-$ with identical $I_0$-data such
+that all nontrivial zeros of $F_+$ lie on the critical line
+(unconditionally, refereed), while $F_-$ carries an explicitly planted
+finite off-line symmetric quartet $\{3/4 \pm 2i,\ 1/4 \pm 2i\}$ with
+the rest of its spectrum on the line. Consequently critical-line
+placement is not determined on this class by $I_0$, and **any uniform
+argument factoring only through $I_0$ must fail on it**.
+
+*Scope rider (essential).* This is a class-relative statement, not a
+$\zeta$-fiber theorem: the witnesses share $I_0$ with each other, not
+with $\zeta$. $R_1$ is entire where $\zeta$ has its pole at $s = 1$;
+it is not an ordinary Dirichlet series; and its linear counting
+coefficient $(\log(4/2\pi) - 1)/2\pi$ differs from $\zeta$'s
+$(\log(1/2\pi) - 1)/2\pi$ by $\log 4 / 2\pi$ — both formulas are
+printed in [@nakamura2023]. A proof of RH therefore remains free to
+consume $\zeta$'s pole, residue, Dirichlet coefficients, or exact
+counting constants; what the theorem forecloses is any argument
+uniform over the $I_0$-class.
 
 *Proof.* Take $F_+ = R_1$, Nakamura's function [@nakamura2023,
 Thm. 1.1]: it satisfies the $\Gamma_{\cos}$ equation — "the gamma
@@ -207,10 +240,14 @@ coefficients, satisfies $Q(1-s) = Q(s)$ identically, has exactly the
 off-line quadruple as roots (all inside the open strip, none on the
 line), and does not vanish at the negative even integers — all
 certified (`fe_indeterminacy.py` [T3], [T5]). Then
-$F_-(1-s) = Q(1-s)R_1(1-s) = \Gamma_{\cos}(s) F_-(s)$: same equation,
-same trivial zeros, and $N(T)$ shifted by exactly $O(1)$ — the same
-counting law to all orders. The zero set of $F_-$ is the planted
-quadruple together with the on-line zeros of $R_1$. $\blacksquare$
+$F_-(1-s) = Q(1-s)R_1(1-s) = \Gamma_{\cos}(s) F_-(s)$: same
+multiplier, same trivial divisor, same order and type — and under the
+positive-ordinate convention $0 < \mathrm{Im}\,\rho < T$ the planted
+quartet contributes exactly two new zeros for $T > 2$ (its other two
+members lie below the real axis; the two-sided count gains four), so
+the two-term asymptotic and its remainder class are unchanged. The
+zero set of $F_-$ is the planted quartet together with the on-line
+zeros of $R_1$. $\blacksquare$
 
 *Route B (distributional realization).* Inside Burnol's
 Fourier-invariant even property-S class [@burnol2007, Déf. 4.26,
@@ -231,8 +268,9 @@ $\zeta$'s exact FE data; extending the counting theorem to the
 extended class is an unpaid obligation if Route B is to carry that
 weight alone.
 
-*Remark (the all-orders leg is the discriminator).* Every published
-witness pair fails some order of the counting law: Pólya's 1927 family
+*Remark (the shared remainder class is the discriminator).* Every
+published witness pair fails the counting agreement earlier: Pólya's
+1927 family
 $e^{-z^2/2}(a + \cos z)$ — the ancestor of this statement, with his
 own conclusion that from the shared properties "the reality of the
 zeros cannot be inferred" [@polya1927] — has linearly many zeros,
@@ -242,23 +280,46 @@ gave the first printed "a functional equation of the usual type is not
 sufficient" [@pottertitchmarsh1935; cf. @bombierighosh2011, §2.1]; and
 Nakamura's own on-line and off-line examples differ in the linear
 term ($r_j \in \{2,3,6\}$ versus $\zeta$'s constant). The pair
-$\{F, Q\!\cdot\!F\}$ agrees to all orders — that agreement, and the
-instrument-relative formulation, are what this theorem adds; the
-construction itself is elementary and is not claimed.
+$\{F, Q\!\cdot\!F\}$ shares both unbounded terms and the remainder
+class — that agreement, and the instrument-relative formulation, are
+what this theorem adds; the construction itself is elementary and is
+not claimed. (v0.1 said "to all orders", which overstated: a
+polynomial factor does not preserve the exact counting function, its
+constant term, or its step structure — only the two-term asymptotic
+and the $O(\log T)$ class.)
 
-*Remark (the Hamburger caveat, required).* By Hamburger's theorem
-[@hamburger1921], adding the axiom "$F$ is an ordinary Dirichlet
-series" to $\zeta$'s functional equation collapses the class to
-$C\zeta$. The witnesses above are not ordinary Dirichlet series (for
-Nakamura's $Q(s,a)$-type functions he states this explicitly; for
-$R_j$ it follows from the $s$-prefactor and shifts; $Q \cdot F$ is
-likewise not one). The no-go's precise content is therefore: **the FE
-channel plus analytic normalization cannot decide RH, and the
-Dirichlet-series/Euler-product axiom is exactly the arithmetic marking
-that collapses the ambiguity.** Together with Theorem 2 this is a
-two-sided statement: the torus channel forgets the zeros; the FE
-channel forgets the arithmetic; a proof must consume the coupling —
+*Remark (layered markings; the Hamburger caveat, required).* Under
+Hamburger's full hypotheses — an ordinary Dirichlet series with
+analytic continuation, the pole, and finite-order/growth conditions —
+the Riemann functional equation is rigid: the class collapses to
+$C\zeta$ [@hamburger1921]. Two layers of arithmetic marking must be
+separated: the ordinary Dirichlet-frequency expansion is already a
+substantial marking (it is what Hamburger consumes; no Euler product
+is required), and the Euler product is a further, strictly stronger
+multiplicative marking. The witnesses above live outside the first
+layer already (for Nakamura's $Q(s,a)$-type functions he states this
+explicitly; for $R_j$ it follows from the $s$-prefactor and shifts;
+$Q \cdot F$ is likewise not an ordinary Dirichlet series). The
+no-go's precise content is therefore: **the FE multiplier plus coarse
+spectral data cannot decide critical-line placement; the
+Dirichlet-frequency marking is already rigidifying; and RH lives in
+the coupling of the markings to the reflection.** Together with
+Theorem 2 this is two-sided: the torus channel forgets the zeros; the
+FE channel forgets the arithmetic; a proof must consume the coupling —
 which is what the explicit formula and Weil positivity are.
+
+*Correction note (v0.1 → v0.2, kept deliberately).* Version 0.1
+stated Theorem 5 as a $\zeta$-fiber result ("the exact $\zeta$ FE
+data", "conductor", counting law "to all orders") and drew the
+conclusion "any proof of RH must consume data outside $I_0$". A first
+referee pass caught the overclaim: the witnesses share the data with
+each other, not with $\zeta$ (pole, linear counting coefficient, and
+Dirichlet structure all differ), and "all orders" overstated what a
+polynomial factor preserves. The theorem is now class-relative with
+the scope rider; the paired-channel architecture is unaffected. The
+same pass softened the parity phrasing of Proposition 4 (the window
+tower meets the two-prime convolution channel at degree two; it does
+not break the parity barrier).
 
 # The historical panel: the Davenport–Heilbronn family, exactly
 
@@ -275,10 +336,12 @@ $\xi = (\sqrt{10 - 2\sqrt5} - 2)/(\sqrt5 - 1)$ is certified,
 division-free in $\mathbb{Q}(\zeta_{20})$, to be exactly the
 self-duality tuning — equivalently the half-argument of the root
 number, $\xi = \tan(\tfrac12 \arg \varepsilon(\chi))$
-(`dh_pencil.py` [P0]–[P3]). Moving from a corner to the ray flips
-RH's truth value while leaving all FE data fixed; the corners' RH is
+(`dh_pencil.py` [P0]–[P3]). Moving from the Euler-product corners to the scalar-self-dual
+interior ray produces a known RH violator while retaining the ambient
+matrix functional-equation data — the corners' GRH remains
 conjectural, which is why Theorem 5's unconditional witnesses use
-Nakamura's functions instead. Zero-distribution theory for this
+Nakamura's functions instead. (Every member shares the matrix FE;
+only the tuned ray satisfies the scalar self-dual equation.) Zero-distribution theory for this
 family is due to Bombieri–Ghosh [@bombierighosh2011], with the
 corrected density landscape in [@righetti2017].
 
@@ -304,10 +367,11 @@ Lax–Phillips appendix "How not to prove the Riemann hypothesis"
 a class-level statement.
 
 To our knowledge new here: (1) the formalized **instrument-relative**
-no-go of Theorem 5 — the named data class $I_0$ with the counting law
-to all orders (the discriminator no published witness pair reaches),
-the witness pair differing by an FE-symmetric quartic, and the
-consequence about proof channels; (2) the **window tower** of
+no-go of Theorem 5 — the named data class $I_0$ with the shared
+two-term-asymptotic-and-remainder agreement (closer than any
+published witness pair), the witness pair differing by an
+FE-symmetric quartic, and the class-relative consequence about proof
+channels; (2) the **window tower** of
 Proposition 4 — the observation that the taper degree walks
 $\Lambda_j = \mu * \log^j$, placing the parity barrier at degree two
 of the leakage geometry; (3) the assembled **two-sided blindness
@@ -336,8 +400,8 @@ progress on RH itself.
   $R_N \succeq 0$, a monotone Schur-complement law in $N$, or a
   bounded-rank update under the birth of a new prime — proved
   structurally, not observed numerically.
-- **The minimal seeing channel.** $I_0$ — even with the counting law
-  to all orders — is blind; Weil-positivity data sees (Bombieri's
+- **The minimal seeing channel.** $I_0$ — even with the full
+  two-term counting asymptotic and remainder class — is blind; Weil-positivity data sees (Bombieri's
   finite-truncation theorem: negative eigenvalues count off-line
   conjugate pairs exactly [@bombieri2000]). The blindness boundary
   lies between the counting channel and the positivity channel;

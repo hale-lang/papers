@@ -105,9 +105,12 @@ def main():
     for t in (0, -2, -4, -6):
         assert Q.subs(sc, t) != 0                          # trivial zeros safe
     print("[T5] bookkeeping: Q vanishes at none of 0, -2, -4, -6 (trivial")
-    print("     pattern untouched); zero set of Q * A-hat = quadruple UNION")
-    print("     on-line zeros [Burnol 4.61, cited]; counting law shifts by")
-    print("     exactly 4 (same Riemann-von Mangoldt asymptotic); E preserves")
+    print("     pattern untouched); zero set of Q * A-hat = quartet UNION")
+    print("     on-line zeros [Burnol 4.61, cited]; under the positive-")
+    print("     ordinate convention 0 < Im rho < T the quartet adds exactly")
+    print("     TWO zeros for T > 2 (two lie below the axis; two-sided count:")
+    print("     four) — the two-term RvM asymptotic and its O(log T)")
+    print("     remainder class are unchanged; E preserves")
     print("     parity, temperedness, supp(D)-vanishing (supp(ED) in supp(D))")
     print("     and F-side vanishing ([T2]) — property S intact (Def 4.26).")
 

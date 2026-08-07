@@ -35,10 +35,14 @@ Channels (all exact):
        where Lambda_2 = mu * log^2 is SELBERG'S function, satisfying
        Lambda_2(m) = Lambda(m) log m + (Lambda*Lambda)(m). Certified
        as Sym^2 matrix identities, m <= 200. The quadratic window's
-       new interior channel is exactly Lambda_2 — the parity-BREAKING
-       object of Selberg's sieve: the taper ladder walks the
-       generalized von Mangoldt functions Lambda_j = mu * log^j, and
-       the parity barrier meets the leakage geometry at degree 2.
+       new interior channel is exactly Lambda_2, whose Lambda*Lambda
+       term is the first explicit two-prime convolution channel: the
+       taper ladder walks the generalized von Mangoldt functions
+       Lambda_j = mu * log^j, and at degree 2 the leakage geometry
+       first meets the algebraic shape underlying sieve parity
+       phenomena. (A contact point — NOT a breaking of the parity
+       barrier; Selberg's Lambda_2 does not break it and neither do
+       we.)
   [W4] the Selberg identity Lambda_2 = Lambda log + Lambda*Lambda
        itself, certified in Sym^2 (m <= 200) — the algebraic engine
        of [W3].
@@ -159,7 +163,7 @@ def main():
         assert lhs == madd(lam_log, conv), m
     print("[W4] Selberg: Lambda_2(m) = sum mu(d) log^2(m/d) = Lambda(m)log m")
     print("     + (Lambda*Lambda)(m), certified as Sym^2 integer-matrix")
-    print("     identities (m <= 200) — the parity-breaking engine.")
+    print("     identities (m <= 200) — the two-prime convolution engine.")
 
     # ---- [W3] quadratic taper ------------------------------------------------
     # (log N)^2 c(m) = sum mu(d)(log N - log d)^2
@@ -184,8 +188,9 @@ def main():
     print("     sum mu(d) log^2 d = Lambda_2(m) - 2 Lambda(m) log m (Sym^2,")
     print("     m <= 200) — the window DEGREE walks the von Mangoldt tower")
     print("     Lambda_j = mu * log^j: hard -> edge only, linear -> Lambda,")
-    print("     quadratic -> SELBERG'S Lambda_2, where sieve parity first")
-    print("     breaks. The taper ladder is the parity ladder.")
+    print("     quadratic -> SELBERG'S Lambda_2, whose Lambda*Lambda term is")
+    print("     the first explicit two-prime correlation channel — a contact")
+    print("     point with sieve parity phenomena, not a barrier-breaking.")
 
     # ---- [W5] defect bookkeeping at N = 30 ------------------------------------
     N5 = 30
@@ -206,8 +211,9 @@ def main():
     print("\nINVERSE DEFECT CERTIFIED: the leakage geometry of the")
     print("  Nyman-Beurling meter is now exact — hard windows hide the defect")
     print("  past the boundary, polynomial windows redistribute it into the")
-    print("  von Mangoldt tower, and degree 2 is where the parity barrier")
-    print("  enters. Next (the genuinely new target): the E_free + E_mark")
+    print("  von Mangoldt tower, and degree 2 carries the first two-prime")
+    print("  convolution channel. Next (the genuinely new target): the")
+    print("  E_free + E_mark")
     print("  decomposition of the defect energy, with the four-channel")
     print("  calibration (zeta / FF / Helson / DH) and the leakage Gram")
     print("  matrix G_N — hunting a structural factorization, not numerics.")
