@@ -2,7 +2,7 @@
 title: "The Tangent Space Cannot See the Discriminant"
 subtitle: "Local rigidity and arithmetic boundary separation for Weil classes"
 author: Riley Rook
-date: "Draft v0.15 — August 2026"
+date: "Draft v0.16 — August 2026"
 ---
 
 **Abstract.** We study exact infinitesimal Hodge-obstruction maps for
@@ -1109,18 +1109,26 @@ standard (splitting, Jordan theory, determinant groups, strong
 approximation), but we did not find the boundary-multiplicity
 separation of this discriminant pair, or the type invariant driving it,
 in print. The known prior-art zone is the arithmetic unitary
-cusp-counting literature: Zink's 1979 note on cusp numbers of
-arithmetic subgroups of unitary groups [@zink1979] is the
-closest-titled prior work and has not yet been compared line by line
-with Theorems 5–5c — this is the single largest unresolved literature
-risk for the boundary half — and the Picard modular literature
-(cusps of $SU(2,1)$ lattices via isotropic subspaces and ideal
-classes, e.g. Stover [@stover]) is the adjacent tradition. A
-specialist in hermitian lattices may recognize the classification as
-a short specialization of a general orbit theorem; this is where
-expert literature review has the highest value, and the novelty claim
-for the spectra is explicitly provisional until the Zink comparison
-is done.
+cusp-counting literature: Zink's 1979 note [@zink1979] is the
+closest-titled prior work. Its content is now partially known through
+Stover's account [@stover, Thm. 4.2, Cor. 4.3]: Zink classifies
+isotropic lines by their **ideal classes** — equivalent iff the
+classes agree — giving $h_k$ cusps for the standard Picard modular
+group and $h_k^r$ in higher rank via maximal isotropic flags. That
+invariant is *trivial* for $\mathbb{Q}(i)$ (class number one), where
+both our lattices have one-class genera — while the dyadic type
+invariant of Theorem 5 is not: on the present evidence Theorems 5–5c
+*refine* rather than duplicate Zink's classification at the
+class-number-one degenerate point. The comparison nonetheless remains
+provisional on two grounds: Zink's full text (Math. Nachr. 89 (1979)
+315–320) is still unobtained, and Stover's bibliography surfaces a
+second, possibly closer prior work — Zeltinger, *Spitzenanzahlen und
+Volumina Picardscher Modulvarietäten* (Bonner Math. Schriften 136,
+1981) — unobtained as well. A specialist in hermitian lattices may
+also recognize the classification as a specialization of a general
+orbit theorem; this is where expert literature review has the highest
+value, and the novelty claim for the spectra stays explicitly
+provisional until both comparisons are done.
 
 *New applications and syntheses.* (3) Theorem 2's computed
 discriminant-blindness certificate at the sixfold solved/open boundary,

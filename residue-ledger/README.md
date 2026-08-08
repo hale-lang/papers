@@ -1,7 +1,7 @@
 # residue-ledger
 
 *The Tangent Space Cannot See the Discriminant: local rigidity and
-arithmetic boundary separation for Weil classes* — draft v0.15,
+arithmetic boundary separation for Weil classes* — draft v0.16,
 August 2026. **Not yet submitted anywhere; treat as
 a working draft.**
 
@@ -156,7 +156,17 @@ the companion essay is *Zero-Mode Shadows*.
 
 ## Status and honesty notes
 
-Draft v0.15 (novelty-search results folded into §7: Zink 1979 named
+Draft v0.16 (final pre-circulation bibliography pass: Zink 1979
+completed — Math. Nachr. 89, 315–320 — with partial content via
+Stover's account: an IDEAL-CLASS classification, trivial at Q(i),
+so on present evidence Theorems 5-5c refine rather than duplicate it
+at the class-number-one point; still provisional pending the full
+text and the newly-surfaced Zeltinger 1981 Bonn dissertation. Stover
+completed: Geom. Dedicata 157 (2012) 239-257. Koike/Movasati-
+Villaflor/Duque Franco-Villaflor venues confirmed. Remaining bib
+polish before submission: pages for baldi2021/markman2023/
+carinivigano/vigano2024. Prior v0.15: novelty-search results folded
+into §7: Zink 1979 named
 as the closest-titled prior work for Theorems 5-5c and flagged as the
 single largest unresolved literature risk — the spectra's novelty claim
 is explicitly provisional until a line-by-line Zink comparison is done;

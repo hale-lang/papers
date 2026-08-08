@@ -2,7 +2,7 @@
 
 *The Prime Torus Cannot See the Critical Line: arithmetic blindness
 and marked-boundary leakage for the Riemann zeta function* — draft
-v0.2, August 2026. **Not yet submitted anywhere; treat as a working
+v0.3, August 2026. **Not yet submitted anywhere; treat as a working
 draft. This paper makes no claim of progress on the Riemann
 Hypothesis; its results are blindness (no-go) statements, an exact
 leakage ledger, and an assembled architecture, with everything
@@ -57,6 +57,24 @@ Headline results:
   distinguished: Pólya 1927; Potter–Titchmarsh 1935;
   Davenport–Heilbronn 1936; Kaczorowski–Kulas 2007.)
 
+- **Theorem 6 (located boundary of the short-interval channel; new
+  in v0.3).** The Matomäki–Radziwiłł short-interval variance bound
+  (complex form: MRT Thm A.1, arXiv version) is a functional of the
+  pretentious-distance datum alone, uniformly over all 1-bounded
+  multiplicative functions — the channel's output factors through
+  the pretentious projection (one twist frequency + one distance),
+  and the class contains Bochkov–Romanov Helson twists with
+  essentially arbitrary strip zeros: blind to strip placement. Yet
+  the mean-value channel provably sees the edge σ = 1 (Halász;
+  Granville–Soundararajan; Aymone with the F(1) = 0 hypothesis). The
+  channel's seeing-boundary is LOCATED — includes the edge, excludes
+  the line — with the crossing at the almost-all → all-intervals
+  upgrade where phase/additive-energy data (Guth–Maynard) enters.
+  Finite shadow certified: the MR adversarial rigging realized
+  exactly (window [226, 236), ten private primes, a manufactured
+  sign-change desert). Caveats built in: one-sided bound; per-
+  function twist; degeneracy asserted for matched-distance families.
+
 ## Contents
 
 - `paper.md`, `references.bib`, `build.sh` — the paper (pandoc →
@@ -77,6 +95,8 @@ Headline results:
   - `dh_pencil.py` — the historical panel: the Davenport–Heilbronn
     family in exact ℚ(ζ₂₀) arithmetic; ξ certified as the
     self-duality tuning (= half-argument of the root number).
+  - `interval_rigging.py` — Theorem 6's finite shadow: the
+    Matomäki–Radziwiłł adversarial rigging as an exact witness.
   - `marked_lab.py` — the structure-search lab (EXPLORATORY: exact
     channels asserted; float channels loudly flagged).
   - `verify_all.py` — the suite runner with per-result grading
@@ -84,7 +104,16 @@ Headline results:
 
 ## Status and honesty notes
 
-Draft v0.2 — first referee pass applied: Theorem 5 rewritten
+Draft v0.3 — Theorem 6 added (the located-boundary panel), completing
+the triptych: torus channel blind (Thm 2), FE channel blind
+class-relatively (Thm 5), short-interval channel blind with a located
+seeing-boundary at the edge (Thm 6). The minimal-seeing-channel
+question is now bracketed from both sides in Directions. All Theorem-6
+inputs are cited (refereed or arXiv-with-correction-note); ours are
+the factorization observation, the located framing, and the witness
+pairing.
+
+Prior status (v0.2) — first referee pass applied: Theorem 5 rewritten
 class-relative with the scope rider (v0.1 overclaimed the ζ-fiber and
 "all orders"; correction note kept in the paper); Proposition 4's
 parity phrasing softened to the two-prime-convolution contact point;

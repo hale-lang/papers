@@ -2,7 +2,7 @@
 title: "The Prime Torus Cannot See the Critical Line"
 subtitle: "Arithmetic blindness and marked-boundary leakage for the Riemann zeta function"
 author: Riley Rook
-date: "Draft v0.2 — August 2026"
+date: "Draft v0.3 — August 2026"
 ---
 
 **Abstract.** We assemble an exact architecture for the Riemann
@@ -31,7 +31,17 @@ Burnol's property-S class. The witnesses share this data with each
 other, not with ζ itself — whose pole, residue, Dirichlet
 coefficients, and exact counting constants remain available to a
 proof — so the conclusion is: no argument *uniform over that class*
-can decide critical-line placement. (4) What RH is, then, is a statement about the *coupling*:
+can decide critical-line placement. (4) A third channel completes the triptych with a
+*located boundary*: the short-interval channel of
+Matomäki–Radziwiłł factors through the pretentious projection — its
+output is a functional of one twist frequency and one pretentious
+distance, uniform over all 1-bounded multiplicative functions, a
+class containing Helson twists with essentially arbitrary strip
+zeros — yet the mean-value channel provably decides behavior at the
+edge $\sigma = 1$: the channel sees the edge and cannot see the
+line, and the crossing point is exactly the almost-all-to-all
+intervals upgrade where phase/additive-energy data enters.
+(5) What RH is, then, is a statement about the *coupling*:
 by a classical criterion of Littlewood, RH is equivalent to convergence
 of the height-cut, phase-aligned readings
 $\sum_{n \le x} \mu(n)n^{-\sigma}$ for every $\sigma > 1/2$ — the first
@@ -308,6 +318,78 @@ Theorem 2 this is two-sided: the torus channel forgets the zeros; the
 FE channel forgets the arithmetic; a proof must consume the coupling —
 which is what the explicit formula and Weil positivity are.
 
+**Theorem 6 (located boundary of the short-interval channel).** Let
+$\mathcal{C}$ be the class of 1-bounded multiplicative functions
+$f: \mathbb{N} \to \mathbb{C}$.
+
+(a) *The discrepancy channel factors through the pretentious
+projection, hence is blind to strip zero placement.* By the
+Matomäki–Radziwiłł theorem [@matomakiradziwill2016] in the complex
+form of Matomäki–Radziwiłł–Tao [@mrt2015, Thm. A.1 — cite the arXiv
+version, which carries a recorded correction to the published proof
+of its Prop. A.3]: for every $f \in \mathcal{C}$ and
+$X \ge h \ge 10$,
+$$\frac1X \int_X^{2X} \Big| \frac1h \sum_{x \le n \le x+h} f(n)
+\Big|^2 dx \;\ll\; e^{-M(f;X)} \;+\;
+\frac{(\log\log h)^2}{(\log h)^2} \;+\; \frac{1}{(\log X)^{1/50}},
+\qquad M(f;X) = \inf_{|t| \le X}
+\mathbb{D}\big(f, n^{it}; X\big)^2 .$$
+The bound is a functional of the pretentious-distance datum alone,
+uniformly over $\mathcal{C}$ with no further hypotheses: the
+channel's information content is at most the pair (minimizing twist
+$t_1(f, X)$, distance $M(f;X)$) — one real frequency and one
+distance — and the zeros of the associated Dirichlet series appear
+nowhere in that factorization. Since $\mathcal{C}$ contains the
+Helson twists of Bochkov–Romanov (completely multiplicative,
+unimodular, no further conditions) realizing essentially arbitrary
+zero and pole multisets in $21/40 < \mathrm{Re}\, s < 1$
+unconditionally [@bochkovromanov2021], no argument consuming only
+this channel decides strip zero placement. Two caveats are part of
+the statement: the bound is one-sided (vacuous in the pretentious
+sector — the comparison form "short average $\approx$ twisted long
+average" is *not* asserted here and is not in the published record),
+and the twist is per-function, so the degeneracy assertion is for
+families with matching distance data — exactly the regime the Helson
+constructions inhabit.
+
+(b) *The mean-value channel sees the edge.* Halász's theorem
+[@halasz1968] reads mean values through pretentious distance; the
+pretentious proof of $\zeta(1+it) \ne 0$
+[@granvillesoundararajan2008; @ghs2019; @koukoulopoulos2019] and
+Aymone's theorem [@aymone2022] — a completely multiplicative
+$f: \mathbb{N} \to [-1,1]$ with $\sum_{n \le x} f(n) \ll
+x^{1-\delta}$ for some $0 < \delta < 1/2$ *and* $F(1) = 0$ forces
+$\zeta$ zero-free in $\mathrm{Re}\, s > 1 - \delta$ — show that
+mean-value data of class members does constrain zeros at and near
+$\sigma = 1$.
+
+(c) Hence the channel's seeing-boundary is *located*: it includes
+the edge and excludes the critical line, and the crossing point is
+the almost-all $\to$ all-intervals upgrade — where the
+phase/additive-energy data enters (higher uniformity; the
+large-values program [@guthmaynard]) — precisely the data the
+discrepancy channel discards. $\blacksquare$ (Assembly of cited
+results; ours are the factorization observation, the located
+framing, and the witnesses' pairing.)
+
+*The finite shadow (certified).* Matomäki–Radziwiłł's own
+introduction argument — in a short enough window every integer can
+own a private prime, and a completely multiplicative $\pm 1$
+function rigged on those primes produces a sign-change desert — is
+realized exactly in `code/interval_rigging.py` ([R1]–[R4]): the
+window $[226, 236)$, ten private primes, a certified constant-sign
+window with four sign changes adjacent. The all-intervals
+sub-channel below private-prime scale is adversarially riggable;
+the almost-all channel survives because rigged windows are rare.
+
+*Remark (the two-sided bracket).* Theorems 2, 5, and 6 now bracket
+the "minimal seeing channel" question from both sides: Weil-positivity
+data sees exactly (negative truncation eigenvalues count off-line
+conjugate pairs [@bombieri2000]); the pretentious/short-interval
+projection is blind; the mean-value channel sees only the edge. The
+open question — the sharpest this paper leaves — is the minimal
+extension of the blind channels that decides.
+
 *Correction note (v0.1 → v0.2, kept deliberately).* Version 0.1
 stated Theorem 5 as a $\zeta$-fiber result ("the exact $\zeta$ FE
 data", "conductor", counting law "to all orders") and drew the
@@ -366,6 +448,12 @@ Lax–Phillips appendix "How not to prove the Riemann hypothesis"
 [@laxphillips1976; @laxphillips1980] is a method-specific autopsy, not
 a class-level statement.
 
+The inputs of Theorem 6 are entirely classical or recent-refereed
+(Matomäki–Radziwiłł; MRT; Halász; Granville–Soundararajan;
+Granville–Harper–Soundararajan; Aymone; Bochkov–Romanov); ours are
+the factorization observation, the located-boundary framing, and the
+pairing of witnesses.
+
 To our knowledge new here: (1) the formalized **instrument-relative**
 no-go of Theorem 5 — the named data class $I_0$ with the shared
 two-term-asymptotic-and-remainder agreement (closer than any
@@ -400,14 +488,20 @@ progress on RH itself.
   $R_N \succeq 0$, a monotone Schur-complement law in $N$, or a
   bounded-rank update under the birth of a new prime — proved
   structurally, not observed numerically.
-- **The minimal seeing channel.** $I_0$ — even with the full
-  two-term counting asymptotic and remainder class — is blind; Weil-positivity data sees (Bombieri's
-  finite-truncation theorem: negative eigenvalues count off-line
-  conjugate pairs exactly [@bombieri2000]). The blindness boundary
-  lies between the counting channel and the positivity channel;
-  locating the minimal deciding extension of $I_0$ — conjecturally at
-  the Weil form itself — would say positivity is not merely
-  sufficient machinery but the first channel that can see at all.
+- **The minimal seeing channel.** Now bracketed from both sides:
+  $I_0$ (Theorem 5) and the pretentious/short-interval projection
+  (Theorem 6) are blind; the mean-value channel sees only the edge;
+  Weil-positivity data sees exactly (Bombieri's finite-truncation
+  theorem: negative eigenvalues count off-line conjugate pairs
+  exactly [@bombieri2000]). Locating the minimal deciding extension
+  of the blind channels — conjecturally at the Weil form itself —
+  would say positivity is not merely sufficient machinery but the
+  first channel that can see at all.
+- **The interface, precisely.** The additive–multiplicative
+  interface is not blind: the large-values/additive-energy channel
+  sees zero density [@guthmaynard]; what is blind is the
+  phase-discarding projection. The follow-up is a quantitative
+  ledger of exactly which phase data the seeing results consume.
 
 *Reproducibility.* All proof-critical identities are exact (integer,
 rational, cyclotomic, or symbolic; the one exploratory lab flags its

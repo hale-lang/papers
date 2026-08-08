@@ -25,6 +25,8 @@ SCRIPTS = [
                            " quartic, composition"),
     ("dh_pencil.py",       "historical panel: the Davenport-Heilbronn family"
                            " exactly (xi = half-argument of the root number)"),
+    ("interval_rigging.py","Thm 6 finite shadow: the MR adversarial rigging,"
+                           " exact witness"),
     ("marked_lab.py",      "directions: structure-search lab (exploratory;"
                            " floats flagged)"),
 ]
@@ -57,6 +59,15 @@ RESULT GRADING
     off-line witnesses in the FE class .... CITED (Davenport-Heilbronn;
                                             Nakamura Abh. 2025)
     the no-go conclusion .................. PROVED-IN-TEXT
+  Theorem 6 (located boundary of the short-interval channel)
+    MRT variance bound; pretentious factoriz.  CITED (Matomaki-Radziwill;
+                                            MRT arXiv version)
+    Helson witnesses in the class ......... CITED (Bochkov-Romanov)
+    edge-seeing leg ....................... CITED (Halász; GS 2008;
+                                            GHS 2019; Aymone)
+    the factorization observation + located
+      framing ............................. PROVED-IN-TEXT
+    finite rigging shadow ................. PROVED-BY-CODE ([R1]-[R4])
   Historical panel (Davenport-Heilbronn family)
     cyclotomic structure; xi tuning ....... PROVED-BY-CODE ([P0]-[P3])
   Structure-search lab .................... EXPLORATORY (flagged)
